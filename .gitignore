@@ -1,0 +1,37 @@
+# API keys
+.env
+*.env
+
+# Node
+node_modules/
+.pnp
+.pnp.js
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build
+dist/
+build/
+
+# Large caches
+**/node_modules/
+npm-debug.log*
+
+# Temp
+archive/
+*.bak
+*.log
+backups/
+
+.clawhub/
+.openclaw/
+paperclip-claimed-api-key.json
+backups/
