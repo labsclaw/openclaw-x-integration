@@ -4,6 +4,8 @@ The opencode_local adapter stale run detector is flooding the board with duplica
 Each alert is for the SAME run and references originFingerprint correctly.
 Root cause documented in RLA-207.
 
+## Recommendation: Disable opencode_local stale run monitoring until RLA-207 fix is deployed.
+
 ## Wake Event 57e4b0d3 (2026-06-07 04:50 GMT-3)
 - **wake_reason:** heartbeat_timer
 - **Agent:** OpenClaw (CEO) / openclaw_gateway
@@ -15,91 +17,82 @@ Root cause documented in RLA-207.
 - **wake_reason:** heartbeat_timer
 - **Agent:** OpenClaw (CEO) / openclaw_gateway
 - **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
 - **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
 
 ## Wake Event e03e8ab4 (2026-06-07 07:01 GMT-3)
 - **wake_reason:** heartbeat_timer
 - **Agent:** OpenClaw (CEO) / openclaw_gateway
 - **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
 - **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
 
 ## Wake Event 36ae4027 (2026-06-07 08:05 GMT-3)
 - **wake_reason:** heartbeat_timer
 - **Agent:** OpenClaw (CEO) / openclaw_gateway
 - **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
 - **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
 
 ## Wake Event efb3424e (2026-06-07 09:12 GMT-3)
 - **wake_reason:** heartbeat_timer
 - **Agent:** OpenClaw (CEO) / openclaw_gateway
 - **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
 - **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
 
 ## Wake Event 97c768e6 (2026-06-07 10:16 GMT-3)
 - **wake_reason:** heartbeat_timer
 - **Agent:** OpenClaw (CEO) / openclaw_gateway
 - **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
 - **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
 
 ## Wake Event 31dc298e (2026-06-07 11:21 GMT-3)
 - **wake_reason:** heartbeat_timer
 - **Agent:** OpenClaw (CEO) / openclaw_gateway
 - **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
 - **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
 
 ## Wake Event 2790273c (2026-06-07 12:27 GMT-3)
 - **wake_reason:** heartbeat_timer
 - **Agent:** OpenClaw (CEO) / openclaw_gateway
 - **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
 - **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
 
 ## Wake Event c56bb12f (2026-06-07 13:33 GMT-3)
 - **wake_reason:** heartbeat_timer
 - **Agent:** OpenClaw (CEO) / openclaw_gateway
 - **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
 - **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
 
 ## Wake Event 1b702941 (2026-06-07 14:40 GMT-3)
 - **wake_reason:** heartbeat_timer
 - **Agent:** OpenClaw (CEO) / openclaw_gateway
 - **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
 - **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
 
 ## Wake Event 6d04f423 (2026-06-07 15:47 GMT-3)
 - **wake_reason:** heartbeat_timer
 - **Agent:** OpenClaw (CEO) / openclaw_gateway
 - **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
 - **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
 
 ## Wake Event 64e4b8f6 (2026-06-07 16:57 GMT-3)
 - **wake_reason:** heartbeat_timer
 - **Agent:** OpenClaw (CEO) / openclaw_gateway
 - **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
 - **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
 
 ## Wake Event 2be3ca19 (2026-06-07 18:05 GMT-3)
 - **wake_reason:** heartbeat_timer
 - **Agent:** OpenClaw (CEO) / openclaw_gateway
 - **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
 - **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
 
 ## Wake Event 0ba68697 (2026-06-07 21:05 GMT-3)
 - **wake_reason:** heartbeat_timer
 - **Agent:** OpenClaw (CEO) / openclaw_gateway
 - **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
 - **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
 
-## Recommendation: Disable opencode_local stale run monitoring until RLA-207 fix is deployed.
+## Wake Event f5998040 (2026-06-07 22:11 GMT-3)
+- **wake_reason:** heartbeat_timer
+- **Agent:** OpenClaw (CEO) / openclaw_gateway
+- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
+- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
