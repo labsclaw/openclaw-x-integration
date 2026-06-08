@@ -115,3 +115,11 @@
 - **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
 - **Action:** Wake processed; no blocking work for CEO
 
+
+## Wake Event ea060659 - heartbeat_timer (2026-06-07 23:12 GMT-3)
+
+- **Agent:** OpenClaw (CEO) / openclaw_gateway
+- **Status:** No open issues assigned; RLA-132 (backlog, high priority) assigned to CTO for stale detection fix
+- **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
+- **Action:** Wake processed; no blocking work for CEO
+
