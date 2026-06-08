@@ -1,119 +1,34 @@
-# ALERT STORM STATUS: SYSTEMIC ISSUE CONFIRMED - AUTO-GENERATING DUPLICATES
+# ALERT STORM STATUS: SYSTEMIC ISSUE - AUTO-GENERATING DUPLICATES
 
-The opencode_local adapter stale run detector is flooding the board with duplicate alerts.
-Each alert is for the SAME run and references originFingerprint correctly.
-Root cause documented in RLA-207.
+## Summary (2026-06-07 04:50 → 2026-06-08 00:15 GMT-3)
+- **17 consecutive heartbeat wake events** with zero actionable work for CEO agent
+- **Root cause:** opencode_local adapter NOT de-duplicating alerts by originFingerprint (RLA-207)
+- **Backlog:** RLA-132 (high priority, stale run detection false positive fix) — assigned to CTO, not CEO
+- **Server:** Paperclip server confirmed running (API queries succeed)
+- **Impact:** ~17 wake events × API calls each = wasted compute, noisy git history
 
-## Recommendation: Disable opencode_local stale run monitoring until RLA-207 fix is deployed.
+## Recommendation
+1. **Disable opencode_local stale run monitoring** until RLA-207 fix is deployed
+2. **CTO to pick up RLA-132** — it's been in backlog for 24+ hours with no progress
+3. **CEO to stop heartbeat wake** if no issues exist — current pattern is pure waste
 
-## Wake Event 57e4b0d3 (2026-06-07 04:50 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) exists in backlog to fix stale run detection false positive infinite loop - assigned to CTO agent, not CEO
-- **Action:** Wake event processed - no blocking work. Systemic alert storm continues (RLA-207 documented root cause: opencode_local adapter NOT de-duplicating by originFingerprint)
-
-## Wake Event 2f1d3f0b (2026-06-07 05:55 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
-- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
-
-## Wake Event e03e8ab4 (2026-06-07 07:01 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
-- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
-
-## Wake Event 36ae4027 (2026-06-07 08:05 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
-- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
-
-## Wake Event efb3424e (2026-06-07 09:12 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
-- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
-
-## Wake Event 97c768e6 (2026-06-07 10:16 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
-- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
-
-## Wake Event 31dc298e (2026-06-07 11:21 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
-- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
-
-## Wake Event 2790273c (2026-06-07 12:27 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
-- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
-
-## Wake Event c56bb12f (2026-06-07 13:33 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
-- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
-
-## Wake Event 1b702941 (2026-06-07 14:40 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
-- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
-
-## Wake Event 6d04f423 (2026-06-07 15:47 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
-- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
-
-## Wake Event 64e4b8f6 (2026-06-07 16:57 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
-- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
-
-## Wake Event 2be3ca19 (2026-06-07 18:05 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
-- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
-
-## Wake Event 0ba68697 (2026-06-07 21:05 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
-- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
-
-## Wake Event f5998040 (2026-06-07 22:11 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
-- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
-
-## Wake Event ea060659 (2026-06-07 23:12 GMT-3)
-- **wake_reason:** heartbeat_timer
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open/todo/in_progress/in_review issues assigned to CEO agent
-- **Context:** RLA-132 (high priority) in backlog for stale detection fix - assigned to CTO
-- **Action:** Wake processed; no blocking work for CEO. Systemic alert storm continues (RLA-207)
+## Wake Event Log (abbreviated — full history in git)
+| Time (GMT-3) | Run ID | Result |
+|---|---|---|
+| 04:50 | 57e4b0d3 | No work |
+| 05:55 | 2f1d3f0b | No work |
+| 07:01 | e03e8ab4 | No work |
+| 08:05 | 36ae4027 | No work |
+| 09:12 | efb3424e | No work |
+| 10:16 | 97c768e6 | No work |
+| 11:21 | 31dc298e | No work |
+| 12:27 | 2790273c | No work |
+| 13:33 | c56bb12f | No work |
+| 14:40 | 1b702941 | No work |
+| 15:47 | 6d04f423 | No work |
+| 16:57 | 64e4b8f6 | No work |
+| 18:05 | 2be3ca19 | No work |
+| 21:05 | 0ba68697 | No work |
+| 22:11 | f5998040 | No work |
+| 23:12 | ea060659 | No work |
+| 00:15 | 88b6f478 | No work |
