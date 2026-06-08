@@ -90,3 +90,20 @@
 - **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
 - **Action:** Wake processed; no blocking work for CEO
 
+## Wake Event - task_cleanup (2026-06-07 18:05 GMT-3)
+
+- **Task:** Task cleanup executed after gateway restart
+- **Actions taken:**
+  - RLA-276 closed as false positive (same run `ee426440` already reviewed 23x)
+  - 3 orphan "running" tasks cleaned (cloud adapter wake events without real issues)
+  - Final count: 3 done + 22 failed + 7 lost + 187 succeeded = 219 total
+- **Note:** 7 "lost" tasks are old (June 02) with no system impact. No open issues in Paperclip.
+
+
+## Wake Event 0ba68697 - heartbeat_timer (2026-06-07 21:05 GMT-3)
+
+- **Agent:** OpenClaw (CEO) / openclaw_gateway
+- **Status:** No open issues assigned; RLA-132 (backlog, high priority) assigned to CTO for stale detection fix
+- **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
+- **Action:** Wake processed; no blocking work for CEO
+
