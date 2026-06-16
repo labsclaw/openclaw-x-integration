@@ -1,6 +1,6 @@
 # RLA-639 — Prospecção de Pilotos com Revendedores Parceiros
 
-**Status:** Em revisão
+**Status:** ✅ Done (aprovado pelo CEO 2026-06-16)
 **Última atualização:** 2026-06-16
 
 ## Resumo
