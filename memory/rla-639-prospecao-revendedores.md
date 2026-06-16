@@ -1,10 +1,24 @@
 # RLA-639 — Prospecção de Pilotos com Revendedores Parceiros
 
-**Status:** ✅ Done (aprovado pelo CEO 2026-06-16)
+**Status:** ✅ Done (material aprovado + templates prontos)
 **Última atualização:** 2026-06-16
 
 ## Resumo
-Pesquisa de mercado e lista de 12+ revendedores potenciais para piloto de MVP de inspeção veicular por IA.
+Pesquisa de mercado, lista de 12+ revendedores, pitch deck, e templates de contato prontos.
+
+## Templates de Contato
+4 templates (LinkedIn/WhatsApp) criados para Tier 1: Grupo Sinal, Fator Brasil, Vipal, Semimix.
+
+## Child Issues Criadas
+- RLA-639.1 Contato: Grupo Sinal
+- RLA-639.2 Contato: Fator Brasil
+- RLA-639.3 Contato: Vipal
+- RLA-639.4 Contato: Semimix
+
+## Próximos passos
+- Humano envia contatos reais via LinkedIn/WhatsApp
+- Agendar reuniões de 15 min com cada um
+- Fechar 2-3 NDAs e acordos de piloto em 3 semanas
 
 ## Tier 1 — Grandes redes nacionais
 - Grupo Sinal (~50 lojas, SP/MG/PR)
@@ -20,8 +34,3 @@ Pesquisa de mercado e lista de 12+ revendedores potenciais para piloto de MVP de
 
 ## Tier 3 — Marketplaces
 - Webmotors, iCarros, OLX Autos, Kavak Brasil
-
-## Próximos passos
-- Aprovar plano de abordagem
-- Iniciar contatos (LinkedIn/WhatsApp) com 5+ revendedores
-- Fechar 2-3 NDAs e acordos de piloto em 3 semanas
