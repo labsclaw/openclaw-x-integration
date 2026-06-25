@@ -31,7 +31,7 @@ powershell -ExecutionPolicy Bypass -File "ultra-models-skill/scripts/compare-con
 
 ## Requisitos
 
-- Chaves no `.env`: `OPENROUTER_API_KEY`, `OPENCODE_API_KEY`, `KILOCODE_API_KEY`, `NVIDIA_API_KEY`
+- Chaves de API configuradas no `.env` local (4 provedores)
 - PowerShell 5.1+ (Windows)
 
 ## Workflow recomendado
