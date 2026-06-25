@@ -3,5 +3,6 @@
   "registry": "https://clawhub.ai",
   "slug": "brave-search",
   "installedVersion": "1.0.1",
-  "installedAt": 1779342102153
+  "installedAt": 1779342102153,
+  "fingerprint": "ff423be29dcdba7c471972a916c62d11ff52d0d5a0deee7da1d85172a4a1fd2f"
 }

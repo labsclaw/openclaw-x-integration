@@ -1,6 +1,14 @@
 # TOOLS.md - Local Notes
+ 
+Skills provide your tools. When you need one, check its `SKILL.md`. Keep local notes (camera names, SSH details, voice preferences) in `TOOLS.md`.
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+**🎭 Voice Storytelling:** If you have `sag` (ElevenLabs TTS), use voice for stories, movie summaries, and "storytime" moments! Way more engaging than walls of text. Surprise people with funny voices.
+
+**📝 Platform Formatting:**
+- **Discord/WhatsApp:** No markdown tables! Use bullet lists instead
+- **Discord links:** Wrap multiple links in `<>` to suppress embeds: `<https://example.com>`
+- **WhatsApp:** No headers — use **bold** or CAPS for emphasis
+
 
 ## What Goes Here
 
@@ -42,3 +50,4 @@ Add whatever helps you do your job. This is your cheat sheet.
 ## Related
 
 - [Agent workspace](/concepts/agent-workspace)
+

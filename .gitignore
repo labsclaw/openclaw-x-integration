@@ -1,37 +1,19 @@
-# API keys
-.env
-*.env
+# OpenClaw workspace .gitignore
 
-# Node
+# Agent skills installed via npx skills (symlinked, not source)
+.agents/
+
+# Node modules
 node_modules/
-.pnp
-.pnp.js
 
-# OS
-.DS_Store
+# OS files
 Thumbs.db
+Desktop.ini
+.DS_Store
 
-# IDE
-.vscode/
-.idea/
+# Editor files
 *.swp
 *.swo
-
-# Build
-dist/
-build/
-
-# Large caches
-**/node_modules/
-npm-debug.log*
-
-# Temp
-archive/
-*.bak
-*.log
-backups/
-
-.clawhub/
-.openclaw/
-paperclip-claimed-api-key.json
-backups/
+*~
+.vscode/
+.idea/

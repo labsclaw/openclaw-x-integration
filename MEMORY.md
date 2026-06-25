@@ -1,125 +1,42 @@
-# MEMORY.md - Long-term memory for Dr. Roger Oliveira
+# MEMORY.md — Online Memory (auto-gerada)
 
-- Name: Dr. Roger Oliveira
-- Expertise: Engenharia reversa e infraestrutura de AI
-- Telegram: @SmartNewbieBR
-- X: @SmartNewbieBR
+> **Arquitetura**: Memory Caching (inspirado em arXiv 2602.24281)
+> **Última atualização**: 2026-06-13
+> **Segmentos ativos**: 4 | **Checkpoints**: 3
+
+## Sobre Dr. Roger Oliveira
+- Doutor em Modelagem Computacional, expert em engenharia reversa e infraestrutura de AI
+- Telegram: @SmartNewbieBR | X: @SmartNewbieBR
 - Timezone: America/Sao_Paulo (GMT-3)
-- Current interest: Criando novas empresas lucrativas de sucesso no paperclip (2026-05-21)
-- **Eng. Percepção rule**: Use Nemotron "omni" (non-reasoning) sempre para visão computacional. Nunca usar reasoning.
-- **Encoding bug (FIXED 2026-05-22)**: Era `String(chunk)` em `adapter-utils/dist/server-utils.js` stdout/stderr data handlers (L1532, L1548). No Windows `String(buffer)` usa CP850, nao UTF-8. Fix: `typeof chunk === "string" ? chunk : chunk.toString("utf8")`. Ainda precisa restartar Paperclip pra recarregar o modulo (npx cache).
-- **NVIDIA/OpenRouter env vars**: Copiados do `~/.openclaw/.env` para User env vars do Windows (2026-05-22). Agents Paperclip acessam direto via process.env agora.
-- **CEO session 2026-05-22**: Cleanup de waste (cancelou productivity reviews, fechou issues completas), encoding fix aplicado, env vars injetadas.
 
-## Wake Event 36ae4027 - heartbeat_timer (2026-06-07 08:05 GMT-3)
+## Segmentos Relevantes (carregar sob demanda)
 
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open issues assigned; RLA-132 (backlog, high priority) assigned to CTO for stale detection fix
-- **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
-- **Action:** Wake processed; no blocking work for CEO
+| ID | Segmento | Status | Relevância |
+|----|----------|--------|------------|
+| s001 | [Infraestrutura](memory/segments/s001-infra.md) | ✅ Resolvido | encoding, env vars |
+| s002 | [Paperclip Issues](memory/segments/s002-paperclip.md) | ⚠️ RLA-207 aberta | paperclip, issues, CEO |
+| s003 | [Heartbeat Storm](memory/segments/s003-heartbeat.md) | ⚠️ Não resolvido | heartbeat, RLA-207, desperdício |
+| s004 | [Skills & Projetos](memory/segments/s004-skills.md) | 🔄 Em andamento | telegram, ultra-skills |
 
+## Últimos Eventos
+- **2026-06-13**: Arquitetura Memory Caching implementada e testada (7/7 testes passaram). Primeira thread no X (@LabsClawAgent) sobre o paper
+- **2026-06-08**: Heartbeat storm persistente (~25+ wake events sem trabalho)
+- **2026-06-07**: Task cleanup executado, tempestade diagnosticada
+- **2026-06-06**: Telegram skill implementada, identidade "Humano Digital" definida
 
-## Wake Event efb3424e - heartbeat_timer (2026-06-07 09:12 GMT-3)
+## Issues Abertas
+- **RLA-207**: opencode_local adapter não de-duplica por originFingerprint
+- **RLA-132**: stale run detection false positive fix — stalled 48h+, CTO
+- **PR #8084**: Console windows Windows fix — CI verde, aguardando review
+- **Issue #8182**: Console windows bug report — criada para linkar ao PR #8084
+- **PR #7440**: Encoding UTF-8 fix (String(chunk) → toString('utf8')) — open, CI verde, aguardando review
 
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open issues assigned; RLA-132 (backlog, high priority) assigned to CTO for stale detection fix
-- **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
-- **Action:** Wake processed; no blocking work for CEO
+## Regras Importantes
+- Engenharia de Percepção: Nemotron "omni" (non-reasoning) para visão computacional
+- Memory Caching implementado: carregar `memory/index.json` → matcher → carregar apenas K segmentos relevantes
+- Manutenção de memória: durante heartbeats, comprimir/fundir segmentos obsoletos
 
+---
 
-## Wake Event 97c768e6 - heartbeat_timer (2026-06-07 10:16 GMT-3)
-
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open issues assigned; RLA-132 (backlog, high priority) assigned to CTO for stale detection fix
-- **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
-- **Action:** Wake processed; no blocking work for CEO
-
-
-## Wake Event 31dc298e - heartbeat_timer (2026-06-07 11:21 GMT-3)
-
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open issues assigned; RLA-132 (backlog, high priority) assigned to CTO for stale detection fix
-- **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
-- **Action:** Wake processed; no blocking work for CEO
-
-
-## Wake Event 2790273c - heartbeat_timer (2026-06-07 12:27 GMT-3)
-
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open issues assigned; RLA-132 (backlog, high priority) assigned to CTO for stale detection fix
-- **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
-- **Action:** Wake processed; no blocking work for CEO
-
-
-## Wake Event c56bb12f - heartbeat_timer (2026-06-07 13:33 GMT-3)
-
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open issues assigned; RLA-132 (backlog, high priority) assigned to CTO for stale detection fix
-- **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
-- **Action:** Wake processed; no blocking work for CEO
-
-
-## Wake Event 1b702941 - heartbeat_timer (2026-06-07 14:40 GMT-3)
-
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open issues assigned; RLA-132 (backlog, high priority) assigned to CTO for stale detection fix
-- **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
-- **Action:** Wake processed; no blocking work for CEO
-
-
-## Wake Event 6d04f423 - heartbeat_timer (2026-06-07 15:47 GMT-3)
-
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open issues assigned; RLA-132 (backlog, high priority) assigned to CTO for stale detection fix
-- **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
-- **Action:** Wake processed; no blocking work for CEO
-
-
-## Wake Event 64e4b8f6 - heartbeat_timer (2026-06-07 16:57 GMT-3)
-
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open issues assigned; RLA-132 (backlog, high priority) assigned to CTO for stale detection fix
-- **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
-- **Action:** Wake processed; no blocking work for CEO
-
-
-## Wake Event 2be3ca19 - heartbeat_timer (2026-06-07 18:05 GMT-3)
-
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open issues assigned; RLA-132 (backlog, high priority) assigned to CTO for stale detection fix
-- **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
-- **Action:** Wake processed; no blocking work for CEO
-
-## Wake Event - task_cleanup (2026-06-07 18:05 GMT-3)
-
-- **Task:** Task cleanup executed after gateway restart
-- **Actions taken:**
-  - RLA-276 closed as false positive (same run `ee426440` already reviewed 23x)
-  - 3 orphan "running" tasks cleaned (cloud adapter wake events without real issues)
-  - Final count: 3 done + 22 failed + 7 lost + 187 succeeded = 219 total
-- **Note:** 7 "lost" tasks are old (June 02) with no system impact. No open issues in Paperclip.
-
-
-## Wake Event 0ba68697 - heartbeat_timer (2026-06-07 21:05 GMT-3)
-
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open issues assigned; RLA-132 (backlog, high priority) assigned to CTO for stale detection fix
-- **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
-- **Action:** Wake processed; no blocking work for CEO
-
-
-## Wake Event f5998040 - heartbeat_timer (2026-06-07 22:11 GMT-3)
-
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open issues assigned; RLA-132 (backlog, high priority) assigned to CTO for stale detection fix
-- **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
-- **Action:** Wake processed; no blocking work for CEO
-
-
-## Wake Event ea060659 - heartbeat_timer (2026-06-07 23:12 GMT-3)
-
-- **Agent:** OpenClaw (CEO) / openclaw_gateway
-- **Status:** No open issues assigned; RLA-132 (backlog, high priority) assigned to CTO for stale detection fix
-- **Context:** Systemic alert storm continues - opencode_local adapter NOT de-duplicating by originFingerprint
-- **Action:** Wake processed; no blocking work for CEO
-
+> Este arquivo é gerado automaticamente a partir dos segmentos em `memory/segments/`.
+> Não edite diretamente — atualize os segmentos e rode manutenção.
