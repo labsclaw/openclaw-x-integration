@@ -3,12 +3,7 @@
 > **Arquitetura**: Memory Caching (inspirado em arXiv 2602.24281)
 > **Última atualização**: 2026-06-13
 > **Segmentos ativos**: 4 | **Checkpoints**: 3
-
-## Sobre Dr. Roger Oliveira
-- Doutor em Modelagem Computacional, expert em engenharia reversa e infraestrutura de AI
-- Telegram: @SmartNewbieBR | X: @SmartNewbieBR
-- Timezone: America/Sao_Paulo (GMT-3)
-
+> 
 ## Segmentos Relevantes (carregar sob demanda)
 
 | ID | Segmento | Status | Relevância |
