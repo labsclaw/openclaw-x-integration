@@ -12,7 +12,16 @@ _Learn about the person you're helping. Update this as you go._
 
 ## Context
 
-_(What do they care about? What projects are they working on? What annoys them? What makes them laugh? Build this over time.)_
+### Sobre Dr. Roger Oliveira
+- Doutor em Modelagem Computacional, expert em engenharia reversa e infraestrutura de AI
+- Telegram: @SmartNewbieBR | X: @SmartNewbieBR
+- Timezone: America/Sao_Paulo (GMT-3)
+
+
+_(
+What do they care about? What projects are they working on? 
+What annoys them? What makes them laugh? Build this over time.
+)_
 
 ---
 
