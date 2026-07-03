@@ -1,0 +1,22 @@
+{
+  "week": "2026-07-03",
+  "total_measurements": 1,
+  "categories": {
+    "COMPLEX": {
+      "n": 1,
+      "mean_compression": 10,
+      "median_compression": 10,
+      "min": 10,
+      "max": 10,
+      "total_actual_minutes": 240,
+      "total_estimated_minutes": 2400
+    }
+  },
+  "overall": {
+    "mean_compression": 10,
+    "total_actual_hours": 4,
+    "total_estimated_hours": 40,
+    "time_saved_hours": 36
+  },
+  "notes": "Week 1: Single measurement (Coworker analysis day). Need more data points for statistical significance."
+}
