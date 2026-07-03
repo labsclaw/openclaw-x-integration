@@ -1,53 +1,49 @@
 # TOOLS.md - Local Notes
- 
-Skills provide your tools. When you need one, check its `SKILL.md`. Keep local notes (camera names, SSH details, voice preferences) in `TOOLS.md`.
 
-**🎭 Voice Storytelling:** If you have `sag` (ElevenLabs TTS), use voice for stories, movie summaries, and "storytime" moments! Way more engaging than walls of text. Surprise people with funny voices.
+Keep environment-specific notes here.
+Do not store shared behavioral rules here.
 
-**📝 Platform Formatting:**
-- **Discord/WhatsApp:** No markdown tables! Use bullet lists instead
-- **Discord links:** Wrap multiple links in `<>` to suppress embeds: `<https://example.com>`
-- **WhatsApp:** No headers — use **bold** or CAPS for emphasis
+## What belongs here
+- local hosts
+- SSH aliases
+- device names
+- camera names
+- preferred voices
+- local scripts
+- environment-specific shortcuts
 
+## Network Services
 
-## What Goes Here
+| Service | Port | URL | Purpose |
+|---------|------|-----|---------|
+| OpenClaw Gateway | 18789 | `http://127.0.0.1:18789` | API Messaging & Telegram Integration |
+| Paperclip Server | 3100 | `http://127.0.0.1:3100` | Agent Orchestration Engine |
+| Antigravity Proxy | 8080 | `http://127.0.0.1:8080` | Model API Routing & Proxying |
 
-Things like:
+## Common Commands
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+- **Restart Gateway:** `pm2 restart openclaw-gateway`
+- **View Gateway Logs:** `pm2 logs openclaw-gateway`
+- **Compare Config:** `powershell -File ultra-models-skill/scripts/compare-config.ps1`
+- **Backup Workspace:** `powershell -File backup-routine.ps1`
+- **Check Active Processes:** `node check-active.mjs`
+- **Test Browser (Camofox):** `node test-camofox.mjs`
+- **Check Webhook State:** `node check-webhook.mjs`
 
-## Examples
+## Platform formatting
+- Discord / WhatsApp: do not use markdown tables
+- Discord: wrap multiple links in `<>` to suppress embeds
+- WhatsApp: prefer short plain formatting over headers
 
-```markdown
-### Cameras
+## Repos
+- Skills repo: `https://github.com/labsclaw/openclaw-skills`
+- Workspace repo: `https://github.com/labsclaw/openclaw-x-integration`
+- Instructions repo: `https://github.com/labsclaw/openclaw-instructions`
 
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
+## Useful scripts
+- `ultra-models-skill/scripts/list-free-models.ps1`
+- `ultra-models-skill/scripts/compare-config.ps1`
 
-### SSH
-
-- home-server → 192.168.1.100, user: admin
-
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
-
-## Why Separate?
-
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
-
----
-
-Add whatever helps you do your job. This is your cheat sheet.
-
-## Related
-
-- [Agent workspace](/concepts/agent-workspace)
-
+## Rule
+This file is a local cheat sheet.
+Keep it practical, specific, and environment-bound.
