@@ -69,6 +69,12 @@ You wake up fresh each session. Files provide continuity.
 - Resolved events → checkpoint in `memory/checkpoints/`
 - New topic → new segment plus `index.json` update
 
+### File Handling Rules
+- **Save intermediate results actively.** Long tasks produce valuable state along the way. Save progress frequently, not just at the end. Losing work to a timeout or error is preventable.
+- **Store different types of reference information in separate files.** Do not mix raw sources, analysis, and conclusions in one file. Each type gets its own file for clarity and maintainability.
+- **When merging text files, use append mode.** The `write` tool overwrites by default. Use `append` or read-then-write to concatenate content.
+- **Use file tools over shell commands for file operations.** File tools avoid string escape issues in PowerShell/Bash. Reserve shell for commands that have no file tool equivalent.
+
 ### Rule
 If something should persist, write it to a file. Do not rely on session memory.
 
