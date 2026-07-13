@@ -1,0 +1,22 @@
+[
+  {
+    "text": "# TF-IDF\n\n## Key Points\n- It builds upon TF-IDF by considering document length and applying saturation to term frequency\n\n## Source\nIngested from: text-input-1783970653169\n",
+    "contextualText": "[TF-IDF] [entity] # TF-IDF ## Key Points - It builds upon TF-IDF by considering document length and...",
+    "tokens": [
+      "tf-idf",
+      "entity",
+      "tf-idf",
+      "key",
+      "points",
+      "it",
+      "builds",
+      "upon",
+      "tf-idf",
+      "by",
+      "considering",
+      "document",
+      "length",
+      "and"
+    ]
+  }
+]

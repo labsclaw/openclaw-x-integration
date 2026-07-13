@@ -1,0 +1,22 @@
+[
+  {
+    "text": "﻿---\ntitle: Google Cloud Knowledge Catalog & OKF\ntype: source\ndate: 2026-06-20\ntags: [okf, google, knowledge-catalog, open-knowledge-format]\n---\n\n# Google Cloud Knowledge Catalog & OKF\n\nGoogle introduced the **Open Knowledge Format (OKF)** v0.1, an open specification that formalizes the LLM-Wiki pattern into a portable, interoperable format. ## Key Points\n\n- **Format**: Directories of markdown files with YAML frontmatter\n- **Minimal conventions**: Each concept is one file, file path is identity, only required field is \type\n- **Design principles**: Minimally opinionated, producer/consumer independence, format-not-platform\n\n## Knowledge Catalog\n\n- **Aggregation**: Unifying metadata across data platforms\n- **Enrichment**: Automated context generation via Gemini\n- **Search**: High-precision semantic search\n\n## References\n\n- OKF v0.1 Specification: https://github.com/google/open-knowledge-format\n- Google Cloud Blog: https://cloud.google.com/blog/products/data-analytics/introducing-google-cloud-knowledge-catalog\n\n---\n\n*Source: Google Cloud announcement, 2026*\r\n\n\n## Related\n- [[concepts/open-knowledge-format]]\n- [[concepts/llm-wiki-pattern]]\n\r\n",
+    "contextualText": "[google-okf-blog]  --- title: Google Cloud Knowledge Catalog & OKF type: source date: 2026-06-20 tags: [okf,...",
+    "tokens": [
+      "google-okf-blog",
+      "---",
+      "title",
+      "google",
+      "cloud",
+      "knowledge",
+      "catalog",
+      "okf",
+      "type",
+      "source",
+      "date",
+      "2026-06-20",
+      "tags",
+      "okf"
+    ]
+  }
+]

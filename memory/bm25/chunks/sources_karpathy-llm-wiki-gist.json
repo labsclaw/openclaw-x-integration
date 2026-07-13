@@ -1,0 +1,28 @@
+[
+  {
+    "text": "# Karpathy LLM-Wiki Gist\n\nGist original de Andrej Karpathy propondo o padrão LLM-Wiki para bases de conhecimento pessoais. ## Resumo\n\n\"A pattern for building personal knowledge bases using LLMs.\"\n\nDocumenta um padrão onde LLMs incrementalmente constroem e mantêm um wiki persistente — markdown interlinkado — em vez de usar RAG que re-deriva conhecimento a cada query. ## Diferença Fundamental vs RAG\n\n- **RAG**: Doc → Chunking → Embedding → Query busca → LLM monta → Descarta\n- **LLM-Wiki**: Doc → LLM lê → Extrai → Integra no wiki → Wiki fica rico → Próxima query já tem síntese\n\n## 3 Camadas\n\n1. **Raw Sources** — documentos brutos, imutáveis\n2. **Wiki** — markdown gerado pelo LLM, interlinkado\n3. **Schema** — CLAUDE.md/AGENTS.md com instruções\n\n## Operações Principais\n\n- **Ingest**: fonte → LLM lê → extrai → cria/atualiza 10-15 páginas wiki\n- **Query**: pergunta → wiki compilado → síntese com citações\n- **Lint**: manutenção periódica do wiki\n\n## Tooling Sugerido\n\n- Obsidian (IDE visual + graph view)\n- Obsidian Web Clipper (salvar artigos)\n- Marp (slides de markdown)\n- Dataview (queries sobre frontmatter)\n- Git (versionamento)\n- qmd (search híbrido, quando escalar)\n\n## Links\n\n- URL: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f\n- Data: Abril 2026\n\n## Relacionamentos\n\n- [[concepts/llm-wiki-pattern]] — Padrão descrito neste gist\n- [[concepts/hybrid-memory-architecture]] — Nossa implementação que vai além\n",
+    "contextualText": "[Karpathy LLM-Wiki Gist] [karpathy, llm-wiki, source, original] # Karpathy LLM-Wiki Gist Gist original de Andrej Karpathy propondo o padrão LLM-Wiki para bases...",
+    "tokens": [
+      "karpathy",
+      "llm-wiki",
+      "gist",
+      "karpathy",
+      "llm-wiki",
+      "source",
+      "original",
+      "karpathy",
+      "llm-wiki",
+      "gist",
+      "gist",
+      "original",
+      "de",
+      "andrej",
+      "karpathy",
+      "propondo",
+      "padr",
+      "llm-wiki",
+      "para",
+      "bases"
+    ]
+  }
+]

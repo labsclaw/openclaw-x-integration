@@ -1,0 +1,59 @@
+[
+  {
+    "text": "# Hybrid Memory Architecture\n\nSíntese da arquitetura híbrida que combina Karpathy LLM-Wiki com vector database para um sistema de conhecimento persistente e escalável. ## Problema\n\nCada abordagem isolada tem limitações:\n\n- **LLM-Wiki puro**: Compila conhecimento bem, mas search é limitado a index.md (não escala além de ~100 fontes)\n- **Vector DB puro (RAG)**: Busca escala, mas não compila — re-deriva a cada query, sem acumulação\n- **Memory Caching puro**: Memória operacional do agente, não conhecimento sobre o mundo\n\n## Solução: Arquitetura em 6 Camadas\n\n```\nInterface (Obsidian + Telegram + MCP)\n    ↓\nMemory (claude-mem + agentmemory — operacional)\n    ↓\nSearch (qmd — BM25 + Vector + Reranking)\n    ↓\nVector (agentmemory — embeddings + graph)\n    ↓\nWiki (markdown interlinkado — conhecimento compilado)\n    ↓\nCompilation (Hyper-Extract — extração automática)\n    ↓\nRaw Sources (imutáveis)\n```\n\n### Camada 0: Raw Sources\nFontes brutas imutáveis. Artigos, PDFs, transcripts, notas. ### Camada 1: Hyper-Extract (Compilation)\nExtração automática com templates tipados. Transforma fontes brutas em knowledge abstracts e exporta para Obsidian. ### Camada 2: Wiki (Knowledge Compiled)\nMarkdown interlinkado que o LLM mantém. Entidades, conceitos, sínteses, comparações. Conhecimento compounding. ### Camada 3: Vector Store (agentmemory)\nEmbeddings (all-MiniLM-L6-v2), knowledge graph, busca semântica. R@5=95.2%. ### Camada 4: Search (qmd)\nBusca híbrida BM25+Vector+LLM Reranking. 100% local. MCP server. ### Camada 5: Memory (claude-mem + agentmemory)\nMemória operacional: hooks, sessions, context injection, auto-capture. ### Camada 6: Interface\nObsidian (visual), Telegram (queries), MCP (agentes externos).",
+    "contextualText": "[Hybrid Memory Architecture] [architecture, memory, wiki, vector-db, synthesis, hybrid] # Hybrid Memory Architecture Síntese da arquitetura híbrida que combina Karpathy LLM-Wiki com vector database...",
+    "tokens": [
+      "hybrid",
+      "memory",
+      "architecture",
+      "architecture",
+      "memory",
+      "wiki",
+      "vector-db",
+      "synthesis",
+      "hybrid",
+      "hybrid",
+      "memory",
+      "architecture",
+      "ntese",
+      "da",
+      "arquitetura",
+      "brida",
+      "que",
+      "combina",
+      "karpathy",
+      "llm-wiki",
+      "com",
+      "vector",
+      "database"
+    ]
+  },
+  {
+    "text": "Reranking. 100% local. MCP server. ### Camada 5: Memory (claude-mem + agentmemory) Memória operacional: hooks, sessions, context injection, auto-capture. ### Camada 6: Interface Obsidian (visual), Telegram (queries), MCP (agentes externos). ## Diferença Fundamental\n\n| Aspecto | RAG | LLM-Wiki | Hybrid |\n|---|---|---|---|\n| Compilação | ❌ Re-deriva | ✅ Compila uma vez | ✅ Hyper-Extract + LLM |\n| Busca | ✅ Vector search | ⚠️ Só index.md | ✅ qmd (híbrido) |\n| Escala | ✅ Milhões de docs | ⚠️ ~100 fontes | ✅ Vetor + wiki |\n| Síntese | ❌ Não acumula | ✅ Compounding | ✅ Compounding |\n| Auto-capture | ❌ Manual | ❌ Manual | ✅ Hooks |\n| Graph | ❌ | ❌ | ✅ Knowledge graph |\n\n## Fluxo de Dados\n\n### Ingestão\n```\nFonte bruta → Hyper-Extract (parse) → Knowledge Abstracts → Obsidian export → Wiki markdown → qmd indexa → agentmemory gera embeddings\n```\n\n### Query\n```\nPergunta → qmd busca (híbrido) → páginas relevantes → LLM sintetiza → resposta (ou nova página synthesis/)\n```\n\n### Manutenção\n```\nCron/heartbeat → LINT detecta contradições/órfãos → LLM corrige → index.md atualizado\n```\n\n## Implementação\n\n- [[projects/openclaw-llm-wiki]] — Projeto de implementação\n- [[entities/hyper-extract]] — Motor de extração\n- [[entities/agentmemory]] — Vector store + MCP\n- [[entities/qmd]] — Search engine\n- [[entities/claude-mem]] — Memory layer\n",
+    "contextualText": "[Hybrid Memory Architecture] [architecture, memory, wiki, vector-db, synthesis, hybrid] Reranking. 100% local. MCP server. ### Camada 5: Memory (claude-mem + agentmemory) Memória operacional: hooks,...",
+    "tokens": [
+      "hybrid",
+      "memory",
+      "architecture",
+      "architecture",
+      "memory",
+      "wiki",
+      "vector-db",
+      "synthesis",
+      "hybrid",
+      "reranking",
+      "100",
+      "local",
+      "mcp",
+      "server",
+      "camada",
+      "memory",
+      "claude-mem",
+      "agentmemory",
+      "mem",
+      "ria",
+      "operacional",
+      "hooks"
+    ]
+  }
+]

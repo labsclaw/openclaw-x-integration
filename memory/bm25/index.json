@@ -1,0 +1,2649 @@
+{
+  "docs": [
+    {
+      "id": "entities/bm25",
+      "path": "entities/bm25.md",
+      "pageTitle": "BM25",
+      "pageTags": [
+        "entity"
+      ],
+      "chunks": [
+        {
+          "text": "# BM25\n\n## Key Points\n- Anthropic research showed that combining BM25 with contextual embeddings reduces retrieval failures by 49%\n- BM25 is a ranking function used in information retrieval\n\n## Source\nIngested from: text-input-1783970653169\n",
+          "contextualText": "[BM25] [entity] # BM25 ## Key Points - Anthropic research showed that combining BM25 with contextual embeddings..."
+        }
+      ]
+    },
+    {
+      "id": "entities/hyper-extract",
+      "path": "entities/hyper-extract.md",
+      "pageTitle": "Hyper-Extract",
+      "pageTags": [
+        "tool",
+        "knowledge-extraction",
+        "hypergraph",
+        "obsidian",
+        "mcp"
+      ],
+      "chunks": [
+        {
+          "text": "# Hyper-Extract\n\nFramework de knowledge extraction LLM-powered que transforma texto não-estruturado em Knowledge Abstracts estruturados — Graphs, Hypergraphs, Spatio-Temporal Graphs — com export direto para Obsidian vault. ## Características\n\n- **80+ templates YAML** — zero código, 6 domínios (finance, legal, medical, general, etc.)\n- **10+ engines de extração** — GraphRAG, LightRAG, Hyper-RAG, KG-Gen, Cog-RAG\n- **8 tipos de estrutura** — Model, List, Set, Graph, Hypergraph, Temporal, Spatial, Spatio-Temporal\n- **Obsidian Export** — `he export obsidian` gera markdown com [[wikilinks]]\n- **MCP Server** — `he-mcp` para Claude Desktop e IDE agents\n- **Local deployment** — vLLM + bge-m3, dados nunca saem da máquina\n- **Incremental evolution** — novos docs expandem base existente\n\n## Arquitetura (3 camadas)\n\n1. **Auto-Types** — 8 estruturas de dados tipadas\n2. **Methods** — Algoritmos de extração (KG-Gen, GraphRAG, LightRAG, Hyper-RAG)\n3.",
+          "contextualText": "[Hyper-Extract] [tool, knowledge-extraction, hypergraph, obsidian, mcp] # Hyper-Extract Framework de knowledge extraction LLM-powered que transforma texto não-estruturado em Knowledge Abstracts estruturados..."
+        },
+        {
+          "text": "evolution** — novos docs expandem base existente ## Arquitetura (3 camadas) 1. **Auto-Types** — 8 estruturas de dados tipadas 2. **Methods** — Algoritmos de extração (KG-Gen, GraphRAG, LightRAG, Hyper-RAG) 3. **Templates** — 80+ presets em 6 domínios\n\n## Comandos Principais\n\n```bash\nhe parse doc.pdf -t general/academic_graph -o ./output/ -l en\nhe show ./output/\nhe export obsidian ./output/ -o ./vault/\nhe search ./output/ \"query\"\nhe config init -k YOUR_API_KEY\n```\n\n## Deploy Local\n\n```python\nfrom hyperextract import create_client\nllm, emb = create_client(\n    llm=\"vllm:Qwen3.5-9B@http://localhost:8000/v1\",\n    embedder=\"vllm:bge-m3@http://localhost:8001/v1\",\n    api_key=\"dummy\",\n)\n```\n\n## Comparação com Alternativas\n\n| Feature | GraphRAG | LightRAG | KG-Gen | ATOM | Hyper-Extract |\n|---|---|---|---|---|---|\n| Knowledge Graph | ✅ | ✅ | ✅ | ✅ | ✅ |\n| Temporal Graph | ✅ | ❌ | ❌ | ✅ | ✅ |\n| Spatial Graph | ❌ | ❌ | ❌ | ❌ | ✅ |\n| Hypergraph | ❌ | ❌ | ❌ | ❌ | ✅ |\n| Domain Templates | ❌ | ❌ | ❌ | ❌ | ✅ |\n| Obsidian Export | ❌ | ❌ | ❌ | ❌ | ✅ |\n\n## Links\n\n- GitHub: https://github.com/yifanfeng97/Hyper-Extract\n- Docs: https://yifanfeng97.github.io/Hyper-Extract/latest/\n- PyPI: https://pypi.org/project/hyperextract/\n\n## Relacionamentos\n\n- [[concepts/hybrid-memory-architecture]] — Camada de compilação na nossa arquitetura\n- [[concepts/llm-wiki-pattern]] — Complementa o padrão Karpathy com extração automática\n- [[projects/openclaw-llm-wiki]] — Projeto que usa Hyper-Extract\n",
+          "contextualText": "[Hyper-Extract] [tool, knowledge-extraction, hypergraph, obsidian, mcp] evolution** — novos docs expandem base existente ## Arquitetura (3 camadas) 1. **Auto-Types** — 8..."
+        }
+      ]
+    },
+    {
+      "id": "entities/tf-idf",
+      "path": "entities/tf-idf.md",
+      "pageTitle": "TF-IDF",
+      "pageTags": [
+        "entity"
+      ],
+      "chunks": [
+        {
+          "text": "# TF-IDF\n\n## Key Points\n- It builds upon TF-IDF by considering document length and applying saturation to term frequency\n\n## Source\nIngested from: text-input-1783970653169\n",
+          "contextualText": "[TF-IDF] [entity] # TF-IDF ## Key Points - It builds upon TF-IDF by considering document length and..."
+        }
+      ]
+    },
+    {
+      "id": "concepts/llm-wiki-pattern",
+      "path": "concepts/llm-wiki-pattern.md",
+      "pageTitle": "LLM-Wiki Pattern",
+      "pageTags": [
+        "ai",
+        "memory",
+        "knowledge-base",
+        "karpathy",
+        "architecture"
+      ],
+      "chunks": [
+        {
+          "text": "# LLM-Wiki Pattern\n\nPadrão de construção de bases de conhecimento pessoais usando LLMs, proposto por Andrej Karpathy. Em vez de RAG (re-derivar conhecimento a cada query), o LLM compila conhecimento uma vez em um wiki markdown interlinkado e mantém esse wiki continuamente. ## Ideia Central\n\nA maioria das pessoas usa LLMs com documentos via RAG: upload de arquivos, recuperação de chunks relevantes na query, geração de resposta. Isso funciona, mas o LLM re-descobre conhecimento do zero a cada pergunta. Não há acumulação. O LLM-Wiki faz diferente: em vez de recuperar de documentos brutos na query, o LLM constrói e mantém incrementalmente um wiki persistente — uma coleção estruturada e interlinkada de arquivos markdown que fica entre você e as fontes brutas. ## As 3 Camadas\n\n1. **Raw Sources** — Coleção curada de documentos fonte. Imutáveis. Source of truth. 2. **Wiki** — Diretório de arquivos markdown gerados pelo LLM. Sumários, páginas de entidades, páginas de conceitos, comparações, visão geral, síntese. O LLM é dono total desta camada. 3. **Schema** — Documento (ex: CLAUDE.md) que instrui o LLM sobre estrutura, convenções e workflows. ## Operações\n\n### Ingest\n1. Drop de nova fonte na coleção bruta\n2. LLM lê a fonte\n3. Discute takeaways com o humano\n4. Escreve página de sumário no wiki\n5. Atualiza index, entidades, conceitos\n6. Adiciona [[wikilinks]] cruzados\n7. Append no log\n\n### Query\n1. Humano faz pergunta contra o wiki\n2.",
+          "contextualText": "[LLM-Wiki Pattern] [ai, memory, knowledge-base, karpathy, architecture] # LLM-Wiki Pattern Padrão de construção de bases de conhecimento pessoais usando LLMs, proposto por..."
+        },
+        {
+          "text": "4. Escreve página de sumário no wiki 5. Atualiza index, entidades, conceitos 6. Adiciona [[wikilinks]] cruzados 7. Append no log ### Query 1. Humano faz pergunta contra o wiki 2. LLM busca páginas relevantes\n3. Sintetiza resposta com citações\n4. Se valiosa → salva como nova página\n\n### Lint\n1. Verifica contradições entre páginas\n2. Identifica claims obsoletos\n3. Encontra páginas órfãs\n4. Identifica gaps de dados\n5. Sugere novas perguntas e fontes\n\n## Análogos\n\n- **Compiler analogy**: Documentos brutos = source code; LLM = compiler; Wiki = binary (mais denso, queryable)\n- **Vannevar Bush Memex (1945)**: Loja de conhecimento pessoal com trilhas associativas entre documentos\n- **Obsidian como IDE, LLM como programador, wiki como codebase**\n\n## Aplicações\n\n- Pessoal: goals, health, psychology, self-improvement\n- Research: deep dive em tópico ao longo de semanas/meses\n- Leitura de livros: companion wiki por capítulo\n- Business/team: wiki interno mantido por LLMs\n- Due diligence, trip planning, course notes\n\n## Referências\n\n- [[sources/karpathy-llm-wiki-gist]] — Fonte original\n- [[concepts/hybrid-memory-architecture]] — Nossa implementação híbrida\n",
+          "contextualText": "[LLM-Wiki Pattern] [ai, memory, knowledge-base, karpathy, architecture] 4. Escreve página de sumário no wiki 5. Atualiza index, entidades, conceitos 6. Adiciona [[wikilinks]]..."
+        }
+      ]
+    },
+    {
+      "id": "concepts/open-knowledge-format",
+      "path": "concepts/open-knowledge-format.md",
+      "pageTitle": "Open Knowledge Format (OKF)",
+      "pageTags": [
+        "okf",
+        "google",
+        "standard",
+        "markdown",
+        "yaml",
+        "knowledge-format",
+        "interoperability"
+      ],
+      "chunks": [
+        {
+          "text": "# Open Knowledge Format (OKF)\n\nPadrão aberto do Google (v0.1) que formaliza o padrão LLM-Wiki do Karpathy em um formato portável e interoperável. Representa conhecimento como diretórios de markdown files com YAML frontmatter. ## O que é\n\nOKF é uma especificação vendor-neutral para representar metadata, contexto e conhecimento curado que sistemas de AI modernos precisam. Foi publicado pelo Google Cloud como evolução do Dataplex para um \"Knowledge Catalog\" dinâmico. **Frase-chave do Google**: \"OKF formaliza o padrão LLM-Wiki do Karpathy em um formato portável e interoperável.\"\n\n## Estrutura de um Bundle OKF\n\n```\nmeu-conhecimento/\n├── conceito-a.md\n├── conceito-b.md\n├── conceito-c.md\n├── index.md      (progressive disclosure)\n└── log.md        (histórico cronológico)\n```\n\nCada arquivo markdown representa um **conceito** — uma unidade de conhecimento. O path do arquivo é a identidade do conceito. ## Formato de cada arquivo\n\n```yaml\n---\ntype: metric | table | dataset | playbook | runbook | api | concept\ntitle: \"Nome do Conceito\"\ndescription: \"Descrição curta\"\nresource: \"caminho-para-recurso\"  (opcional)\ntags: [tag1, tag2]\ntimestamp: \"2026-06-26\"\n---\n\n# Nome do Conceito\n\nCorpo em markdown livre. Pode conter:\n- Headers, listas, tabelas\n- Code blocks\n- [[wikilinks]] para outros conceitos\n- Qualquer formato markdown válido\n```\n\n## 3 Princípios de Design\n\n1. **Minimally opinionated** — OKF requer APENAS o campo `type`. Todo o resto é opcional. 2. **Producer/consumer independence** — Quem escreve conhecimento é independente de quem consome. 3.",
+          "contextualText": "[Open Knowledge Format (OKF)] [okf, google, standard, markdown, yaml, knowledge-format, interoperability] # Open Knowledge Format (OKF) Padrão aberto do Google (v0.1) que formaliza o padrão LLM-Wiki..."
+        },
+        {
+          "text": "de Design 1. **Minimally opinionated** — OKF requer APENAS o campo `type`. Todo o resto é opcional. 2. **Producer/consumer independence** — Quem escreve conhecimento é independente de quem consome. 3. **Format, not platform** — Não depende de cloud, database, model provider, ou agent framework. ## Características-Chave\n\n- **Só markdown** — legível em qualquer editor, renderizável no GitHub, indexável por qualquer ferramenta\n- **Só arquivos** — shipável como tarball, hospedável em git repo, montável em qualquer filesystem\n- **Só YAML frontmatter** — campos estruturados queryáveis: type, title, description, resource, tags, timestamp\n- **Cross-linking** — conceitos se conectam com markdown links normais, criando um grafo de relacionamentos\n- **index.md** — progressive disclosure conforme agentes navegam\n- **log.md** — histórico cronológico de mudanças\n\n## Google Knowledge Catalog\n\nO Google está implementando OKF como base do **Knowledge Catalog** (evolução do Dataplex):\n\n### 3 Pilares\n\n1. **Aggregation** — Unifica contexto de BigQuery, AlloyDB, Spanner, Cloud SQL, Firestore, Looker + parceiros (Atlan, Collibra, Datahub)\n\n2. **Enrichment** — Enriquecimento contínuo:\n   - Smart Storage (auto-tagging em GCS)\n   - Deep multimodal metadata extraction (Gemini)\n   - Automated context geração (descrições em linguagem natural)\n   - Verified queries (SQL patterns validados)\n\n3.",
+          "contextualText": "[Open Knowledge Format (OKF)] [okf, google, standard, markdown, yaml, knowledge-format, interoperability] de Design 1. **Minimally opinionated** — OKF requer APENAS o campo `type`. Todo o resto..."
+        },
+        {
+          "text": "— Enriquecimento contínuo: - Smart Storage (auto-tagging em GCS) - Deep multimodal metadata extraction (Gemini) - Automated context geração (descrições em linguagem natural) - Verified queries (SQL patterns validados) 3. **Search** — Busca semântica de alta precisão:\n   - Hybrid search (décadas de inovação Google)\n   - Access control-aware\n   - Measurable context evaluation\n\n### Casos de Uso\n\n- Bloomberg Media: Data Access AI Agent\n- Deep Research Agent in Gemini Enterprise\n- Enterprise data products\n\n## OKF vs Nosso Wiki\n\n| Aspecto | OKF (Google) | Nosso Wiki |\n|---|---|---|\n| Formato | Markdown + YAML frontmatter | Markdown + YAML frontmatter |\n| Estrutura | Diretório de conceitos | Diretório tipado (entities/, concepts/, etc.) |\n| Cross-linking | Markdown links | [[wikilinks]] Obsidian |\n| Schema | type (obrigatório) + campos opcionais | Frontmatter completo obrigatório |\n| ferramentas | Producer agent + HTML visualizer | Hyper-Extract + qmd + agentmemory |\n| Foco | Enterprise data catalogs | Personal/team knowledge bases |\n\n**Convergência**: OKF e nosso wiki seguem o MESMO padrão fundamental. A diferença é que OKF é enterprise-scale (Google Cloud) enquanto nosso é personal-scale (local agent). ## Impacto para Nosso Projeto\n\n1. **Validação**: Google padronizou exatamente o que Karpathy propôs e nós implementamos\n2. **Interoperabilidade**: Nosso wiki pode ser exportado como OKF bundle\n3. **Ferramentas**: O enrichment agent do Google pode ser inspiração para Hyper-Extract\n4.",
+          "contextualText": "[Open Knowledge Format (OKF)] [okf, google, standard, markdown, yaml, knowledge-format, interoperability] — Enriquecimento contínuo: - Smart Storage (auto-tagging em GCS) - Deep multimodal metadata extraction (Gemini)..."
+        },
+        {
+          "text": "o que Karpathy propôs e nós implementamos 2. **Interoperabilidade**: Nosso wiki pode ser exportado como OKF bundle 3. **Ferramentas**: O enrichment agent do Google pode ser inspiração para Hyper-Extract 4. **Futuro**: OKF pode se tornar o padrão de facto para knowledge sharing entre agentes\n\n## Referências\n\n- Google OKF Blog: https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing\n- Google Knowledge Catalog: https://cloud.google.com/blog/products/data-analytics/introducing-the-google-cloud-knowledge-catalog\n- OKF Spec: https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md\n- Marie Haynes Analysis: https://www.mariehaynes.com/okf/\n- Karpathy LLM-Wiki: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f\n\n## Relacionamentos\n\n- [[concepts/llm-wiki-pattern]] — Padrão original que OKF formaliza\n- [[concepts/hybrid-memory-architecture]] — Nossa implementação que vai além do OKF\n- [[projects/openclaw-llm-wiki]] — Projeto que pode adotar OKF como formato de export\n",
+          "contextualText": "[Open Knowledge Format (OKF)] [okf, google, standard, markdown, yaml, knowledge-format, interoperability] o que Karpathy propôs e nós implementamos 2. **Interoperabilidade**: Nosso wiki pode ser exportado como..."
+        }
+      ]
+    },
+    {
+      "id": "concepts/the-key-insight",
+      "path": "concepts/the-key-insight.md",
+      "pageTitle": "The key insight",
+      "pageTags": [
+        "knowledge",
+        "concept"
+      ],
+      "chunks": [
+        {
+          "text": "# The key insight\n\n## Description\nThe key insight is that lexical matching catches exact matches while semantic embeddings capture meaning\n\n## Related Entities\n- [[TF-IDF]]\n- [[BM25]]\n",
+          "contextualText": "[The key insight] [knowledge, concept] # The key insight ## Description The key insight is that lexical matching catches exact..."
+        }
+      ]
+    },
+    {
+      "id": "sources/bbc-memory-systems-hm",
+      "path": "sources/bbc-memory-systems-hm.md",
+      "pageTitle": "bbc-memory-systems-hm",
+      "pageTags": [],
+      "chunks": [
+        {
+          "text": "﻿---\ntitle: \"Cérebro: como sistemas de memória múltipla mudam nossa compreensão do órgão\"\ntype: source\nsource: BBC News Mundo\nauthor: Margarita Rodríguez\ndate: 2025-04-05\nurl: \"https://www.bbc.com/portuguese/articles/cq8y14z71x9o\"\ntags: [memory-systems, neuroscience, H.M., henry-molaison, brenda-milner, hippocampus, procedural-memory, working-memory]\naccessed: 2026-06-28\n---\n\n# Sistemas de Memória Múltipla — Caso H.M. ## Resumo\nArtigo da BBC sobre como o caso do paciente H.M. (Henry Molaison) revolucionou a compreensão da memória. Brenda Milner demonstrou que existem sistemas de memória independentes no cérebro. ## Caso H.M.",
+          "contextualText": "[bbc-memory-systems-hm]  --- title: \"Cérebro: como sistemas de memória múltipla mudam nossa compreensão do órgão\" type:..."
+        },
+        {
+          "text": "da BBC sobre como o caso do paciente H.M. (Henry Molaison) revolucionou a compreensão da memória. Brenda Milner demonstrou que existem sistemas de memória independentes no cérebro. ## Caso H.M. - **Paciente**: Henry Molaison (1927–2008), aparecido como \"H.M.\" em publicações\n- **Condição**: Epilepsia grave → cirurgia para remover hipocampo bilateral (1953)\n- **Resultado**: Amnésia anterógrada — não criava novas memórias episódicas\n- **Preservado**: Memórias pré-operatórias + memória procedimental (aprendia atividades motoras)\n\n## Número 584\n- Milner pediu que Henry lembrasse do número 584\n- Henry manteve por 20 minutos via repetição verbal constante\n- Segredo: \"prática verbal constante\" como compensação\n- Se interrompido (ex: \"qual o nome do seu pai?\"), esquecia E esquecia que deveria lembrar\n\n## Sistemas de Memória Descobertos\n\n| Tipo | Estrutura Neural | Função |\n|------|-----------------|--------|\n| Memória de trabalho | Córtex pré-frontal | Armazenamento temporário (segundos) |\n| Memória episódica | Hipocampo | Lembranças autobiográficas |\n| Memória semântica | Córtex temporal | Conhecimento geral |\n| Memória procedural | Estriado/cerebelo | Habilidades motoras |\n\n## Conquista de Milner\n- Primeira a demonstrar **dissociações** de memória: paciente não lembra de nada dito, mas sabe realizar atividades\n- Conceito de \"sistemas múltiplos de memória\" — cada tipo depende de estruturas cerebrais diferentes\n- \"Guinada quase copernicana\" na compreensão do cérebro (Gabriel Ruiz, U.",
+          "contextualText": "[bbc-memory-systems-hm] da BBC sobre como o caso do paciente H.M. (Henry Molaison) revolucionou a compreensão da..."
+        },
+        {
+          "text": "mas sabe realizar atividades - Conceito de \"sistemas múltiplos de memória\" — cada tipo depende de estruturas cerebrais diferentes - \"Guinada quase copernicana\" na compreensão do cérebro (Gabriel Ruiz, U. de Sevilha)\n\n## Relevância para AI Memory\n- Paralelo direto com arquitetura de memória para agentes de IA\n- Hipocampo ↔ SSC Router (índice e consolidação)\n- Memória de trabalho ↔ Sessão ativa\n- Memória episódica ↔ Logs diários\n- Memória semântica ↔ Segmentos comprimidos\n- Memória procedural ↔ Instruções fixas (AGENTS.md)\n\n## Referência\n- Brenda Milner, entrevista APS 2013\n- Robert Zatorre, Instituto Neurológico de Montreal\n- Gabriel Ruiz, Universidade de Sevilha\n\n## Related\n- [[concepts/llm-wiki-pattern]]\n- [[synthesis/hybrid-memory-architecture]]\n\r\n",
+          "contextualText": "[bbc-memory-systems-hm] mas sabe realizar atividades - Conceito de \"sistemas múltiplos de memória\" — cada tipo depende..."
+        }
+      ]
+    },
+    {
+      "id": "sources/google-okf-blog",
+      "path": "sources/google-okf-blog.md",
+      "pageTitle": "google-okf-blog",
+      "pageTags": [],
+      "chunks": [
+        {
+          "text": "﻿---\ntitle: Google Cloud Knowledge Catalog & OKF\ntype: source\ndate: 2026-06-20\ntags: [okf, google, knowledge-catalog, open-knowledge-format]\n---\n\n# Google Cloud Knowledge Catalog & OKF\n\nGoogle introduced the **Open Knowledge Format (OKF)** v0.1, an open specification that formalizes the LLM-Wiki pattern into a portable, interoperable format. ## Key Points\n\n- **Format**: Directories of markdown files with YAML frontmatter\n- **Minimal conventions**: Each concept is one file, file path is identity, only required field is \type\n- **Design principles**: Minimally opinionated, producer/consumer independence, format-not-platform\n\n## Knowledge Catalog\n\n- **Aggregation**: Unifying metadata across data platforms\n- **Enrichment**: Automated context generation via Gemini\n- **Search**: High-precision semantic search\n\n## References\n\n- OKF v0.1 Specification: https://github.com/google/open-knowledge-format\n- Google Cloud Blog: https://cloud.google.com/blog/products/data-analytics/introducing-google-cloud-knowledge-catalog\n\n---\n\n*Source: Google Cloud announcement, 2026*\r\n\n\n## Related\n- [[concepts/open-knowledge-format]]\n- [[concepts/llm-wiki-pattern]]\n\r\n",
+          "contextualText": "[google-okf-blog]  --- title: Google Cloud Knowledge Catalog & OKF type: source date: 2026-06-20 tags: [okf,..."
+        }
+      ]
+    },
+    {
+      "id": "sources/headcount-zero-book",
+      "path": "sources/headcount-zero-book.md",
+      "pageTitle": "Headcount Zero: How to Build an AI-Run Company with Paperclip",
+      "pageTags": [
+        "paperclip",
+        "zero-employee",
+        "ai-company",
+        "multi-agent",
+        "governance",
+        "book",
+        "reference"
+      ],
+      "chunks": [
+        {
+          "text": "# Headcount Zero — Livro do Paperclip\n\n## Resumo\nLivro aberto (CC BY-NC-SA 4.0) sobre como construir e rodar empresas usando agentes de IA como workforce inteiro. Sem funcionários, sem payroll, sem HR. Um founder, org chart de agentes, e Paperclip como plataforma. **Autor**: Anthony David Adams — criador do Paperclip.",
+          "contextualText": "[Headcount Zero: How to Build an AI-Run Company with Paperclip] [paperclip, zero-employee, ai-company, multi-agent, governance, book, reference] # Headcount Zero — Livro do Paperclip ## Resumo Livro aberto (CC BY-NC-SA 4.0) sobre..."
+        },
+        {
+          "text": "agentes de IA como workforce inteiro. Sem funcionários, sem payroll, sem HR. Um founder, org chart de agentes, e Paperclip como plataforma. **Autor**: Anthony David Adams — criador do Paperclip. ## Estrutura do Livro\n\n### Parte 1: Por quê\n- Ch 0: Place Your Bets (introdução)\n- Ch 1: Nobody's Being Honest (gap entre hype e realidade)\n- Ch 2: Smash the Loom (história do pânico de automação)\n- Ch 3: One Person, One Billion (thesis do unicorn de uma pessoa)\n\n### Parte 2: O quê\n- Ch 4: Not a Chatbot (o que agentes de IA realmente são)\n- Ch 5: Paperclip (a plataforma)\n- Ch 6: Do the Math (economia de zero funcionários)\n\n### Parte 3: Como\n- Ch 7: Open Your Terminal (construa sua primeira empresa IA)\n- Ch 8: Who Does What (org chart de IA)\n- Ch 9: Kill Switch (governança e oversight)\n\n### Parte 4: E se\n- Ch 10: Run Ten at Once (escalar para múltiplas empresas)\n- Ch 11: You Are Not Optional (o elemento humano)\n- Ch 12: 48 Hours (seus primeiros dois dias)\n- Ch 13: Don't Hire Anyone (afterword)\n\n## Relevância para Nosso Trabalho\n\n| Conceito do Livro | Nossa Implementação |\n|---|---|\n| Org chart de agentes | CEO, CTO, CMO, UX Designer (Paperclip) |\n| Paperclip como plataforma | Paperclip rodando em 127.0.0.1:3100 |\n| Kill switch / governance | AGENTS.md red lines, ask-before-destructive |\n| Zero funcionários | Justus + sub-agentes (sem humanos na operação) |\n| One Person, One Billion | Dr.",
+          "contextualText": "[Headcount Zero: How to Build an AI-Run Company with Paperclip] [paperclip, zero-employee, ai-company, multi-agent, governance, book, reference] agentes de IA como workforce inteiro. Sem funcionários, sem payroll, sem HR. Um founder, org..."
+        },
+        {
+          "text": "| Kill switch / governance | AGENTS.md red lines, ask-before-destructive | | Zero funcionários | Justus + sub-agentes (sem humanos na operação) | | One Person, One Billion | Dr. Roger como founder, agentes como workforce |\n| Memory entre sessões | ultra-memory-core, SSC Router, dreaming |\n\n## Conexão com Multi-Agent Plan\n- Dr. Roger tem um plano de multi-agents + dynamic workflows\n- Este livro é a referência perfeita — é o manual do Paperclip\n- Cap 8 (Who Does What) = como desenhar org charts de agentes\n- Cap 9 (Kill Switch) = governance que a gente já implementa\n\n## Status\n- Dr. Roger está reunindo referências pra contextualizar o plano\n- Este livro é a referência central (é do criador do Paperclip)\n- **AGUARDAR** até Dr. Roger ter as referências prontas\n\n## Referências\n- [[projects/openclaw-llm-wiki]] — Nosso projeto de wiki\n- [[projects/ultra-memory-core]] — Módulo de memória\n- [[sources/hermes-moa-nous-research]] — Multi-model reference\n",
+          "contextualText": "[Headcount Zero: How to Build an AI-Run Company with Paperclip] [paperclip, zero-employee, ai-company, multi-agent, governance, book, reference] | Kill switch / governance | AGENTS.md red lines, ask-before-destructive | | Zero funcionários |..."
+        }
+      ]
+    },
+    {
+      "id": "sources/hermes-moa-nous-research",
+      "path": "sources/hermes-moa-nous-research.md",
+      "pageTitle": "Hermes Mixture of Agents (MoA) — Nous Research",
+      "pageTags": [
+        "mixture-of-agents",
+        "hermes",
+        "nous-research",
+        "multi-model",
+        "agent-architecture",
+        "reference"
+      ],
+      "chunks": [
+        {
+          "text": "# Hermes Mixture of Agents (MoA)\n\n## Resumo\nPost do Akshay explicando a feature Mixture of Agents do Hermes Agent (Nous Research). Múltiplos modelos consultam entre si dentro do agente — um \"preset\" define quais modelos consultar e qual escreve a resposta final. ## O Problema\n- Cada modelo tem blind spots\n- Rodar o mesmo prompt em múltiplos modelos manualmente funciona, mas sai do agente\n- Ao sair, tools, memory e session são perdidos\n\n## A Solução (Hermes)\n- **Preset**: \"Receita\" que nomeia modelos a consultar + modelo final\n- **Consulta**: Modelos analisam e passam perspectivas pro modelo final\n- **Resposta final**: Um modelo escreve, agora informado por múltiplas perspectivas\n- **Tudo dentro do agente**: Sem perda de contexto\n\n## Conexão com Nosso Trabalho\n| MoA (Hermes) | Nosso Sistema |\n|---|---|\n| Múltiplos modelos consultam | ultra-memory-core: graph + vector + keyword |\n| Um modelo final responde | SSC Router: consolida em top-K |\n| Preset reutilizável | Config do SSC Router (weights) |\n| Tudo dentro do agente | Tudo local, zero dependências |\n\n## Princípio Unificador\n**Nenhuma abordagem isolada tem toda a verdade:**\n- H.M. → cérebro precisa de memórias múltiplas\n- Cognee → knowledge graph + vector > keyword puro\n- Hermes MoA → múltiplos LLMs > LLM único\n- Nosso hybrid retrieval → graph + vector + keyword > qualquer um sozinho\n\n## Status\n- Dr.",
+          "contextualText": "[Hermes Mixture of Agents (MoA) — Nous Research] [mixture-of-agents, hermes, nous-research, multi-model, agent-architecture, reference] # Hermes Mixture of Agents (MoA) ## Resumo Post do Akshay explicando a feature Mixture..."
+        },
+        {
+          "text": "> keyword puro - Hermes MoA → múltiplos LLMs > LLM único - Nosso hybrid retrieval → graph + vector + keyword > qualquer um sozinho ## Status - Dr. Roger tem um **plano complexo** de multi-agents + dynamic workflows\n- Está em fase de coleta de referências\n- Este post é uma das referências do plano\n- **AGUARDAR** até Dr. Roger ter as referências prontas\n\n## Referência\n- [[projects/ultra-memory-core]] — Nosso módulo de graph reasoning\n- [[comparisons/cognee-vs-openclaw-memory]] — Análise do Cognee\n- [[sources/bbc-memory-systems-hm]] — Paralelo biológico (H.M.)\n",
+          "contextualText": "[Hermes Mixture of Agents (MoA) — Nous Research] [mixture-of-agents, hermes, nous-research, multi-model, agent-architecture, reference] > keyword puro - Hermes MoA → múltiplos LLMs > LLM único - Nosso hybrid..."
+        }
+      ]
+    },
+    {
+      "id": "sources/hybrid-rag-architecture-2026",
+      "path": "sources/hybrid-rag-architecture-2026.md",
+      "pageTitle": "Hybrid RAG: Knowledge Graph + Vector Database",
+      "pageTags": [
+        "rag",
+        "knowledge-graph",
+        "vector-db",
+        "graphrag",
+        "agentic-rag",
+        "hybrid",
+        "reranking"
+      ],
+      "chunks": [
+        {
+          "text": "# Hybrid RAG: Knowledge Graph + Vector Database\n\nEstado da arte em Hybrid RAG combinando knowledge graphs com vector databases (2025-2026). ## Componentes Principais\n\n- **Multi-modal Ingestion** — texto, bancos dados, imagens, áudio\n- **Advanced Chunking** — hierárquico, 12% melhoria sobre fixed-size\n- **Vector Database** — HNSW, hybrid search (dense + sparse), reranker hooks\n- **Knowledge Graph** — Neo4j, Memgraph, multi-hop reasoning\n- **GraphRAG** — build KG on ingestion, traverse at query\n- **Agentic RAG** — agente autônomo decide quando/que/buscar\n- **RAG Fusion** — reciprocal rank fusion de múltiplas estratégias\n\n## Conexões com Nosso Projeto\n- [[concepts/hybrid-memory-architecture]] — implementação destes padrões\n- [[raw/llm-memory-architectures-2026]] — contexto complementar\n",
+          "contextualText": "[Hybrid RAG: Knowledge Graph + Vector Database] [rag, knowledge-graph, vector-db, graphrag, agentic-rag, hybrid, reranking] # Hybrid RAG: Knowledge Graph + Vector Database Estado da arte em Hybrid RAG combinando..."
+        }
+      ]
+    },
+    {
+      "id": "sources/karpathy-llm-wiki-gist",
+      "path": "sources/karpathy-llm-wiki-gist.md",
+      "pageTitle": "Karpathy LLM-Wiki Gist",
+      "pageTags": [
+        "karpathy",
+        "llm-wiki",
+        "source",
+        "original"
+      ],
+      "chunks": [
+        {
+          "text": "# Karpathy LLM-Wiki Gist\n\nGist original de Andrej Karpathy propondo o padrão LLM-Wiki para bases de conhecimento pessoais. ## Resumo\n\n\"A pattern for building personal knowledge bases using LLMs.\"\n\nDocumenta um padrão onde LLMs incrementalmente constroem e mantêm um wiki persistente — markdown interlinkado — em vez de usar RAG que re-deriva conhecimento a cada query. ## Diferença Fundamental vs RAG\n\n- **RAG**: Doc → Chunking → Embedding → Query busca → LLM monta → Descarta\n- **LLM-Wiki**: Doc → LLM lê → Extrai → Integra no wiki → Wiki fica rico → Próxima query já tem síntese\n\n## 3 Camadas\n\n1. **Raw Sources** — documentos brutos, imutáveis\n2. **Wiki** — markdown gerado pelo LLM, interlinkado\n3. **Schema** — CLAUDE.md/AGENTS.md com instruções\n\n## Operações Principais\n\n- **Ingest**: fonte → LLM lê → extrai → cria/atualiza 10-15 páginas wiki\n- **Query**: pergunta → wiki compilado → síntese com citações\n- **Lint**: manutenção periódica do wiki\n\n## Tooling Sugerido\n\n- Obsidian (IDE visual + graph view)\n- Obsidian Web Clipper (salvar artigos)\n- Marp (slides de markdown)\n- Dataview (queries sobre frontmatter)\n- Git (versionamento)\n- qmd (search híbrido, quando escalar)\n\n## Links\n\n- URL: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f\n- Data: Abril 2026\n\n## Relacionamentos\n\n- [[concepts/llm-wiki-pattern]] — Padrão descrito neste gist\n- [[concepts/hybrid-memory-architecture]] — Nossa implementação que vai além\n",
+          "contextualText": "[Karpathy LLM-Wiki Gist] [karpathy, llm-wiki, source, original] # Karpathy LLM-Wiki Gist Gist original de Andrej Karpathy propondo o padrão LLM-Wiki para bases..."
+        }
+      ]
+    },
+    {
+      "id": "sources/llm-memory-architectures-2026",
+      "path": "sources/llm-memory-architectures-2026.md",
+      "pageTitle": "LLM Agent Memory Architectures 2025-2026",
+      "pageTags": [
+        "memory",
+        "architecture",
+        "hybrid",
+        "episodic",
+        "semantic",
+        "procedural",
+        "mem0",
+        "letta",
+        "zep",
+        "cognee"
+      ],
+      "chunks": [
+        {
+          "text": "# LLM Agent Memory Architectures 2025-2026\n\nSíntese do estado da arte em arquiteturas de memória para agentes LLM, baseada em pesquisa abrangente de abril 2026. ## Taxonomia de 3 Camadas (Convergência)\n\n1. **In-context working memory** — buffer efêmero da sessão\n2. **Session-scoped compressed memory** — fatos sumarizados, sob demanda\n3. **Long-term persistent store** — cross-sessão, vector + graph\n\n## Frameworks Principais\n\n- **Mem0** — hybrid semantic layer, paper ECAI 2025, entidades + relações via LLM\n- **Letta** — virtual context management como OS\n- **Zep/Graphiti** — low-latency conversational, semantic + temporal\n- **Cognee** — knowledge graph first-class, open-source\n- **MemoryLake** — cross-agent, multimodal\n- **A-MEM** — Zettelkasten-inspired dynamic organization\n\n## Conexões com Nosso Projeto\n- [[concepts/hybrid-memory-architecture]] — expande a taxonomia de 3 camadas para 6\n- [[entities/hyper-extract]] — camada de compilation que falta na taxonomia padrão\n",
+          "contextualText": "[LLM Agent Memory Architectures 2025-2026] [memory, architecture, hybrid, episodic, semantic, procedural, mem0, letta, zep, cognee] # LLM Agent Memory Architectures 2025-2026 Síntese do estado da arte em arquiteturas de memória..."
+        }
+      ]
+    },
+    {
+      "id": "sources/mariehaynes-okf-analysis",
+      "path": "sources/mariehaynes-okf-analysis.md",
+      "pageTitle": "mariehaynes-okf-analysis",
+      "pageTags": [],
+      "chunks": [
+        {
+          "text": "﻿---\ntitle: Marie Haynes OKF Analysis\ntype: source\ndate: 2026-06-22\ntags: [okf, analysis, knowledge-management]\n---\n\n# Marie Haynes OKF Analysis\n\nAnalysis of Google's Open Knowledge Format and its implications for AI-powered knowledge management. ## Key Insights\n\n- OKF validates the markdown+frontmatter pattern that many tools already use\n- The format enables interoperability between different knowledge bases\n- Minimal required fields reduce adoption friction\n\n## Implications for LLM Agents\n\n- Standardized knowledge representation enables cross-platform knowledge sharing\n- File-path-as-identity simplifies knowledge graph construction\n- YAML frontmatter enables automated metadata extraction\n\n## References\n\n- Original analysis by Marie Haynes\n- OKF Specification: https://github.com/google/open-knowledge-format\n\n---\n\n*Source: Marie Haynes analysis, 2026*\r\n\n\n## Related\n- [[sources/google-okf-blog]]\n- [[concepts/open-knowledge-format]]\n\r\n",
+          "contextualText": "[mariehaynes-okf-analysis]  --- title: Marie Haynes OKF Analysis type: source date: 2026-06-22 tags: [okf, analysis, knowledge-management]..."
+        }
+      ]
+    },
+    {
+      "id": "sources/solution-change-heartbeat-model",
+      "path": "sources/solution-change-heartbeat-model.md",
+      "pageTitle": "solution-change-heartbeat-model",
+      "pageTags": [],
+      "chunks": [
+        {
+          "text": "﻿# Technical Note: Changing Heartbeat Model in OpenClaw\n\n**Date**: 2026-06-28  \n**Issue**: heartbeat.model path is protected, cannot be changed via `gateway config.patch`  \n**Solution**: Direct JSON file edit + gateway restart\n\n## Problem\n\nWhen attempting to set a different model for heartbeat runs (to avoid \"tool call + stop\" behavior in mimo-v2.5-free), the `gateway config.patch` command fails:\n\n```\ngateway config.patch cannot change protected config paths: heartbeat.model\ngateway config.patch cannot change protected config paths: agents.list[].heartbeat.model\n```\n\nThis protection prevents the standard configuration change flow. ## Solution Walkthrough\n\n### Step 1: Verify Current Config\n\n```bash\n# Check schema exists\ngateway config.schema.lookup agents.list.*.heartbeat.model\n\n# Check current value\ngateway config.get agents.list[0].heartbeat\n```\n\nIf no heartbeat section exists, the heartbeat uses the agent's primary model.",
+          "contextualText": "[solution-change-heartbeat-model]  # Technical Note: Changing Heartbeat Model in OpenClaw **Date**: 2026-06-28 **Issue**: heartbeat.model path is..."
+        },
+        {
+          "text": "Current Config ```bash # Check schema exists gateway config.schema.lookup agents.list.*.heartbeat.model # Check current value gateway config.get agents.list[0].heartbeat ``` If no heartbeat section exists, the heartbeat uses the agent's primary model. ### Step 2: Edit Config File Directly\n\nOn Windows, use Node.js to avoid PowerShell variable stripping:\n\n```javascript\n// Edit openclaw.json directly\nconst fs = require('fs');\nconst path = require('path');\nconst configPath = path.join(process.env.USERPROFILE, '.openclaw', 'openclaw.json');\n\nconst config = JSON.parse(fs.readFileSync(configPath, 'utf8'));\n\n// Add heartbeat model if not present\nif (!config.agents.list[0].heartbeat) {\n    config.agents.list[0].heartbeat = {};\n}\nconfig.agents.list[0].heartbeat.model = 'nvidia/nemotron-3-ultra-550b-a55b:free';\n\nfs.writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf8');\nconsole.log('heartbeat.model set');\n```\n\nOr via PowerShell (careful with variable expansion):\n\n```powershell\nnode -e @\"\nconst fs=require('fs');\nconst p=require('path').join(process.env.USERPROFILE,'.openclaw','openclaw.json');\nconst c=JSON.parse(fs.readFileSync(p,'utf8'));\nif(!c.agents.list[0].heartbeat)c.agents.list[0].heartbeat={};\nc.agents.list[0].heartbeat.model='nvidia/nemotron-3-ultra-550b-a55b:free';\nfs.writeFileSync(p,JSON.stringify(c,null,2),'utf8');\nconsole.log('Done');\n\"@\n```\n\n### Step 3: Restart Gateway\n\n```bash\ngateway restart --reason \"heartbeat model change\" --note \"heartbeat.model set to nemotron-ultra\"\n```\n\n**Important**: On Windows, always use `gateway restart`, never `pm2 stop/start` or create Windows Scheduled Tasks (causes Telegram getUpdates collisions).",
+          "contextualText": "[solution-change-heartbeat-model] Current Config ```bash # Check schema exists gateway config.schema.lookup agents.list.*.heartbeat.model # Check current value gateway..."
+        },
+        {
+          "text": "restart --reason \"heartbeat model change\" --note \"heartbeat.model set to nemotron-ultra\" ``` **Important**: On Windows, always use `gateway restart`, never `pm2 stop/start` or create Windows Scheduled Tasks (causes Telegram getUpdates collisions). ### Step 4: Verify\n\nAfter restart, check the config:\n\n```bash\ngateway config.get agents.list[0].heartbeat\n# Should return: {\"model\": \"nvidia/nemotron-3-ultra-550b-a25b:free\"}\n```\n\n### Step 5: Test Heartbeat\n\nTrigger a test wake event:\n\n```bash\ncron wake --mode now --text \"Test heartbeat with new model\"\n```\n\nWait for the system to process it. Check next heartbeat job run uses the new model.",
+          "contextualText": "[solution-change-heartbeat-model] restart --reason \"heartbeat model change\" --note \"heartbeat.model set to nemotron-ultra\" ``` **Important**: On Windows, always..."
+        },
+        {
+          "text": "wake event: ```bash cron wake --mode now --text \"Test heartbeat with new model\" ``` Wait for the system to process it. Check next heartbeat job run uses the new model. ## Schema Reference\n\nValid heartbeat configuration fields (from `agents.list.*.heartbeat`):\n\n| Field | Type | Description |\n|-------|------|-------------|\n| `model` | string | Model override for heartbeat runs |\n| `every` | string | Heartbeat schedule (e.g., \"1h\") |\n| `activeHours.start/end/tz` | time config | Time window for heartbeats |\n| `prompt` | string | Custom heartbeat prompt |\n| `timeoutSeconds` | int | Max heartbeat runtime (default: 600) |\n| `lightContext` | boolean | Light bootstrap context |\n| `isolatedSession` | boolean | Run in isolated session |\n| `includeReasoning` | boolean | Include reasoning in heartbeat |\n\n## Why This Works\n\n- The heartbeat model is injected at runtime from the config file\n- `gateway config.patch` protects critical paths as a safety feature\n- Direct JSON edit bypasses the protection layer\n- Gateway restart loads the new configuration into memory\n- The protection applies to runtime API, not file system\n\n## Cross-Platform Notes\n\n| Platform | Config Path | Edit Method |\n|----------|-------------|-------------|\n| Windows | `%USERPROFILE%\\.openclaw\\openclaw.json` | Node.js (avoid PS variable issues) |\n| macOS | `$HOME/.openclaw/openclaw.json` | Standard JSON edit |\n| Linux | `$HOME/.openclaw/openclaw.json` | Standard JSON edit |\n\n## References\n\n- HEARTBEAT.md: `~/.openclaw/workspace/HEARTBEAT.md`\n- Config schema: `gateway config.schema.lookup agents.list.*.heartbeat`\n- Model aliases: `~/.openclaw/workspace/MEMORY.md`\n\n## Related\n- [[projects/openclaw-llm-wiki]]\n- [[synthesis/lessons-learned]]\n\r\n",
+          "contextualText": "[solution-change-heartbeat-model] wake event: ```bash cron wake --mode now --text \"Test heartbeat with new model\" ``` Wait..."
+        }
+      ]
+    },
+    {
+      "id": "synthesis/headcount-zero-analysis",
+      "path": "synthesis/headcount-zero-analysis.md",
+      "pageTitle": "Headcount Zero — Análise Completa",
+      "pageTags": [
+        "paperclip",
+        "zero-employee",
+        "ai-company",
+        "multi-agent",
+        "governance",
+        "strategy",
+        "reference"
+      ],
+      "chunks": [
+        {
+          "text": "# Headcount Zero — Análise Completa do Livro\n\n> Livro de referência para a estratégia da nossa empresa. lido completo (13/13 capítulos) em 2026-06-28. ## Tese Central\n\n**41.8M de americanos já rodam empresas sozinhos.** Os que usam AI como workforce (não como tool) ganham **4.2x mais** ($127/h vs $31/h). A distância entre usar AI e deployar AI é a distância entre frelar e fundar. **A previsão de Altman:** \"One person, one billion dollar company\" é uma questão de quando, não se.",
+          "contextualText": "[Headcount Zero — Análise Completa] [paperclip, zero-employee, ai-company, multi-agent, governance, strategy, reference] # Headcount Zero — Análise Completa do Livro > Livro de referência para a estratégia..."
+        },
+        {
+          "text": "entre usar AI e deployar AI é a distância entre frelar e fundar. **A previsão de Altman:** \"One person, one billion dollar company\" é uma questão de quando, não se. ## Estrutura do Livro\n\n### Parte 1: POR QUÊ (Cap 0-3)\n- **Cap 0**: betting pool dos CEOs de tech — primeiro unicorn de 1 pessoa vai existir\n- **Cap 1**: gap entre AI replacing vs companies preemptively cutting — AI é alibi pra corte\n- **Cap 2**: Luddites → Ford → Typing Pool → Craigslist → ATMs — mesmo arco toda vez\n- **Cap 3**: 4.2x multiplier, usando AI como workforce vs tool\n\n### Parte 2: O QUÊ (Cap 4-6)\n- **Cap 4**: Agent ≠ Chatbot ≠ Copilot — 4 marcas: autonomia, tools, memória, goals\n- **Cap 5**: Paperclip = OS de empresa IA — org charts, budgets, gates, audit trail\n- **Cap 6**: $427K (humano) vs $6.6K (agent) — 98.5% cost reduction\n\n### Parte 3: COMO (Cap 7-9)\n- **Cap 7**: Setup em 30 minutos — npx paperclipai onboard --yes\n- **Cap 8**: Org charts — 4 templates (Content, E-Commerce, SaaS, Agency)\n- **Cap 9**: Kill switch — 3 layers budget, approval gates, audit trails\n\n### Parte 4: E SE (Cap 10-13)\n- **Cap 10**: Multi-company — templates como franchise blueprints, 4 coordination patterns\n- **Cap 11**: Human element — 5 jobs only you can do (strategy, relationships, brand, ethics, creative)\n- **Cap 12**: 48-hour plan — build day 1, operate day 2\n- **Cap 13**: Don't hire anyone — watchers vs builders\n\n## Insights Extraídos\n\n### Economia\n| Métrica | Humano | Agent | Diferença |\n|---|---|---|---|\n| Custo anual | $120K-170K | $6.6K-6K | 98.5% reduction |\n| Horas produtivas/ano | 750-1,000 | 7,000 | 7-9x |\n| Custo marginal | Exponencial | Flat ($50-500/mês) | Linear |\n| Turnover | 25%/ano | 0% | Eliminado |\n\n### 4 Coordination Patterns (Cap 10)\n1.",
+          "contextualText": "[Headcount Zero — Análise Completa] [paperclip, zero-employee, ai-company, multi-agent, governance, strategy, reference] entre usar AI e deployar AI é a distância entre frelar e fundar. **A previsão..."
+        },
+        {
+          "text": "| 7-9x | | Custo marginal | Exponencial | Flat ($50-500/mês) | Linear | | Turnover | 25%/ano | 0% | Eliminado | ### 4 Coordination Patterns (Cap 10) 1. **Assembly Line** — agents em sequência, output de um alimenta o próximo\n2. **Hub and Spoke** — manager central coordena especialistas\n3. **Review Chain** — todo trabalho passa por reviewer antes de sair\n4. **Autonomous Division** — unidade auto-contida com hierarquia própria\n\n### 5 Failure Modes (Cap 11)\n1. **Hallucination** — confiança em informação falsa\n2. **Ambiguity** — falha em decisões ambíguas\n3. **Tone** — correto tecnicamente, mas tom errado\n4. **Originality** — não cria algo novo, segue padrões\n5. **(implícito)** — custo de token em tarefas complexas\n\n### 5 Jobs Só do Founder (Cap 11)\n1. **Strategy** — mercados, posicionamento, apostas\n2. **Relationships** — clientes chave, parceiros, investidores\n3. **Brand** — identidade, voz, o que se recusa a fazer\n4. **Ethics** — quando lucro vs responsabilidade\n5.",
+          "contextualText": "[Headcount Zero — Análise Completa] [paperclip, zero-employee, ai-company, multi-agent, governance, strategy, reference] | 7-9x | | Custo marginal | Exponencial | Flat ($50-500/mês) | Linear | |..."
+        },
+        {
+          "text": "— mercados, posicionamento, apostas 2. **Relationships** — clientes chave, parceiros, investidores 3. **Brand** — identidade, voz, o que se recusa a fazer 4. **Ethics** — quando lucro vs responsabilidade 5. **Creative direction** — grandes ideias, visões de produto\n\n### 48-Hour Plan (Cap 12)\n- **Dia 1**: Install → Create company → Hire 3 agents (Doer, Checker, Coordinator) → Assign real work → Review\n- **Dia 2**: Morning review → Set governance → Assign full week → Evening reflection\n- **Days 3-7**: Operate → Audit → Plan\n\n## Conexão com Nosso Setup\n\n### O que já fazemos\n| Conceito do Livro | Nossa Implementação | Status |\n|---|---|---|\n| Org chart CEO→agents | Justus (CEO), CTO, CMO, UX | ✅ |\n| Heartbeats | Cron jobs + dreaming | ✅ |\n| Budget caps | Paperclip budget limits | ✅ |\n| Audit trail | Paperclip task logs + daily/ | ✅ |\n| Memory persistence | ultra-memory-core, SSC Router | ✅ |\n| Kill switch | AGENTS.md red lines | ✅ |\n\n### O que falta\n| Feature | Status | Prioridade |\n|---|---|---|\n| Approval gates granulares | Ask-before-destructive (básico) | ⚠️ Média |\n| Budget tracking por agent | Sem visibility de custo por tarefa | 🔴 Alta |\n| Goal cascading | Tasks sem cascade automático | ⚠️ Média |\n| Performance analytics | Sem métricas por agent | 🔴 Alta |\n| Company templates | Só uma empresa | 🟢 Baixa |\n| Review chain pattern | Sem reviewer automático | ⚠️ Média |\n\n## Aplicação Prática\n\n### Para nosso plano de multi-agents:\n1. **Assembly Line** — pipeline de content: research → write → edit → SEO → publish\n2.",
+          "contextualText": "[Headcount Zero — Análise Completa] [paperclip, zero-employee, ai-company, multi-agent, governance, strategy, reference] — mercados, posicionamento, apostas 2. **Relationships** — clientes chave, parceiros, investidores 3. **Brand** — identidade,..."
+        },
+        {
+          "text": "| ⚠️ Média | ## Aplicação Prática ### Para nosso plano de multi-agents: 1. **Assembly Line** — pipeline de content: research → write → edit → SEO → publish 2. **Hub and Spoke** — Justus como hub, CTO/CMO/UX como spokes\n3. **Review Chain** — todo output passa por review antes de publicar\n4. **Autonomous Division** — divisão de conteúdo independente de divisão técnica\n\n### Para o paper:\n- Seção 2.6: Mixture of Agents (Hermes) + multi-agent orchestration\n- Seção 5.x: Zero-employee company economics\n- Conclusão: Referência ao livro como validação da abordagem\n\n### Para a wiki:\n- [[sources/headcount-zero-book]] — Fonte principal\n- [[sources/headcount-zero-analysis]] — Esta análise\n",
+          "contextualText": "[Headcount Zero — Análise Completa] [paperclip, zero-employee, ai-company, multi-agent, governance, strategy, reference] | ⚠️ Média | ## Aplicação Prática ### Para nosso plano de multi-agents: 1. **Assembly..."
+        }
+      ]
+    },
+    {
+      "id": "synthesis/hybrid-memory-architecture",
+      "path": "synthesis/hybrid-memory-architecture.md",
+      "pageTitle": "Hybrid Memory Architecture",
+      "pageTags": [
+        "architecture",
+        "memory",
+        "wiki",
+        "vector-db",
+        "synthesis",
+        "hybrid"
+      ],
+      "chunks": [
+        {
+          "text": "# Hybrid Memory Architecture\n\nSíntese da arquitetura híbrida que combina Karpathy LLM-Wiki com vector database para um sistema de conhecimento persistente e escalável. ## Problema\n\nCada abordagem isolada tem limitações:\n\n- **LLM-Wiki puro**: Compila conhecimento bem, mas search é limitado a index.md (não escala além de ~100 fontes)\n- **Vector DB puro (RAG)**: Busca escala, mas não compila — re-deriva a cada query, sem acumulação\n- **Memory Caching puro**: Memória operacional do agente, não conhecimento sobre o mundo\n\n## Solução: Arquitetura em 6 Camadas\n\n```\nInterface (Obsidian + Telegram + MCP)\n    ↓\nMemory (claude-mem + agentmemory — operacional)\n    ↓\nSearch (qmd — BM25 + Vector + Reranking)\n    ↓\nVector (agentmemory — embeddings + graph)\n    ↓\nWiki (markdown interlinkado — conhecimento compilado)\n    ↓\nCompilation (Hyper-Extract — extração automática)\n    ↓\nRaw Sources (imutáveis)\n```\n\n### Camada 0: Raw Sources\nFontes brutas imutáveis. Artigos, PDFs, transcripts, notas. ### Camada 1: Hyper-Extract (Compilation)\nExtração automática com templates tipados. Transforma fontes brutas em knowledge abstracts e exporta para Obsidian. ### Camada 2: Wiki (Knowledge Compiled)\nMarkdown interlinkado que o LLM mantém. Entidades, conceitos, sínteses, comparações. Conhecimento compounding. ### Camada 3: Vector Store (agentmemory)\nEmbeddings (all-MiniLM-L6-v2), knowledge graph, busca semântica. R@5=95.2%. ### Camada 4: Search (qmd)\nBusca híbrida BM25+Vector+LLM Reranking. 100% local. MCP server. ### Camada 5: Memory (claude-mem + agentmemory)\nMemória operacional: hooks, sessions, context injection, auto-capture. ### Camada 6: Interface\nObsidian (visual), Telegram (queries), MCP (agentes externos).",
+          "contextualText": "[Hybrid Memory Architecture] [architecture, memory, wiki, vector-db, synthesis, hybrid] # Hybrid Memory Architecture Síntese da arquitetura híbrida que combina Karpathy LLM-Wiki com vector database..."
+        },
+        {
+          "text": "Reranking. 100% local. MCP server. ### Camada 5: Memory (claude-mem + agentmemory) Memória operacional: hooks, sessions, context injection, auto-capture. ### Camada 6: Interface Obsidian (visual), Telegram (queries), MCP (agentes externos). ## Diferença Fundamental\n\n| Aspecto | RAG | LLM-Wiki | Hybrid |\n|---|---|---|---|\n| Compilação | ❌ Re-deriva | ✅ Compila uma vez | ✅ Hyper-Extract + LLM |\n| Busca | ✅ Vector search | ⚠️ Só index.md | ✅ qmd (híbrido) |\n| Escala | ✅ Milhões de docs | ⚠️ ~100 fontes | ✅ Vetor + wiki |\n| Síntese | ❌ Não acumula | ✅ Compounding | ✅ Compounding |\n| Auto-capture | ❌ Manual | ❌ Manual | ✅ Hooks |\n| Graph | ❌ | ❌ | ✅ Knowledge graph |\n\n## Fluxo de Dados\n\n### Ingestão\n```\nFonte bruta → Hyper-Extract (parse) → Knowledge Abstracts → Obsidian export → Wiki markdown → qmd indexa → agentmemory gera embeddings\n```\n\n### Query\n```\nPergunta → qmd busca (híbrido) → páginas relevantes → LLM sintetiza → resposta (ou nova página synthesis/)\n```\n\n### Manutenção\n```\nCron/heartbeat → LINT detecta contradições/órfãos → LLM corrige → index.md atualizado\n```\n\n## Implementação\n\n- [[projects/openclaw-llm-wiki]] — Projeto de implementação\n- [[entities/hyper-extract]] — Motor de extração\n- [[entities/agentmemory]] — Vector store + MCP\n- [[entities/qmd]] — Search engine\n- [[entities/claude-mem]] — Memory layer\n",
+          "contextualText": "[Hybrid Memory Architecture] [architecture, memory, wiki, vector-db, synthesis, hybrid] Reranking. 100% local. MCP server. ### Camada 5: Memory (claude-mem + agentmemory) Memória operacional: hooks,..."
+        }
+      ]
+    },
+    {
+      "id": "synthesis/lessons-learned",
+      "path": "synthesis/lessons-learned.md",
+      "pageTitle": "lessons-learned",
+      "pageTags": [],
+      "chunks": [
+        {
+          "text": "﻿---\ntitle: \"Lessons Learned: LLM-Wiki Implementation\"\ntype: synthesis\ncreated: 2026-06-26\nupdated: 2026-06-26\nsources: [\"wiki/log.md\", \"paper/sections/paper-draft.md\"]\ntags: [lessons, implementation, windows, mcp, free-tier, open-knowledge-format]\nextraction_method: llm-manual\n---\n\n# Lessons Learned: LLM-Wiki Implementation\n\nLições aprendidas durante a implementação do LLM-Wiki Híbrido no OpenClaw (2026-06-26). ## 1. Free-tier models superam modelos pagos para extração\n\nO Nemotron Nano 30B (free) extraiu 89% mais entidades que o gpt-4o-mini ($0.01/doc). Para knowledge extraction, contagem de parâmetros importa mais que tier de treinamento. **Implicação**: É possível deployar um sistema de knowledge extraction completo com custo $0.00. ## 2. Embeddings locais eliminam barreira de custo\n\nembeddinggemma-300M (333MB, local) gera embeddings de qualidade sem chamadas API. Para equipes com restrição orçamentária, modelos GGUF locais são viáveis. ## 3. Windows continua sendo cidadão de segunda classe em ML tooling\n\nCada ferramenta da stack exigiu workarounds:\n- TOML encoding fix (UTF-8 sem BOM)\n- Download manual de binários (iii-engine)\n- Scripting específico para PowerShell\n- Bugs de Unicode no rich console\n\n**Recomendação**: Usar WSL2 ou Linux para produção. ## 4. MCP é o protocolo correto de integração\n\nO agentmemory não aceita writes via REST API — o protocolo MCP stdio é a interface pretendida. Isso alinha com a tendência da indústria para MCP como padrão agent-to-agent. ## 5.",
+          "contextualText": "[lessons-learned]  --- title: \"Lessons Learned: LLM-Wiki Implementation\" type: synthesis created: 2026-06-26 updated: 2026-06-26 sources: [\"wiki/log.md\",..."
+        },
+        {
+          "text": "agentmemory não aceita writes via REST API — o protocolo MCP stdio é a interface pretendida. Isso alinha com a tendência da indústria para MCP como padrão agent-to-agent. ## 5. OKF valida nossa abordagem\n\nO Open Knowledge Format do Google (v0.1) formalizou o mesmo padrão markdown+frontmatter que adotamos independentemente, validando a abordagem e sugerindo interoperabilidade futura com data catalogs enterprise. ## 6. Hyper-Extract precisa de fix no Windows\n\nO wizard interativo `he config init` crasha em Windows devido ao encoding `cp1252`. Solução: editar TOML manualmente com `[System.IO.File]::WriteAllText()` e `UTF8Encoding($false)`. ## 7. qmd é o search engine ideal para markdown\n\nBM25 para keywords + vector para semântico + reranking LLM para máxima qualidade. Tudo local, zero custo. Contextual search com `qmd context add` melhora relevância significativamente. ## Related\n- [[synthesis/hybrid-memory-architecture]]\n- [[comparisons/cognee-vs-openclaw-memory]]\n\r\n",
+          "contextualText": "[lessons-learned] agentmemory não aceita writes via REST API — o protocolo MCP stdio é a interface..."
+        }
+      ]
+    },
+    {
+      "id": "projects/openclaw-llm-wiki",
+      "path": "projects/openclaw-llm-wiki.md",
+      "pageTitle": "OpenClaw LLM-Wiki Project",
+      "pageTags": [
+        "project",
+        "openclaw",
+        "llm-wiki",
+        "implementation"
+      ],
+      "chunks": [
+        {
+          "text": "# OpenClaw LLM-Wiki Project\n\nProjeto de implementação de um LLM-Wiki híbrido no workspace OpenClaw, combinando Karpathy LLM-Wiki pattern com vector database e extração automática. ## Objetivo\n\nCriar um sistema de conhecimento persistente onde:\n- LLM compila conhecimento uma vez (não re-deriva a cada query)\n- Hyper-Extract automatiza a extração de fontes\n- qmd fornece busca híbrida\n- agentmemory mantém embeddings e knowledge graph\n- claude-mem gerencia memória operacional\n- Obsidian serve como interface visual\n\n## Stack\n\n| Camada | Ferramenta | Status |\n|---|---|---|\n| Compilation | Hyper-Extract | 🟡 A instalar |\n| Wiki | Markdown puro | ✅ Criado |\n| Search | qmd | 🟡 A instalar |\n| Vector | agentmemory | 🟡 A instalar |\n| Memory | claude-mem | 🟡 A instalar |\n| Interface | Obsidian | 🟡 A configurar |\n\n## Fases\n\n1. ✅ Setup base (estrutura + schema)\n2. 🟡 Hyper-Extract (instalar + testar)\n3. 🔲 qmd (search)\n4. 🔲 agentmemory (vector store)\n5. 🔲 claude-mem (operacional)\n6. 🔲 Primeiras ingests\n7. 🔲 Workflow contínuo\n8. 🔲 Avançado\n\n## Documentação para Paper\n\n- [[paper/sections/abstract]] — Abstract do paper\n- [[paper/sections/introduction]] — Introdução\n- [[paper/sections/methodology]] — Metodologia\n- [[paper/sections/results]] — Resultados (em andamento)\n\n## Links\n\n- Plano: wiki/LLM-WIKI-PLAN.md\n- Pesquisa: wiki/RESEARCH-ANALYSIS.md\n- Paper: paper/\n",
+          "contextualText": "[OpenClaw LLM-Wiki Project] [project, openclaw, llm-wiki, implementation] # OpenClaw LLM-Wiki Project Projeto de implementação de um LLM-Wiki híbrido no workspace OpenClaw, combinando..."
+        }
+      ]
+    },
+    {
+      "id": "projects/ultra-memory-core",
+      "path": "projects/ultra-memory-core.md",
+      "pageTitle": "ultra-memory-core",
+      "pageTags": [],
+      "chunks": [
+        {
+          "text": "﻿---\ntitle: \"Ultra Memory Core — Arquitetura\"\ntype: project\ndate: 2026-06-28\nstatus: em-andamento\ntags: [memory-architecture, knowledge-graph, vector-search, ontology, cognee, ultra-memory]\ndependencies: []\n---\n\n# Ultra Memory Core\n\nMódulo de memória para agentes de IA, inspirado no Cognee mas sem dependências externas.",
+          "contextualText": "[ultra-memory-core]  --- title: \"Ultra Memory Core — Arquitetura\" type: project date: 2026-06-28 status: em-andamento tags:..."
+        },
+        {
+          "text": "status: em-andamento tags: [memory-architecture, knowledge-graph, vector-search, ontology, cognee, ultra-memory] dependencies: [] --- # Ultra Memory Core Módulo de memória para agentes de IA, inspirado no Cognee mas sem dependências externas. ## O que é\n- Knowledge graph puro (Node.js, sem networkx)\n- Vector embeddings em JSON + cosine similarity\n- Extração de entidades/relações via LLM\n- API: remember/recall/forget/improve\n\n## Arquitetura\n\n```\nultra-memory-core/\n├── knowledge-graph.js    ← Graph engine puro (adjacency list + BFS/DFS)\n├── vector-store.js       ← Embeddings em JSON + cosine similarity\n├── ontology.js           ← Extração de entidades/relações via LLM\n├── memory-api.js         ← API de alto nível (remember/recall/forget/improve)\n├── index.js              ← Facade\n└── data/                 ← Armazenamento (graph.json, vectors.json)\n```\n\n## Decisões de Design\n\n### Sem vendor lock-in\n- ZERO dependências npm\n- Storage em JSON (não LanceDB)\n- Graph em JS puro (não networkx Python)\n- LLM via OpenClaw (não API direta)\n\n### API (padrão Cognee)\n- `remember(text, opts)` — armazena, extrai entidades, adiciona ao graph + vectors\n- `recall(query, opts)` — busca híbrida (vector similarity + graph traversal)\n- `forget(opts)` — remove por id, entidade ou critérios\n- `improve()` — mescla entidades duplicadas, poda arestas obsoletas\n\n### Schema de entidades\n- Person, Concept, Event, Place, Technology\n- Relações: studies, discovered, uses, part_of, related_to\n\n## Diferenças do Cognee\n| Feature | Cognee | Ultra Memory Core |\n|---|---|---|\n| Dependencies | 30+ Python libs | ZERO (pure Node.js) |\n| Storage | LanceDB + SQLAlchemy | JSON files |\n| Graph | networkx | Adjacency list custom |\n| Vector | LanceDB | Cosine similarity pura |\n| LLM | OpenAI/Litellm | Via OpenClaw |\n| License | Apache-2.0 | MIT |\n\n## Integração com SSC Router\nO ultra-memory-core vai substituir o keyword scoring do SSC Router por:\n1.",
+          "contextualText": "[ultra-memory-core] status: em-andamento tags: [memory-architecture, knowledge-graph, vector-search, ontology, cognee, ultra-memory] dependencies: [] --- # Ultra Memory..."
+        },
+        {
+          "text": "| OpenAI/Litellm | Via OpenClaw | | License | Apache-2.0 | MIT | ## Integração com SSC Router O ultra-memory-core vai substituir o keyword scoring do SSC Router por: 1. Graph traversal (encontra relações indiretas)\n2. Vector similarity (encontra conceitos similares)\n3. Ontology grounding (estrutura o conhecimento)\n\n## Status\n- [ ] knowledge-graph.js\n- [ ] vector-store.js\n- [ ] ontology.js\n- [ ] memory-api.js\n- [ ] index.js\n- [ ] Integração com SSC Router\n- [ ] Testes\n\n\n## Related\n- [[synthesis/hybrid-memory-architecture]]\n- [[comparisons/cognee-vs-openclaw-memory]]\n- [[entities/hyper-extract]]\n\r\n",
+          "contextualText": "[ultra-memory-core] | OpenAI/Litellm | Via OpenClaw | | License | Apache-2.0 | MIT | ## Integração..."
+        }
+      ]
+    },
+    {
+      "id": "projects/ultra-x-stealth-skill",
+      "path": "projects/ultra-x-stealth-skill.md",
+      "pageTitle": "Ultra X Stealth Skill",
+      "pageTags": [
+        "x-posting",
+        "stealth",
+        "anti-detection",
+        "playwright",
+        "browser-automation",
+        "ultra"
+      ],
+      "chunks": [
+        {
+          "text": "# Ultra X Stealth Skill\n\nSkill de posting stealth no X.com com anti-detection e simulação de comportamento humano. ## O que é\n- Playwright + puppeteer-extra-plugin-stealth\n- Mouse Bézier curves com jitter\n- Typing variável com typos simulados\n- Delays aleatórios entre ações\n- Limites de segurança: máx 6 tweets/sessão, 20/dia\n\n## Localização\n- `~/.openclaw/skills/ultra-x-stealth-skill/`\n- GitHub: github.com/labsclaw/openclaw-skills\n\n## Arquitetura\n```\nThread Config (JSON)\n    ↓\nStealth Layer (playwright-extra + stealth-plugin)\n    ├── navigator.webdriver = false\n    ├── Real User-Agent\n    ├── Chrome plugin emulation\n    └── Canvas/WebGL fingerprint masking\n    ↓\nHuman Behavior Layer\n    ├── Bézier mouse curves with jitter\n    ├── Variable typing (50-150ms/char)\n    ├── Realistic scroll (accel/decel)\n    ├── Random delays (3-8s between actions)\n    └── Hover before click\n    ↓\nCadence Layer\n    ├── 3-5 min between tweets in thread\n    ├── Max 15-20 tweets/day\n    ├── Post only 8h-22h local time\n    └── Session max 6 tweets per session\n    ↓\nBrowser (headed, Chrome profile)\n    └── Persistent cookies/session\n```\n\n## Uso\n```bash\ncd ~/.openclaw/skills/ultra-x-stealth-skill\nnpm install\nnode scripts/stealth-post.js --config examples/thread-sample.json\n```\n\n## Limitações\n- 100% indetectável é \"provavelmente impossível\" em 2026\n- Sem residential proxy, datacenter IPs são flagged\n- TLS fingerprint não é 100% Chrome real\n- Contas novas (<90 dias) têm limites mais strict\n\n## Referências\n- [[comparisons/cognee-vs-openclaw-memory]] — Contexto do projeto\n- [[projects/ultra-memory-core]] — Módulo de memória relacionado\n",
+          "contextualText": "[Ultra X Stealth Skill] [x-posting, stealth, anti-detection, playwright, browser-automation, ultra] # Ultra X Stealth Skill Skill de posting stealth no X.com com anti-detection e simulação..."
+        }
+      ]
+    },
+    {
+      "id": "comparisons/cognee-vs-openclaw-memory",
+      "path": "comparisons/cognee-vs-openclaw-memory.md",
+      "pageTitle": "Cognee vs OpenClaw Memory Architecture",
+      "pageTags": [
+        "cognee",
+        "knowledge-graph",
+        "memory-architecture",
+        "comparison",
+        "openclaw",
+        "ssc-router"
+      ],
+      "chunks": [
+        {
+          "text": "# Cognee vs OpenClaw Memory Architecture\n\n## Cognee (topoteretes/cognee)\n- Plataforma open-source de AI memory para agentes\n- Knowledge graph auto-hospedado + vector embeddings + ontologia cognitiva\n- API: `remember` / `recall` / `forget` / `improve`\n- Paper: \"Optimizing the Interface Between Knowledge Graphs and LLMs for Complex Reasoning\" (Markovic et al., 2025)\n- Plugin OpenClaw: @cognee/cognee-openclaw\n- Clients: Python, TypeScript, Rust\n\n## Comparação\n\n| Feature | Cognee | OpenClaw Memory |\n|---|---|---|\n| Storage | Knowledge graph (self-hosted) | Markdown + JSON index |\n| Retrieval | Graph reasoning + vector search | SSC Router (keyword scoring) |\n| API | remember/recall/forget/improve | Read/write/heartbeat |\n| Multi-source ingestion | Any format (automático) | Manual (wiki raw/) |\n| Graph relationships | Automático | Flat segments |\n| Session memory | Sim (session_id) | Sessão atual (in-memory) |\n| Heartbeat maintenance | Não documentado | Automático (comprimir/mergear) |\n| Agent delegation | Não tem | Paperclip integration |\n| Interface | API/SDK | Telegram/WhatsApp direto |\n\n## O que Cognee tem que falta no nosso\n1. **Knowledge graph** — entidades conectadas por relações, inferência em cascata\n2. **Ontologia grounding** — estrutura cognitiva automática\n3. **Retrieval híbrido** — graph + vector (nós só temos keyword scoring)\n\n## O que temos que Cognee não mostra\n1. **Heartbeat automático** — manutenção contínua de memória\n2. **Delegação multi-agente** — Paperclip com CTO, CMO, etc. 3. **Interface conversacional** — Telegram/WhatsApp como input natural\n4.",
+          "contextualText": "[Cognee vs OpenClaw Memory Architecture] [cognee, knowledge-graph, memory-architecture, comparison, openclaw, ssc-router] # Cognee vs OpenClaw Memory Architecture ## Cognee (topoteretes/cognee) - Plataforma open-source de AI memory..."
+        },
+        {
+          "text": "que Cognee não mostra 1. **Heartbeat automático** — manutenção contínua de memória 2. **Delegação multi-agente** — Paperclip com CTO, CMO, etc. 3. **Interface conversacional** — Telegram/WhatsApp como input natural 4. **Custo zero** — free-tier Nemotron para extração\n\n## Possibilidade de Upgrade\n- Plugin @cognee/cognee-openclaw pode substituir SSC Router\n- Graph reasoning real vs keyword scoring\n- Investigar: dependências, custo, latência, compatibilidade com nosso workflow\n\n## Referências\n- [[sources/bbc-memory-systems-hm]] — Paralelo biológico (H.M. → arquitetura de memória)\n- [[sources/hybrid-rag-architecture-2026]] — Hybrid RAG: KG + Vector DB\n- [[synthesis/hybrid-memory-architecture]] — Nossa arquitetura atual\n",
+          "contextualText": "[Cognee vs OpenClaw Memory Architecture] [cognee, knowledge-graph, memory-architecture, comparison, openclaw, ssc-router] que Cognee não mostra 1. **Heartbeat automático** — manutenção contínua de memória 2. **Delegação multi-agente**..."
+        }
+      ]
+    }
+  ],
+  "docFreqs": {
+    "100": [
+      16
+    ],
+    "bm25": [
+      0
+    ],
+    "entity": [
+      0,
+      2
+    ],
+    "key": [
+      0,
+      2,
+      5
+    ],
+    "points": [
+      0,
+      2
+    ],
+    "anthropic": [
+      0
+    ],
+    "research": [
+      0,
+      9
+    ],
+    "showed": [
+      0
+    ],
+    "that": [
+      0,
+      5
+    ],
+    "combining": [
+      0
+    ],
+    "with": [
+      0,
+      8,
+      14
+    ],
+    "contextual": [
+      0
+    ],
+    "embeddings": [
+      0
+    ],
+    "hyper-extract": [
+      1
+    ],
+    "tool": [
+      1
+    ],
+    "knowledge-extraction": [
+      1
+    ],
+    "hypergraph": [
+      1
+    ],
+    "obsidian": [
+      1
+    ],
+    "mcp": [
+      1,
+      16,
+      17
+    ],
+    "framework": [
+      1
+    ],
+    "de": [
+      1,
+      3,
+      4,
+      6,
+      8,
+      11,
+      12,
+      15,
+      18,
+      20,
+      21
+    ],
+    "knowledge": [
+      1,
+      4,
+      5,
+      7,
+      10
+    ],
+    "extraction": [
+      1,
+      4
+    ],
+    "llm-powered": [
+      1
+    ],
+    "que": [
+      1,
+      4,
+      16,
+      21
+    ],
+    "transforma": [
+      1
+    ],
+    "texto": [
+      1
+    ],
+    "o-estruturado": [
+      1
+    ],
+    "em": [
+      1,
+      4,
+      10,
+      12
+    ],
+    "abstracts": [
+      1
+    ],
+    "estruturados": [
+      1
+    ],
+    "evolution": [
+      1
+    ],
+    "novos": [
+      1
+    ],
+    "docs": [
+      1
+    ],
+    "expandem": [
+      1
+    ],
+    "base": [
+      1
+    ],
+    "existente": [
+      1
+    ],
+    "arquitetura": [
+      1,
+      16,
+      19
+    ],
+    "camadas": [
+      1
+    ],
+    "auto-types": [
+      1
+    ],
+    "tf-idf": [
+      2
+    ],
+    "it": [
+      2
+    ],
+    "builds": [
+      2
+    ],
+    "upon": [
+      2
+    ],
+    "by": [
+      2
+    ],
+    "considering": [
+      2
+    ],
+    "document": [
+      2
+    ],
+    "length": [
+      2
+    ],
+    "and": [
+      2
+    ],
+    "llm-wiki": [
+      3,
+      4,
+      11,
+      16,
+      17,
+      18
+    ],
+    "pattern": [
+      3
+    ],
+    "ai": [
+      3,
+      15,
+      21
+    ],
+    "memory": [
+      3,
+      12,
+      16,
+      19,
+      21
+    ],
+    "knowledge-base": [
+      3
+    ],
+    "karpathy": [
+      3,
+      4,
+      11,
+      16
+    ],
+    "architecture": [
+      3,
+      12,
+      16,
+      21
+    ],
+    "padr": [
+      3,
+      4,
+      11
+    ],
+    "constru": [
+      3
+    ],
+    "bases": [
+      3,
+      11
+    ],
+    "conhecimento": [
+      3
+    ],
+    "pessoais": [
+      3
+    ],
+    "usando": [
+      3
+    ],
+    "llms": [
+      3,
+      9
+    ],
+    "proposto": [
+      3
+    ],
+    "por": [
+      3
+    ],
+    "escreve": [
+      3
+    ],
+    "gina": [
+      3
+    ],
+    "sum": [
+      3
+    ],
+    "rio": [
+      3
+    ],
+    "no": [
+      3,
+      18,
+      20
+    ],
+    "wiki": [
+      3,
+      4,
+      16,
+      17
+    ],
+    "atualiza": [
+      3
+    ],
+    "index": [
+      3
+    ],
+    "entidades": [
+      3
+    ],
+    "conceitos": [
+      3
+    ],
+    "adiciona": [
+      3
+    ],
+    "wikilinks": [
+      3
+    ],
+    "open": [
+      4
+    ],
+    "format": [
+      4
+    ],
+    "okf": [
+      4,
+      7,
+      13
+    ],
+    "google": [
+      4,
+      7
+    ],
+    "standard": [
+      4
+    ],
+    "markdown": [
+      4
+    ],
+    "yaml": [
+      4
+    ],
+    "knowledge-format": [
+      4
+    ],
+    "interoperability": [
+      4
+    ],
+    "aberto": [
+      4,
+      8
+    ],
+    "do": [
+      4,
+      6,
+      8,
+      9,
+      12,
+      15
+    ],
+    "v0": [
+      4
+    ],
+    "formaliza": [
+      4
+    ],
+    "design": [
+      4
+    ],
+    "minimally": [
+      4
+    ],
+    "opinionated": [
+      4
+    ],
+    "requer": [
+      4
+    ],
+    "apenas": [
+      4
+    ],
+    "campo": [
+      4
+    ],
+    "type": [
+      4,
+      6,
+      7,
+      13,
+      17,
+      19
+    ],
+    "todo": [
+      4
+    ],
+    "resto": [
+      4
+    ],
+    "enriquecimento": [
+      4
+    ],
+    "cont": [
+      4,
+      21
+    ],
+    "nuo": [
+      4
+    ],
+    "smart": [
+      4
+    ],
+    "storage": [
+      4
+    ],
+    "auto-tagging": [
+      4
+    ],
+    "gcs": [
+      4
+    ],
+    "deep": [
+      4
+    ],
+    "multimodal": [
+      4
+    ],
+    "metadata": [
+      4
+    ],
+    "gemini": [
+      4
+    ],
+    "prop": [
+      4
+    ],
+    "implementamos": [
+      4
+    ],
+    "interoperabilidade": [
+      4
+    ],
+    "nosso": [
+      4,
+      9,
+      15
+    ],
+    "pode": [
+      4
+    ],
+    "ser": [
+      4
+    ],
+    "exportado": [
+      4
+    ],
+    "como": [
+      4,
+      6,
+      8
+    ],
+    "the": [
+      5
+    ],
+    "insight": [
+      5
+    ],
+    "concept": [
+      5
+    ],
+    "description": [
+      5
+    ],
+    "is": [
+      5,
+      14
+    ],
+    "lexical": [
+      5
+    ],
+    "matching": [
+      5
+    ],
+    "catches": [
+      5
+    ],
+    "exact": [
+      5
+    ],
+    "bbc-memory-systems-hm": [
+      6
+    ],
+    "---": [
+      6,
+      7,
+      13,
+      17,
+      19
+    ],
+    "title": [
+      6,
+      7,
+      13,
+      17,
+      19
+    ],
+    "rebro": [
+      6
+    ],
+    "sistemas": [
+      6
+    ],
+    "mem": [
+      6,
+      12,
+      16,
+      21
+    ],
+    "ria": [
+      6,
+      12,
+      16,
+      21
+    ],
+    "ltipla": [
+      6
+    ],
+    "mudam": [
+      6
+    ],
+    "nossa": [
+      6
+    ],
+    "compreens": [
+      6
+    ],
+    "rg": [
+      6
+    ],
+    "da": [
+      6,
+      10,
+      12,
+      16
+    ],
+    "bbc": [
+      6
+    ],
+    "sobre": [
+      6,
+      8
+    ],
+    "caso": [
+      6
+    ],
+    "paciente": [
+      6
+    ],
+    "henry": [
+      6
+    ],
+    "molaison": [
+      6
+    ],
+    "revolucionou": [
+      6
+    ],
+    "mas": [
+      6
+    ],
+    "sabe": [
+      6
+    ],
+    "realizar": [
+      6
+    ],
+    "atividades": [
+      6
+    ],
+    "conceito": [
+      6
+    ],
+    "ltiplos": [
+      6,
+      9
+    ],
+    "cada": [
+      6
+    ],
+    "tipo": [
+      6
+    ],
+    "depende": [
+      6
+    ],
+    "google-okf-blog": [
+      7
+    ],
+    "cloud": [
+      7
+    ],
+    "catalog": [
+      7
+    ],
+    "source": [
+      7,
+      11,
+      13
+    ],
+    "date": [
+      7,
+      13,
+      14,
+      19
+    ],
+    "2026-06-20": [
+      7
+    ],
+    "tags": [
+      7,
+      13,
+      19
+    ],
+    "headcount": [
+      8,
+      15
+    ],
+    "zero": [
+      8,
+      15
+    ],
+    "how": [
+      8
+    ],
+    "to": [
+      8,
+      14
+    ],
+    "build": [
+      8
+    ],
+    "an": [
+      8,
+      15
+    ],
+    "ai-run": [
+      8
+    ],
+    "company": [
+      8
+    ],
+    "paperclip": [
+      8,
+      15
+    ],
+    "zero-employee": [
+      8,
+      15
+    ],
+    "ai-company": [
+      8,
+      15
+    ],
+    "multi-agent": [
+      8,
+      15
+    ],
+    "governance": [
+      8,
+      15
+    ],
+    "book": [
+      8
+    ],
+    "reference": [
+      8,
+      9,
+      15
+    ],
+    "livro": [
+      8,
+      15
+    ],
+    "resumo": [
+      8,
+      9
+    ],
+    "cc": [
+      8
+    ],
+    "by-nc-sa": [
+      8
+    ],
+    "agentes": [
+      8
+    ],
+    "ia": [
+      8
+    ],
+    "workforce": [
+      8
+    ],
+    "inteiro": [
+      8
+    ],
+    "sem": [
+      8
+    ],
+    "funcion": [
+      8
+    ],
+    "rios": [
+      8
+    ],
+    "payroll": [
+      8
+    ],
+    "hr": [
+      8
+    ],
+    "um": [
+      8,
+      18
+    ],
+    "founder": [
+      8
+    ],
+    "org": [
+      8
+    ],
+    "kill": [
+      8
+    ],
+    "switch": [
+      8
+    ],
+    "agents": [
+      8,
+      9,
+      14
+    ],
+    "md": [
+      8,
+      17
+    ],
+    "red": [
+      8
+    ],
+    "lines": [
+      8
+    ],
+    "ask-before-destructive": [
+      8
+    ],
+    "hermes": [
+      9
+    ],
+    "mixture": [
+      9
+    ],
+    "of": [
+      9
+    ],
+    "moa": [
+      9
+    ],
+    "nous": [
+      9
+    ],
+    "mixture-of-agents": [
+      9
+    ],
+    "nous-research": [
+      9
+    ],
+    "multi-model": [
+      9
+    ],
+    "agent-architecture": [
+      9
+    ],
+    "post": [
+      9
+    ],
+    "akshay": [
+      9
+    ],
+    "explicando": [
+      9
+    ],
+    "feature": [
+      9
+    ],
+    "keyword": [
+      9
+    ],
+    "puro": [
+      9
+    ],
+    "llm": [
+      9,
+      12
+    ],
+    "nico": [
+      9
+    ],
+    "hybrid": [
+      9,
+      10,
+      12,
+      16
+    ],
+    "rag": [
+      10
+    ],
+    "graph": [
+      10
+    ],
+    "vector": [
+      10,
+      16
+    ],
+    "database": [
+      10,
+      16
+    ],
+    "knowledge-graph": [
+      10,
+      19,
+      21
+    ],
+    "vector-db": [
+      10,
+      16
+    ],
+    "graphrag": [
+      10
+    ],
+    "agentic-rag": [
+      10
+    ],
+    "reranking": [
+      10,
+      16
+    ],
+    "estado": [
+      10,
+      12
+    ],
+    "arte": [
+      10,
+      12
+    ],
+    "combinando": [
+      10,
+      18
+    ],
+    "gist": [
+      11
+    ],
+    "original": [
+      11
+    ],
+    "andrej": [
+      11
+    ],
+    "propondo": [
+      11
+    ],
+    "para": [
+      11,
+      15
+    ],
+    "agent": [
+      12
+    ],
+    "architectures": [
+      12
+    ],
+    "2025-2026": [
+      12
+    ],
+    "episodic": [
+      12
+    ],
+    "semantic": [
+      12
+    ],
+    "procedural": [
+      12
+    ],
+    "mem0": [
+      12
+    ],
+    "letta": [
+      12
+    ],
+    "zep": [
+      12
+    ],
+    "cognee": [
+      12,
+      19,
+      21
+    ],
+    "ntese": [
+      12,
+      16
+    ],
+    "arquiteturas": [
+      12
+    ],
+    "mariehaynes-okf-analysis": [
+      13
+    ],
+    "marie": [
+      13
+    ],
+    "haynes": [
+      13
+    ],
+    "analysis": [
+      13
+    ],
+    "2026-06-22": [
+      13
+    ],
+    "knowledge-management": [
+      13
+    ],
+    "solution-change-heartbeat-model": [
+      14
+    ],
+    "technical": [
+      14
+    ],
+    "note": [
+      14
+    ],
+    "changing": [
+      14
+    ],
+    "heartbeat": [
+      14,
+      21
+    ],
+    "model": [
+      14
+    ],
+    "in": [
+      14
+    ],
+    "openclaw": [
+      14,
+      18,
+      19,
+      21
+    ],
+    "2026-06-28": [
+      14,
+      19
+    ],
+    "issue": [
+      14
+    ],
+    "path": [
+      14
+    ],
+    "current": [
+      14
+    ],
+    "config": [
+      14
+    ],
+    "bash": [
+      14
+    ],
+    "check": [
+      14
+    ],
+    "schema": [
+      14
+    ],
+    "exists": [
+      14
+    ],
+    "gateway": [
+      14
+    ],
+    "lookup": [
+      14
+    ],
+    "list": [
+      14
+    ],
+    "value": [
+      14
+    ],
+    "restart": [
+      14
+    ],
+    "--reason": [
+      14
+    ],
+    "change": [
+      14
+    ],
+    "--note": [
+      14
+    ],
+    "set": [
+      14
+    ],
+    "nemotron-ultra": [
+      14
+    ],
+    "important": [
+      14
+    ],
+    "on": [
+      14
+    ],
+    "windows": [
+      14
+    ],
+    "always": [
+      14
+    ],
+    "wake": [
+      14
+    ],
+    "event": [
+      14
+    ],
+    "cron": [
+      14
+    ],
+    "--mode": [
+      14
+    ],
+    "now": [
+      14
+    ],
+    "--text": [
+      14
+    ],
+    "test": [
+      14
+    ],
+    "new": [
+      14
+    ],
+    "wait": [
+      14
+    ],
+    "lise": [
+      15
+    ],
+    "completa": [
+      15
+    ],
+    "strategy": [
+      15
+    ],
+    "refer": [
+      15
+    ],
+    "ncia": [
+      15
+    ],
+    "estrat": [
+      15
+    ],
+    "gia": [
+      15
+    ],
+    "entre": [
+      15
+    ],
+    "usar": [
+      15
+    ],
+    "deployar": [
+      15
+    ],
+    "dist": [
+      15
+    ],
+    "frelar": [
+      15
+    ],
+    "fundar": [
+      15
+    ],
+    "previs": [
+      15
+    ],
+    "7-9x": [
+      15
+    ],
+    "custo": [
+      15
+    ],
+    "marginal": [
+      15
+    ],
+    "exponencial": [
+      15
+    ],
+    "flat": [
+      15
+    ],
+    "50-500": [
+      15
+    ],
+    "linear": [
+      15
+    ],
+    "mercados": [
+      15
+    ],
+    "posicionamento": [
+      15
+    ],
+    "apostas": [
+      15
+    ],
+    "relationships": [
+      15
+    ],
+    "clientes": [
+      15
+    ],
+    "chave": [
+      15
+    ],
+    "parceiros": [
+      15
+    ],
+    "investidores": [
+      15
+    ],
+    "brand": [
+      15
+    ],
+    "identidade": [
+      15
+    ],
+    "dia": [
+      15
+    ],
+    "aplica": [
+      15
+    ],
+    "pr": [
+      15
+    ],
+    "tica": [
+      15
+    ],
+    "plano": [
+      15
+    ],
+    "multi-agents": [
+      15
+    ],
+    "assembly": [
+      15
+    ],
+    "synthesis": [
+      16,
+      17
+    ],
+    "brida": [
+      16
+    ],
+    "combina": [
+      16
+    ],
+    "com": [
+      16,
+      20
+    ],
+    "local": [
+      16
+    ],
+    "server": [
+      16
+    ],
+    "camada": [
+      16
+    ],
+    "claude-mem": [
+      16
+    ],
+    "agentmemory": [
+      16,
+      17
+    ],
+    "operacional": [
+      16
+    ],
+    "hooks": [
+      16
+    ],
+    "lessons-learned": [
+      17
+    ],
+    "lessons": [
+      17
+    ],
+    "learned": [
+      17
+    ],
+    "implementation": [
+      17,
+      18
+    ],
+    "created": [
+      17
+    ],
+    "2026-06-26": [
+      17
+    ],
+    "updated": [
+      17
+    ],
+    "sources": [
+      17
+    ],
+    "log": [
+      17
+    ],
+    "aceita": [
+      17
+    ],
+    "writes": [
+      17
+    ],
+    "via": [
+      17,
+      19
+    ],
+    "rest": [
+      17
+    ],
+    "api": [
+      17
+    ],
+    "protocolo": [
+      17
+    ],
+    "stdio": [
+      17
+    ],
+    "interface": [
+      17
+    ],
+    "project": [
+      18,
+      19
+    ],
+    "projeto": [
+      18
+    ],
+    "implementa": [
+      18
+    ],
+    "brido": [
+      18
+    ],
+    "workspace": [
+      18
+    ],
+    "ultra-memory-core": [
+      19
+    ],
+    "ultra": [
+      19,
+      20
+    ],
+    "core": [
+      19
+    ],
+    "status": [
+      19
+    ],
+    "em-andamento": [
+      19
+    ],
+    "memory-architecture": [
+      19,
+      21
+    ],
+    "vector-search": [
+      19
+    ],
+    "ontology": [
+      19
+    ],
+    "ultra-memory": [
+      19
+    ],
+    "dependencies": [
+      19
+    ],
+    "openai": [
+      19
+    ],
+    "litellm": [
+      19
+    ],
+    "license": [
+      19
+    ],
+    "apache-2": [
+      19
+    ],
+    "mit": [
+      19
+    ],
+    "integra": [
+      19
+    ],
+    "stealth": [
+      20
+    ],
+    "skill": [
+      20
+    ],
+    "x-posting": [
+      20
+    ],
+    "anti-detection": [
+      20
+    ],
+    "playwright": [
+      20
+    ],
+    "browser-automation": [
+      20
+    ],
+    "posting": [
+      20
+    ],
+    "simula": [
+      20
+    ],
+    "vs": [
+      21
+    ],
+    "comparison": [
+      21
+    ],
+    "ssc-router": [
+      21
+    ],
+    "topoteretes": [
+      21
+    ],
+    "plataforma": [
+      21
+    ],
+    "open-source": [
+      21
+    ],
+    "mostra": [
+      21
+    ],
+    "autom": [
+      21
+    ],
+    "tico": [
+      21
+    ],
+    "manuten": [
+      21
+    ],
+    "nua": [
+      21
+    ],
+    "delega": [
+      21
+    ],
+    "multi-agente": [
+      21
+    ]
+  },
+  "termFreqs": {
+    "0:0": {
+      "bm25": 3,
+      "entity": 1,
+      "key": 1,
+      "points": 1,
+      "anthropic": 1,
+      "research": 1,
+      "showed": 1,
+      "that": 1,
+      "combining": 1,
+      "with": 1,
+      "contextual": 1,
+      "embeddings": 1
+    },
+    "1:0": {
+      "hyper-extract": 2,
+      "tool": 1,
+      "knowledge-extraction": 1,
+      "hypergraph": 1,
+      "obsidian": 1,
+      "mcp": 1,
+      "framework": 1,
+      "de": 1,
+      "knowledge": 2,
+      "extraction": 1,
+      "llm-powered": 1,
+      "que": 1,
+      "transforma": 1,
+      "texto": 1,
+      "o-estruturado": 1,
+      "em": 1,
+      "abstracts": 1,
+      "estruturados": 1
+    },
+    "1:1": {
+      "hyper-extract": 1,
+      "tool": 1,
+      "knowledge-extraction": 1,
+      "hypergraph": 1,
+      "obsidian": 1,
+      "mcp": 1,
+      "evolution": 1,
+      "novos": 1,
+      "docs": 1,
+      "expandem": 1,
+      "base": 1,
+      "existente": 1,
+      "arquitetura": 1,
+      "camadas": 1,
+      "auto-types": 1
+    },
+    "2:0": {
+      "tf-idf": 3,
+      "entity": 1,
+      "key": 1,
+      "points": 1,
+      "it": 1,
+      "builds": 1,
+      "upon": 1,
+      "by": 1,
+      "considering": 1,
+      "document": 1,
+      "length": 1,
+      "and": 1
+    },
+    "3:0": {
+      "llm-wiki": 2,
+      "pattern": 2,
+      "ai": 1,
+      "memory": 1,
+      "knowledge-base": 1,
+      "karpathy": 1,
+      "architecture": 1,
+      "padr": 1,
+      "de": 3,
+      "constru": 1,
+      "bases": 1,
+      "conhecimento": 1,
+      "pessoais": 1,
+      "usando": 1,
+      "llms": 1,
+      "proposto": 1,
+      "por": 1
+    },
+    "3:1": {
+      "llm-wiki": 1,
+      "pattern": 1,
+      "ai": 1,
+      "memory": 1,
+      "knowledge-base": 1,
+      "karpathy": 1,
+      "architecture": 1,
+      "escreve": 1,
+      "gina": 1,
+      "de": 1,
+      "sum": 1,
+      "rio": 1,
+      "no": 1,
+      "wiki": 1,
+      "atualiza": 1,
+      "index": 1,
+      "entidades": 1,
+      "conceitos": 1,
+      "adiciona": 1,
+      "wikilinks": 1
+    },
+    "4:0": {
+      "open": 2,
+      "knowledge": 2,
+      "format": 2,
+      "okf": 3,
+      "google": 2,
+      "standard": 1,
+      "markdown": 1,
+      "yaml": 1,
+      "knowledge-format": 1,
+      "interoperability": 1,
+      "padr": 2,
+      "aberto": 1,
+      "do": 1,
+      "v0": 1,
+      "que": 1,
+      "formaliza": 1,
+      "llm-wiki": 1
+    },
+    "4:1": {
+      "open": 1,
+      "knowledge": 1,
+      "format": 1,
+      "okf": 3,
+      "google": 1,
+      "standard": 1,
+      "markdown": 1,
+      "yaml": 1,
+      "knowledge-format": 1,
+      "interoperability": 1,
+      "de": 1,
+      "design": 1,
+      "minimally": 1,
+      "opinionated": 1,
+      "requer": 1,
+      "apenas": 1,
+      "campo": 1,
+      "type": 1,
+      "todo": 1,
+      "resto": 1
+    },
+    "4:2": {
+      "open": 1,
+      "knowledge": 1,
+      "format": 1,
+      "okf": 2,
+      "google": 1,
+      "standard": 1,
+      "markdown": 1,
+      "yaml": 1,
+      "knowledge-format": 1,
+      "interoperability": 1,
+      "enriquecimento": 1,
+      "cont": 1,
+      "nuo": 1,
+      "smart": 1,
+      "storage": 1,
+      "auto-tagging": 1,
+      "em": 1,
+      "gcs": 1,
+      "deep": 1,
+      "multimodal": 1,
+      "metadata": 1,
+      "extraction": 1,
+      "gemini": 1
+    },
+    "4:3": {
+      "open": 1,
+      "knowledge": 1,
+      "format": 1,
+      "okf": 2,
+      "google": 1,
+      "standard": 1,
+      "markdown": 1,
+      "yaml": 1,
+      "knowledge-format": 1,
+      "interoperability": 1,
+      "que": 1,
+      "karpathy": 1,
+      "prop": 1,
+      "implementamos": 1,
+      "interoperabilidade": 1,
+      "nosso": 1,
+      "wiki": 1,
+      "pode": 1,
+      "ser": 1,
+      "exportado": 1,
+      "como": 1
+    },
+    "5:0": {
+      "the": 3,
+      "key": 3,
+      "insight": 3,
+      "knowledge": 1,
+      "concept": 1,
+      "description": 1,
+      "is": 1,
+      "that": 1,
+      "lexical": 1,
+      "matching": 1,
+      "catches": 1,
+      "exact": 1
+    },
+    "6:0": {
+      "bbc-memory-systems-hm": 1,
+      "---": 1,
+      "title": 1,
+      "rebro": 1,
+      "como": 1,
+      "sistemas": 1,
+      "de": 1,
+      "mem": 1,
+      "ria": 1,
+      "ltipla": 1,
+      "mudam": 1,
+      "nossa": 1,
+      "compreens": 1,
+      "do": 1,
+      "rg": 1,
+      "type": 1
+    },
+    "6:1": {
+      "bbc-memory-systems-hm": 1,
+      "da": 2,
+      "bbc": 1,
+      "sobre": 1,
+      "como": 1,
+      "caso": 1,
+      "do": 1,
+      "paciente": 1,
+      "henry": 1,
+      "molaison": 1,
+      "revolucionou": 1,
+      "compreens": 1
+    },
+    "6:2": {
+      "bbc-memory-systems-hm": 1,
+      "mas": 1,
+      "sabe": 1,
+      "realizar": 1,
+      "atividades": 1,
+      "conceito": 1,
+      "de": 2,
+      "sistemas": 1,
+      "ltiplos": 1,
+      "mem": 1,
+      "ria": 1,
+      "cada": 1,
+      "tipo": 1,
+      "depende": 1
+    },
+    "7:0": {
+      "google-okf-blog": 1,
+      "---": 1,
+      "title": 1,
+      "google": 1,
+      "cloud": 1,
+      "knowledge": 1,
+      "catalog": 1,
+      "okf": 2,
+      "type": 1,
+      "source": 1,
+      "date": 1,
+      "2026-06-20": 1,
+      "tags": 1
+    },
+    "8:0": {
+      "headcount": 2,
+      "zero": 2,
+      "how": 1,
+      "to": 1,
+      "build": 1,
+      "an": 1,
+      "ai-run": 1,
+      "company": 1,
+      "with": 1,
+      "paperclip": 3,
+      "zero-employee": 1,
+      "ai-company": 1,
+      "multi-agent": 1,
+      "governance": 1,
+      "book": 1,
+      "reference": 1,
+      "livro": 2,
+      "do": 1,
+      "resumo": 1,
+      "aberto": 1,
+      "cc": 1,
+      "by-nc-sa": 1,
+      "sobre": 1
+    },
+    "8:1": {
+      "headcount": 1,
+      "zero": 1,
+      "how": 1,
+      "to": 1,
+      "build": 1,
+      "an": 1,
+      "ai-run": 1,
+      "company": 1,
+      "with": 1,
+      "paperclip": 2,
+      "zero-employee": 1,
+      "ai-company": 1,
+      "multi-agent": 1,
+      "governance": 1,
+      "book": 1,
+      "reference": 1,
+      "agentes": 1,
+      "de": 1,
+      "ia": 1,
+      "como": 1,
+      "workforce": 1,
+      "inteiro": 1,
+      "sem": 3,
+      "funcion": 1,
+      "rios": 1,
+      "payroll": 1,
+      "hr": 1,
+      "um": 1,
+      "founder": 1,
+      "org": 1
+    },
+    "8:2": {
+      "headcount": 1,
+      "zero": 2,
+      "how": 1,
+      "to": 1,
+      "build": 1,
+      "an": 1,
+      "ai-run": 1,
+      "company": 1,
+      "with": 1,
+      "paperclip": 2,
+      "zero-employee": 1,
+      "ai-company": 1,
+      "multi-agent": 1,
+      "governance": 2,
+      "book": 1,
+      "reference": 1,
+      "kill": 1,
+      "switch": 1,
+      "agents": 1,
+      "md": 1,
+      "red": 1,
+      "lines": 1,
+      "ask-before-destructive": 1,
+      "funcion": 1,
+      "rios": 1
+    },
+    "9:0": {
+      "hermes": 3,
+      "mixture": 3,
+      "of": 2,
+      "agents": 2,
+      "moa": 2,
+      "nous": 1,
+      "research": 1,
+      "mixture-of-agents": 1,
+      "nous-research": 1,
+      "multi-model": 1,
+      "agent-architecture": 1,
+      "reference": 1,
+      "resumo": 1,
+      "post": 1,
+      "do": 1,
+      "akshay": 1,
+      "explicando": 1,
+      "feature": 1
+    },
+    "9:1": {
+      "hermes": 3,
+      "mixture": 1,
+      "of": 1,
+      "agents": 1,
+      "moa": 2,
+      "nous": 1,
+      "research": 1,
+      "mixture-of-agents": 1,
+      "nous-research": 1,
+      "multi-model": 1,
+      "agent-architecture": 1,
+      "reference": 1,
+      "keyword": 1,
+      "puro": 1,
+      "ltiplos": 1,
+      "llms": 1,
+      "llm": 1,
+      "nico": 1,
+      "nosso": 1,
+      "hybrid": 1
+    },
+    "10:0": {
+      "hybrid": 4,
+      "rag": 4,
+      "knowledge": 2,
+      "graph": 2,
+      "vector": 2,
+      "database": 2,
+      "knowledge-graph": 1,
+      "vector-db": 1,
+      "graphrag": 1,
+      "agentic-rag": 1,
+      "reranking": 1,
+      "estado": 1,
+      "da": 1,
+      "arte": 1,
+      "em": 1,
+      "combinando": 1
+    },
+    "11:0": {
+      "karpathy": 4,
+      "llm-wiki": 4,
+      "gist": 3,
+      "source": 1,
+      "original": 2,
+      "de": 1,
+      "andrej": 1,
+      "propondo": 1,
+      "padr": 1,
+      "para": 1,
+      "bases": 1
+    },
+    "12:0": {
+      "llm": 2,
+      "agent": 2,
+      "memory": 3,
+      "architectures": 2,
+      "2025-2026": 2,
+      "architecture": 1,
+      "hybrid": 1,
+      "episodic": 1,
+      "semantic": 1,
+      "procedural": 1,
+      "mem0": 1,
+      "letta": 1,
+      "zep": 1,
+      "cognee": 1,
+      "ntese": 1,
+      "do": 1,
+      "estado": 1,
+      "da": 1,
+      "arte": 1,
+      "em": 1,
+      "arquiteturas": 1,
+      "de": 1,
+      "mem": 1,
+      "ria": 1
+    },
+    "13:0": {
+      "mariehaynes-okf-analysis": 1,
+      "---": 1,
+      "title": 1,
+      "marie": 1,
+      "haynes": 1,
+      "okf": 2,
+      "analysis": 2,
+      "type": 1,
+      "source": 1,
+      "date": 1,
+      "2026-06-22": 1,
+      "tags": 1,
+      "knowledge-management": 1
+    },
+    "14:0": {
+      "solution-change-heartbeat-model": 1,
+      "technical": 1,
+      "note": 1,
+      "changing": 1,
+      "heartbeat": 2,
+      "model": 2,
+      "in": 1,
+      "openclaw": 1,
+      "date": 1,
+      "2026-06-28": 1,
+      "issue": 1,
+      "path": 1,
+      "is": 1
+    },
+    "14:1": {
+      "solution-change-heartbeat-model": 1,
+      "current": 2,
+      "config": 2,
+      "bash": 1,
+      "check": 2,
+      "schema": 2,
+      "exists": 1,
+      "gateway": 2,
+      "lookup": 1,
+      "agents": 1,
+      "list": 1,
+      "heartbeat": 1,
+      "model": 1,
+      "value": 1
+    },
+    "14:2": {
+      "solution-change-heartbeat-model": 1,
+      "restart": 1,
+      "--reason": 1,
+      "heartbeat": 2,
+      "model": 2,
+      "change": 1,
+      "--note": 1,
+      "set": 1,
+      "to": 1,
+      "nemotron-ultra": 1,
+      "important": 1,
+      "on": 1,
+      "windows": 1,
+      "always": 1
+    },
+    "14:3": {
+      "solution-change-heartbeat-model": 1,
+      "wake": 2,
+      "event": 1,
+      "bash": 1,
+      "cron": 1,
+      "--mode": 1,
+      "now": 1,
+      "--text": 1,
+      "test": 1,
+      "heartbeat": 1,
+      "with": 1,
+      "new": 1,
+      "model": 1,
+      "wait": 1
+    },
+    "15:0": {
+      "headcount": 2,
+      "zero": 2,
+      "an": 2,
+      "lise": 2,
+      "completa": 2,
+      "paperclip": 1,
+      "zero-employee": 1,
+      "ai-company": 1,
+      "multi-agent": 1,
+      "governance": 1,
+      "strategy": 1,
+      "reference": 1,
+      "do": 1,
+      "livro": 2,
+      "de": 1,
+      "refer": 1,
+      "ncia": 1,
+      "para": 1,
+      "estrat": 1,
+      "gia": 1
+    },
+    "15:1": {
+      "headcount": 1,
+      "zero": 1,
+      "an": 1,
+      "lise": 1,
+      "completa": 1,
+      "paperclip": 1,
+      "zero-employee": 1,
+      "ai-company": 1,
+      "multi-agent": 1,
+      "governance": 1,
+      "strategy": 1,
+      "reference": 1,
+      "entre": 2,
+      "usar": 1,
+      "ai": 2,
+      "deployar": 1,
+      "dist": 1,
+      "ncia": 1,
+      "frelar": 1,
+      "fundar": 1,
+      "previs": 1
+    },
+    "15:2": {
+      "headcount": 1,
+      "zero": 1,
+      "an": 1,
+      "lise": 1,
+      "completa": 1,
+      "paperclip": 1,
+      "zero-employee": 1,
+      "ai-company": 1,
+      "multi-agent": 1,
+      "governance": 1,
+      "strategy": 1,
+      "reference": 1,
+      "7-9x": 1,
+      "custo": 1,
+      "marginal": 1,
+      "exponencial": 1,
+      "flat": 1,
+      "50-500": 1,
+      "linear": 1
+    },
+    "15:3": {
+      "headcount": 1,
+      "zero": 1,
+      "an": 1,
+      "lise": 1,
+      "completa": 1,
+      "paperclip": 1,
+      "zero-employee": 1,
+      "ai-company": 1,
+      "multi-agent": 1,
+      "governance": 1,
+      "strategy": 1,
+      "reference": 1,
+      "mercados": 1,
+      "posicionamento": 1,
+      "apostas": 1,
+      "relationships": 1,
+      "clientes": 1,
+      "chave": 1,
+      "parceiros": 1,
+      "investidores": 1,
+      "brand": 1,
+      "identidade": 1
+    },
+    "15:4": {
+      "headcount": 1,
+      "zero": 1,
+      "an": 1,
+      "lise": 1,
+      "completa": 1,
+      "paperclip": 1,
+      "zero-employee": 1,
+      "ai-company": 1,
+      "multi-agent": 1,
+      "governance": 1,
+      "strategy": 1,
+      "reference": 1,
+      "dia": 1,
+      "aplica": 1,
+      "pr": 1,
+      "tica": 1,
+      "para": 1,
+      "nosso": 1,
+      "plano": 1,
+      "de": 1,
+      "multi-agents": 1,
+      "assembly": 1
+    },
+    "16:0": {
+      "hybrid": 3,
+      "memory": 3,
+      "architecture": 3,
+      "wiki": 1,
+      "vector-db": 1,
+      "synthesis": 1,
+      "ntese": 1,
+      "da": 1,
+      "arquitetura": 1,
+      "brida": 1,
+      "que": 1,
+      "combina": 1,
+      "karpathy": 1,
+      "llm-wiki": 1,
+      "com": 1,
+      "vector": 1,
+      "database": 1
+    },
+    "16:1": {
+      "100": 1,
+      "hybrid": 2,
+      "memory": 3,
+      "architecture": 2,
+      "wiki": 1,
+      "vector-db": 1,
+      "synthesis": 1,
+      "reranking": 1,
+      "local": 1,
+      "mcp": 1,
+      "server": 1,
+      "camada": 1,
+      "claude-mem": 1,
+      "agentmemory": 1,
+      "mem": 1,
+      "ria": 1,
+      "operacional": 1,
+      "hooks": 1
+    },
+    "17:0": {
+      "lessons-learned": 1,
+      "---": 1,
+      "title": 1,
+      "lessons": 1,
+      "learned": 1,
+      "llm-wiki": 1,
+      "implementation": 1,
+      "type": 1,
+      "synthesis": 1,
+      "created": 1,
+      "2026-06-26": 2,
+      "updated": 1,
+      "sources": 1,
+      "wiki": 1,
+      "log": 1,
+      "md": 1
+    },
+    "17:1": {
+      "lessons-learned": 1,
+      "agentmemory": 1,
+      "aceita": 1,
+      "writes": 1,
+      "via": 1,
+      "rest": 1,
+      "api": 1,
+      "protocolo": 1,
+      "mcp": 1,
+      "stdio": 1,
+      "interface": 1
+    },
+    "18:0": {
+      "openclaw": 4,
+      "llm-wiki": 4,
+      "project": 3,
+      "implementation": 1,
+      "projeto": 1,
+      "de": 2,
+      "implementa": 1,
+      "um": 1,
+      "brido": 1,
+      "no": 1,
+      "workspace": 1,
+      "combinando": 1
+    },
+    "19:0": {
+      "ultra-memory-core": 1,
+      "---": 1,
+      "title": 1,
+      "ultra": 1,
+      "memory": 1,
+      "core": 1,
+      "arquitetura": 1,
+      "type": 1,
+      "project": 1,
+      "date": 1,
+      "2026-06-28": 1,
+      "status": 1,
+      "em-andamento": 1,
+      "tags": 1
+    },
+    "19:1": {
+      "ultra-memory-core": 1,
+      "status": 1,
+      "em-andamento": 1,
+      "tags": 1,
+      "memory-architecture": 1,
+      "knowledge-graph": 1,
+      "vector-search": 1,
+      "ontology": 1,
+      "cognee": 1,
+      "ultra-memory": 1,
+      "dependencies": 1,
+      "---": 1,
+      "ultra": 1,
+      "memory": 1
+    },
+    "19:2": {
+      "ultra-memory-core": 1,
+      "openai": 1,
+      "litellm": 1,
+      "via": 1,
+      "openclaw": 1,
+      "license": 1,
+      "apache-2": 1,
+      "mit": 1,
+      "integra": 1
+    },
+    "20:0": {
+      "ultra": 3,
+      "stealth": 4,
+      "skill": 3,
+      "x-posting": 1,
+      "anti-detection": 2,
+      "playwright": 1,
+      "browser-automation": 1,
+      "de": 1,
+      "posting": 1,
+      "no": 1,
+      "com": 2,
+      "simula": 1
+    },
+    "21:0": {
+      "cognee": 5,
+      "vs": 2,
+      "openclaw": 3,
+      "memory": 3,
+      "architecture": 2,
+      "knowledge-graph": 1,
+      "memory-architecture": 1,
+      "comparison": 1,
+      "ssc-router": 1,
+      "topoteretes": 1,
+      "plataforma": 1,
+      "open-source": 1,
+      "de": 1,
+      "ai": 1
+    },
+    "21:1": {
+      "cognee": 3,
+      "vs": 1,
+      "openclaw": 2,
+      "memory": 1,
+      "architecture": 1,
+      "knowledge-graph": 1,
+      "memory-architecture": 1,
+      "comparison": 1,
+      "ssc-router": 1,
+      "que": 1,
+      "mostra": 1,
+      "heartbeat": 1,
+      "autom": 1,
+      "tico": 1,
+      "manuten": 1,
+      "cont": 1,
+      "nua": 1,
+      "de": 1,
+      "mem": 1,
+      "ria": 1,
+      "delega": 1,
+      "multi-agente": 1
+    }
+  },
+  "avgDocLength": 19.954545454545453,
+  "totalDocs": 22,
+  "totalTokens": 878
+}

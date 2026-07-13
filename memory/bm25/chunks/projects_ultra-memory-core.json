@@ -1,0 +1,57 @@
+[
+  {
+    "text": "﻿---\ntitle: \"Ultra Memory Core — Arquitetura\"\ntype: project\ndate: 2026-06-28\nstatus: em-andamento\ntags: [memory-architecture, knowledge-graph, vector-search, ontology, cognee, ultra-memory]\ndependencies: []\n---\n\n# Ultra Memory Core\n\nMódulo de memória para agentes de IA, inspirado no Cognee mas sem dependências externas.",
+    "contextualText": "[ultra-memory-core]  --- title: \"Ultra Memory Core — Arquitetura\" type: project date: 2026-06-28 status: em-andamento tags:...",
+    "tokens": [
+      "ultra-memory-core",
+      "---",
+      "title",
+      "ultra",
+      "memory",
+      "core",
+      "arquitetura",
+      "type",
+      "project",
+      "date",
+      "2026-06-28",
+      "status",
+      "em-andamento",
+      "tags"
+    ]
+  },
+  {
+    "text": "status: em-andamento tags: [memory-architecture, knowledge-graph, vector-search, ontology, cognee, ultra-memory] dependencies: [] --- # Ultra Memory Core Módulo de memória para agentes de IA, inspirado no Cognee mas sem dependências externas. ## O que é\n- Knowledge graph puro (Node.js, sem networkx)\n- Vector embeddings em JSON + cosine similarity\n- Extração de entidades/relações via LLM\n- API: remember/recall/forget/improve\n\n## Arquitetura\n\n```\nultra-memory-core/\n├── knowledge-graph.js    ← Graph engine puro (adjacency list + BFS/DFS)\n├── vector-store.js       ← Embeddings em JSON + cosine similarity\n├── ontology.js           ← Extração de entidades/relações via LLM\n├── memory-api.js         ← API de alto nível (remember/recall/forget/improve)\n├── index.js              ← Facade\n└── data/                 ← Armazenamento (graph.json, vectors.json)\n```\n\n## Decisões de Design\n\n### Sem vendor lock-in\n- ZERO dependências npm\n- Storage em JSON (não LanceDB)\n- Graph em JS puro (não networkx Python)\n- LLM via OpenClaw (não API direta)\n\n### API (padrão Cognee)\n- `remember(text, opts)` — armazena, extrai entidades, adiciona ao graph + vectors\n- `recall(query, opts)` — busca híbrida (vector similarity + graph traversal)\n- `forget(opts)` — remove por id, entidade ou critérios\n- `improve()` — mescla entidades duplicadas, poda arestas obsoletas\n\n### Schema de entidades\n- Person, Concept, Event, Place, Technology\n- Relações: studies, discovered, uses, part_of, related_to\n\n## Diferenças do Cognee\n| Feature | Cognee | Ultra Memory Core |\n|---|---|---|\n| Dependencies | 30+ Python libs | ZERO (pure Node.js) |\n| Storage | LanceDB + SQLAlchemy | JSON files |\n| Graph | networkx | Adjacency list custom |\n| Vector | LanceDB | Cosine similarity pura |\n| LLM | OpenAI/Litellm | Via OpenClaw |\n| License | Apache-2.0 | MIT |\n\n## Integração com SSC Router\nO ultra-memory-core vai substituir o keyword scoring do SSC Router por:\n1.",
+    "contextualText": "[ultra-memory-core] status: em-andamento tags: [memory-architecture, knowledge-graph, vector-search, ontology, cognee, ultra-memory] dependencies: [] --- # Ultra Memory...",
+    "tokens": [
+      "ultra-memory-core",
+      "status",
+      "em-andamento",
+      "tags",
+      "memory-architecture",
+      "knowledge-graph",
+      "vector-search",
+      "ontology",
+      "cognee",
+      "ultra-memory",
+      "dependencies",
+      "---",
+      "ultra",
+      "memory"
+    ]
+  },
+  {
+    "text": "| OpenAI/Litellm | Via OpenClaw | | License | Apache-2.0 | MIT | ## Integração com SSC Router O ultra-memory-core vai substituir o keyword scoring do SSC Router por: 1. Graph traversal (encontra relações indiretas)\n2. Vector similarity (encontra conceitos similares)\n3. Ontology grounding (estrutura o conhecimento)\n\n## Status\n- [ ] knowledge-graph.js\n- [ ] vector-store.js\n- [ ] ontology.js\n- [ ] memory-api.js\n- [ ] index.js\n- [ ] Integração com SSC Router\n- [ ] Testes\n\n\n## Related\n- [[synthesis/hybrid-memory-architecture]]\n- [[comparisons/cognee-vs-openclaw-memory]]\n- [[entities/hyper-extract]]\n\r\n",
+    "contextualText": "[ultra-memory-core] | OpenAI/Litellm | Via OpenClaw | | License | Apache-2.0 | MIT | ## Integração...",
+    "tokens": [
+      "ultra-memory-core",
+      "openai",
+      "litellm",
+      "via",
+      "openclaw",
+      "license",
+      "apache-2",
+      "mit",
+      "integra"
+    ]
+  }
+]

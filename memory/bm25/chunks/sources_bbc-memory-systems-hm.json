@@ -1,0 +1,64 @@
+[
+  {
+    "text": "﻿---\ntitle: \"Cérebro: como sistemas de memória múltipla mudam nossa compreensão do órgão\"\ntype: source\nsource: BBC News Mundo\nauthor: Margarita Rodríguez\ndate: 2025-04-05\nurl: \"https://www.bbc.com/portuguese/articles/cq8y14z71x9o\"\ntags: [memory-systems, neuroscience, H.M., henry-molaison, brenda-milner, hippocampus, procedural-memory, working-memory]\naccessed: 2026-06-28\n---\n\n# Sistemas de Memória Múltipla — Caso H.M. ## Resumo\nArtigo da BBC sobre como o caso do paciente H.M. (Henry Molaison) revolucionou a compreensão da memória. Brenda Milner demonstrou que existem sistemas de memória independentes no cérebro. ## Caso H.M.",
+    "contextualText": "[bbc-memory-systems-hm]  --- title: \"Cérebro: como sistemas de memória múltipla mudam nossa compreensão do órgão\" type:...",
+    "tokens": [
+      "bbc-memory-systems-hm",
+      "---",
+      "title",
+      "rebro",
+      "como",
+      "sistemas",
+      "de",
+      "mem",
+      "ria",
+      "ltipla",
+      "mudam",
+      "nossa",
+      "compreens",
+      "do",
+      "rg",
+      "type"
+    ]
+  },
+  {
+    "text": "da BBC sobre como o caso do paciente H.M. (Henry Molaison) revolucionou a compreensão da memória. Brenda Milner demonstrou que existem sistemas de memória independentes no cérebro. ## Caso H.M. - **Paciente**: Henry Molaison (1927–2008), aparecido como \"H.M.\" em publicações\n- **Condição**: Epilepsia grave → cirurgia para remover hipocampo bilateral (1953)\n- **Resultado**: Amnésia anterógrada — não criava novas memórias episódicas\n- **Preservado**: Memórias pré-operatórias + memória procedimental (aprendia atividades motoras)\n\n## Número 584\n- Milner pediu que Henry lembrasse do número 584\n- Henry manteve por 20 minutos via repetição verbal constante\n- Segredo: \"prática verbal constante\" como compensação\n- Se interrompido (ex: \"qual o nome do seu pai?\"), esquecia E esquecia que deveria lembrar\n\n## Sistemas de Memória Descobertos\n\n| Tipo | Estrutura Neural | Função |\n|------|-----------------|--------|\n| Memória de trabalho | Córtex pré-frontal | Armazenamento temporário (segundos) |\n| Memória episódica | Hipocampo | Lembranças autobiográficas |\n| Memória semântica | Córtex temporal | Conhecimento geral |\n| Memória procedural | Estriado/cerebelo | Habilidades motoras |\n\n## Conquista de Milner\n- Primeira a demonstrar **dissociações** de memória: paciente não lembra de nada dito, mas sabe realizar atividades\n- Conceito de \"sistemas múltiplos de memória\" — cada tipo depende de estruturas cerebrais diferentes\n- \"Guinada quase copernicana\" na compreensão do cérebro (Gabriel Ruiz, U.",
+    "contextualText": "[bbc-memory-systems-hm] da BBC sobre como o caso do paciente H.M. (Henry Molaison) revolucionou a compreensão da...",
+    "tokens": [
+      "bbc-memory-systems-hm",
+      "da",
+      "bbc",
+      "sobre",
+      "como",
+      "caso",
+      "do",
+      "paciente",
+      "henry",
+      "molaison",
+      "revolucionou",
+      "compreens",
+      "da"
+    ]
+  },
+  {
+    "text": "mas sabe realizar atividades - Conceito de \"sistemas múltiplos de memória\" — cada tipo depende de estruturas cerebrais diferentes - \"Guinada quase copernicana\" na compreensão do cérebro (Gabriel Ruiz, U. de Sevilha)\n\n## Relevância para AI Memory\n- Paralelo direto com arquitetura de memória para agentes de IA\n- Hipocampo ↔ SSC Router (índice e consolidação)\n- Memória de trabalho ↔ Sessão ativa\n- Memória episódica ↔ Logs diários\n- Memória semântica ↔ Segmentos comprimidos\n- Memória procedural ↔ Instruções fixas (AGENTS.md)\n\n## Referência\n- Brenda Milner, entrevista APS 2013\n- Robert Zatorre, Instituto Neurológico de Montreal\n- Gabriel Ruiz, Universidade de Sevilha\n\n## Related\n- [[concepts/llm-wiki-pattern]]\n- [[synthesis/hybrid-memory-architecture]]\n\r\n",
+    "contextualText": "[bbc-memory-systems-hm] mas sabe realizar atividades - Conceito de \"sistemas múltiplos de memória\" — cada tipo depende...",
+    "tokens": [
+      "bbc-memory-systems-hm",
+      "mas",
+      "sabe",
+      "realizar",
+      "atividades",
+      "conceito",
+      "de",
+      "sistemas",
+      "ltiplos",
+      "de",
+      "mem",
+      "ria",
+      "cada",
+      "tipo",
+      "depende"
+    ]
+  }
+]

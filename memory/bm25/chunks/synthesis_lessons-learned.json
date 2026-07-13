@@ -1,0 +1,42 @@
+[
+  {
+    "text": "﻿---\ntitle: \"Lessons Learned: LLM-Wiki Implementation\"\ntype: synthesis\ncreated: 2026-06-26\nupdated: 2026-06-26\nsources: [\"wiki/log.md\", \"paper/sections/paper-draft.md\"]\ntags: [lessons, implementation, windows, mcp, free-tier, open-knowledge-format]\nextraction_method: llm-manual\n---\n\n# Lessons Learned: LLM-Wiki Implementation\n\nLições aprendidas durante a implementação do LLM-Wiki Híbrido no OpenClaw (2026-06-26). ## 1. Free-tier models superam modelos pagos para extração\n\nO Nemotron Nano 30B (free) extraiu 89% mais entidades que o gpt-4o-mini ($0.01/doc). Para knowledge extraction, contagem de parâmetros importa mais que tier de treinamento. **Implicação**: É possível deployar um sistema de knowledge extraction completo com custo $0.00. ## 2. Embeddings locais eliminam barreira de custo\n\nembeddinggemma-300M (333MB, local) gera embeddings de qualidade sem chamadas API. Para equipes com restrição orçamentária, modelos GGUF locais são viáveis. ## 3. Windows continua sendo cidadão de segunda classe em ML tooling\n\nCada ferramenta da stack exigiu workarounds:\n- TOML encoding fix (UTF-8 sem BOM)\n- Download manual de binários (iii-engine)\n- Scripting específico para PowerShell\n- Bugs de Unicode no rich console\n\n**Recomendação**: Usar WSL2 ou Linux para produção. ## 4. MCP é o protocolo correto de integração\n\nO agentmemory não aceita writes via REST API — o protocolo MCP stdio é a interface pretendida. Isso alinha com a tendência da indústria para MCP como padrão agent-to-agent. ## 5.",
+    "contextualText": "[lessons-learned]  --- title: \"Lessons Learned: LLM-Wiki Implementation\" type: synthesis created: 2026-06-26 updated: 2026-06-26 sources: [\"wiki/log.md\",...",
+    "tokens": [
+      "lessons-learned",
+      "---",
+      "title",
+      "lessons",
+      "learned",
+      "llm-wiki",
+      "implementation",
+      "type",
+      "synthesis",
+      "created",
+      "2026-06-26",
+      "updated",
+      "2026-06-26",
+      "sources",
+      "wiki",
+      "log",
+      "md"
+    ]
+  },
+  {
+    "text": "agentmemory não aceita writes via REST API — o protocolo MCP stdio é a interface pretendida. Isso alinha com a tendência da indústria para MCP como padrão agent-to-agent. ## 5. OKF valida nossa abordagem\n\nO Open Knowledge Format do Google (v0.1) formalizou o mesmo padrão markdown+frontmatter que adotamos independentemente, validando a abordagem e sugerindo interoperabilidade futura com data catalogs enterprise. ## 6. Hyper-Extract precisa de fix no Windows\n\nO wizard interativo `he config init` crasha em Windows devido ao encoding `cp1252`. Solução: editar TOML manualmente com `[System.IO.File]::WriteAllText()` e `UTF8Encoding($false)`. ## 7. qmd é o search engine ideal para markdown\n\nBM25 para keywords + vector para semântico + reranking LLM para máxima qualidade. Tudo local, zero custo. Contextual search com `qmd context add` melhora relevância significativamente. ## Related\n- [[synthesis/hybrid-memory-architecture]]\n- [[comparisons/cognee-vs-openclaw-memory]]\n\r\n",
+    "contextualText": "[lessons-learned] agentmemory não aceita writes via REST API — o protocolo MCP stdio é a interface...",
+    "tokens": [
+      "lessons-learned",
+      "agentmemory",
+      "aceita",
+      "writes",
+      "via",
+      "rest",
+      "api",
+      "protocolo",
+      "mcp",
+      "stdio",
+      "interface"
+    ]
+  }
+]

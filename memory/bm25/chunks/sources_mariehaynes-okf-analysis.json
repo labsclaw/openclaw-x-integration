@@ -1,0 +1,23 @@
+[
+  {
+    "text": "﻿---\ntitle: Marie Haynes OKF Analysis\ntype: source\ndate: 2026-06-22\ntags: [okf, analysis, knowledge-management]\n---\n\n# Marie Haynes OKF Analysis\n\nAnalysis of Google's Open Knowledge Format and its implications for AI-powered knowledge management. ## Key Insights\n\n- OKF validates the markdown+frontmatter pattern that many tools already use\n- The format enables interoperability between different knowledge bases\n- Minimal required fields reduce adoption friction\n\n## Implications for LLM Agents\n\n- Standardized knowledge representation enables cross-platform knowledge sharing\n- File-path-as-identity simplifies knowledge graph construction\n- YAML frontmatter enables automated metadata extraction\n\n## References\n\n- Original analysis by Marie Haynes\n- OKF Specification: https://github.com/google/open-knowledge-format\n\n---\n\n*Source: Marie Haynes analysis, 2026*\r\n\n\n## Related\n- [[sources/google-okf-blog]]\n- [[concepts/open-knowledge-format]]\n\r\n",
+    "contextualText": "[mariehaynes-okf-analysis]  --- title: Marie Haynes OKF Analysis type: source date: 2026-06-22 tags: [okf, analysis, knowledge-management]...",
+    "tokens": [
+      "mariehaynes-okf-analysis",
+      "---",
+      "title",
+      "marie",
+      "haynes",
+      "okf",
+      "analysis",
+      "type",
+      "source",
+      "date",
+      "2026-06-22",
+      "tags",
+      "okf",
+      "analysis",
+      "knowledge-management"
+    ]
+  }
+]

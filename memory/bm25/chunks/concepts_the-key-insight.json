@@ -1,0 +1,26 @@
+[
+  {
+    "text": "# The key insight\n\n## Description\nThe key insight is that lexical matching catches exact matches while semantic embeddings capture meaning\n\n## Related Entities\n- [[TF-IDF]]\n- [[BM25]]\n",
+    "contextualText": "[The key insight] [knowledge, concept] # The key insight ## Description The key insight is that lexical matching catches exact...",
+    "tokens": [
+      "the",
+      "key",
+      "insight",
+      "knowledge",
+      "concept",
+      "the",
+      "key",
+      "insight",
+      "description",
+      "the",
+      "key",
+      "insight",
+      "is",
+      "that",
+      "lexical",
+      "matching",
+      "catches",
+      "exact"
+    ]
+  }
+]

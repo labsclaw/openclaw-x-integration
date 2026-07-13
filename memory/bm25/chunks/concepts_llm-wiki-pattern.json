@@ -1,0 +1,55 @@
+[
+  {
+    "text": "# LLM-Wiki Pattern\n\nPadrão de construção de bases de conhecimento pessoais usando LLMs, proposto por Andrej Karpathy. Em vez de RAG (re-derivar conhecimento a cada query), o LLM compila conhecimento uma vez em um wiki markdown interlinkado e mantém esse wiki continuamente. ## Ideia Central\n\nA maioria das pessoas usa LLMs com documentos via RAG: upload de arquivos, recuperação de chunks relevantes na query, geração de resposta. Isso funciona, mas o LLM re-descobre conhecimento do zero a cada pergunta. Não há acumulação. O LLM-Wiki faz diferente: em vez de recuperar de documentos brutos na query, o LLM constrói e mantém incrementalmente um wiki persistente — uma coleção estruturada e interlinkada de arquivos markdown que fica entre você e as fontes brutas. ## As 3 Camadas\n\n1. **Raw Sources** — Coleção curada de documentos fonte. Imutáveis. Source of truth. 2. **Wiki** — Diretório de arquivos markdown gerados pelo LLM. Sumários, páginas de entidades, páginas de conceitos, comparações, visão geral, síntese. O LLM é dono total desta camada. 3. **Schema** — Documento (ex: CLAUDE.md) que instrui o LLM sobre estrutura, convenções e workflows. ## Operações\n\n### Ingest\n1. Drop de nova fonte na coleção bruta\n2. LLM lê a fonte\n3. Discute takeaways com o humano\n4. Escreve página de sumário no wiki\n5. Atualiza index, entidades, conceitos\n6. Adiciona [[wikilinks]] cruzados\n7. Append no log\n\n### Query\n1. Humano faz pergunta contra o wiki\n2.",
+    "contextualText": "[LLM-Wiki Pattern] [ai, memory, knowledge-base, karpathy, architecture] # LLM-Wiki Pattern Padrão de construção de bases de conhecimento pessoais usando LLMs, proposto por...",
+    "tokens": [
+      "llm-wiki",
+      "pattern",
+      "ai",
+      "memory",
+      "knowledge-base",
+      "karpathy",
+      "architecture",
+      "llm-wiki",
+      "pattern",
+      "padr",
+      "de",
+      "constru",
+      "de",
+      "bases",
+      "de",
+      "conhecimento",
+      "pessoais",
+      "usando",
+      "llms",
+      "proposto",
+      "por"
+    ]
+  },
+  {
+    "text": "4. Escreve página de sumário no wiki 5. Atualiza index, entidades, conceitos 6. Adiciona [[wikilinks]] cruzados 7. Append no log ### Query 1. Humano faz pergunta contra o wiki 2. LLM busca páginas relevantes\n3. Sintetiza resposta com citações\n4. Se valiosa → salva como nova página\n\n### Lint\n1. Verifica contradições entre páginas\n2. Identifica claims obsoletos\n3. Encontra páginas órfãs\n4. Identifica gaps de dados\n5. Sugere novas perguntas e fontes\n\n## Análogos\n\n- **Compiler analogy**: Documentos brutos = source code; LLM = compiler; Wiki = binary (mais denso, queryable)\n- **Vannevar Bush Memex (1945)**: Loja de conhecimento pessoal com trilhas associativas entre documentos\n- **Obsidian como IDE, LLM como programador, wiki como codebase**\n\n## Aplicações\n\n- Pessoal: goals, health, psychology, self-improvement\n- Research: deep dive em tópico ao longo de semanas/meses\n- Leitura de livros: companion wiki por capítulo\n- Business/team: wiki interno mantido por LLMs\n- Due diligence, trip planning, course notes\n\n## Referências\n\n- [[sources/karpathy-llm-wiki-gist]] — Fonte original\n- [[concepts/hybrid-memory-architecture]] — Nossa implementação híbrida\n",
+    "contextualText": "[LLM-Wiki Pattern] [ai, memory, knowledge-base, karpathy, architecture] 4. Escreve página de sumário no wiki 5. Atualiza index, entidades, conceitos 6. Adiciona [[wikilinks]]...",
+    "tokens": [
+      "llm-wiki",
+      "pattern",
+      "ai",
+      "memory",
+      "knowledge-base",
+      "karpathy",
+      "architecture",
+      "escreve",
+      "gina",
+      "de",
+      "sum",
+      "rio",
+      "no",
+      "wiki",
+      "atualiza",
+      "index",
+      "entidades",
+      "conceitos",
+      "adiciona",
+      "wikilinks"
+    ]
+  }
+]

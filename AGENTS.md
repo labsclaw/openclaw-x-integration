@@ -38,8 +38,15 @@ That context may already include:
 - `AGENTS.md`
 - `SOUL.md`
 - `USER.md`
+- `memory/hot.md` (session context — always read first)
 - recent daily memory such as `memory/daily/YYYY-MM-DD.md`
 - `MEMORY.md` in the main session
+
+### Hot Cache Protocol
+1. Read `memory/hot.md` FIRST — it has the immediate session context.
+2. If hot.md is stale (>24h) or missing, fall back to MEMORY.md.
+3. At session END, update hot.md with: last topic, decisions made, next steps.
+4. Keep hot.md under 500 words. MEMORY.md is the slow cache; hot.md is the fast cache.
 
 Do not manually reread startup files unless:
 1. The user explicitly asks.
@@ -284,3 +291,16 @@ You may add conventions that improve performance, as long as they remain consist
 ## Paperclip API Note
 
 If Paperclip API mutations are unreliable via curl or PowerShell on Windows, use a small Node.js HTTP script for POST/PATCH operations.
+
+## graphify
+
+This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+
+When the user types `/graphify`, use the installed graphify skill or instructions before doing anything else.
+
+Rules:
+- For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
+- Dirty graphify-out/ files are expected after hooks or incremental updates; dirty graph files are not a reason to skip graphify. Only skip graphify if the task is about stale or incorrect graph output, or the user explicitly says not to use it.
+- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
+- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
+- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).

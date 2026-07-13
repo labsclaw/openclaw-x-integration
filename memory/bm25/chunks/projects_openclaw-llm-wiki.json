@@ -1,0 +1,29 @@
+[
+  {
+    "text": "# OpenClaw LLM-Wiki Project\n\nProjeto de implementação de um LLM-Wiki híbrido no workspace OpenClaw, combinando Karpathy LLM-Wiki pattern com vector database e extração automática. ## Objetivo\n\nCriar um sistema de conhecimento persistente onde:\n- LLM compila conhecimento uma vez (não re-deriva a cada query)\n- Hyper-Extract automatiza a extração de fontes\n- qmd fornece busca híbrida\n- agentmemory mantém embeddings e knowledge graph\n- claude-mem gerencia memória operacional\n- Obsidian serve como interface visual\n\n## Stack\n\n| Camada | Ferramenta | Status |\n|---|---|---|\n| Compilation | Hyper-Extract | 🟡 A instalar |\n| Wiki | Markdown puro | ✅ Criado |\n| Search | qmd | 🟡 A instalar |\n| Vector | agentmemory | 🟡 A instalar |\n| Memory | claude-mem | 🟡 A instalar |\n| Interface | Obsidian | 🟡 A configurar |\n\n## Fases\n\n1. ✅ Setup base (estrutura + schema)\n2. 🟡 Hyper-Extract (instalar + testar)\n3. 🔲 qmd (search)\n4. 🔲 agentmemory (vector store)\n5. 🔲 claude-mem (operacional)\n6. 🔲 Primeiras ingests\n7. 🔲 Workflow contínuo\n8. 🔲 Avançado\n\n## Documentação para Paper\n\n- [[paper/sections/abstract]] — Abstract do paper\n- [[paper/sections/introduction]] — Introdução\n- [[paper/sections/methodology]] — Metodologia\n- [[paper/sections/results]] — Resultados (em andamento)\n\n## Links\n\n- Plano: wiki/LLM-WIKI-PLAN.md\n- Pesquisa: wiki/RESEARCH-ANALYSIS.md\n- Paper: paper/\n",
+    "contextualText": "[OpenClaw LLM-Wiki Project] [project, openclaw, llm-wiki, implementation] # OpenClaw LLM-Wiki Project Projeto de implementação de um LLM-Wiki híbrido no workspace OpenClaw, combinando...",
+    "tokens": [
+      "openclaw",
+      "llm-wiki",
+      "project",
+      "project",
+      "openclaw",
+      "llm-wiki",
+      "implementation",
+      "openclaw",
+      "llm-wiki",
+      "project",
+      "projeto",
+      "de",
+      "implementa",
+      "de",
+      "um",
+      "llm-wiki",
+      "brido",
+      "no",
+      "workspace",
+      "openclaw",
+      "combinando"
+    ]
+  }
+]

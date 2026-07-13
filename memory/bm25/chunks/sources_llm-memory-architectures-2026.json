@@ -1,0 +1,38 @@
+[
+  {
+    "text": "# LLM Agent Memory Architectures 2025-2026\n\nSíntese do estado da arte em arquiteturas de memória para agentes LLM, baseada em pesquisa abrangente de abril 2026. ## Taxonomia de 3 Camadas (Convergência)\n\n1. **In-context working memory** — buffer efêmero da sessão\n2. **Session-scoped compressed memory** — fatos sumarizados, sob demanda\n3. **Long-term persistent store** — cross-sessão, vector + graph\n\n## Frameworks Principais\n\n- **Mem0** — hybrid semantic layer, paper ECAI 2025, entidades + relações via LLM\n- **Letta** — virtual context management como OS\n- **Zep/Graphiti** — low-latency conversational, semantic + temporal\n- **Cognee** — knowledge graph first-class, open-source\n- **MemoryLake** — cross-agent, multimodal\n- **A-MEM** — Zettelkasten-inspired dynamic organization\n\n## Conexões com Nosso Projeto\n- [[concepts/hybrid-memory-architecture]] — expande a taxonomia de 3 camadas para 6\n- [[entities/hyper-extract]] — camada de compilation que falta na taxonomia padrão\n",
+    "contextualText": "[LLM Agent Memory Architectures 2025-2026] [memory, architecture, hybrid, episodic, semantic, procedural, mem0, letta, zep, cognee] # LLM Agent Memory Architectures 2025-2026 Síntese do estado da arte em arquiteturas de memória...",
+    "tokens": [
+      "llm",
+      "agent",
+      "memory",
+      "architectures",
+      "2025-2026",
+      "memory",
+      "architecture",
+      "hybrid",
+      "episodic",
+      "semantic",
+      "procedural",
+      "mem0",
+      "letta",
+      "zep",
+      "cognee",
+      "llm",
+      "agent",
+      "memory",
+      "architectures",
+      "2025-2026",
+      "ntese",
+      "do",
+      "estado",
+      "da",
+      "arte",
+      "em",
+      "arquiteturas",
+      "de",
+      "mem",
+      "ria"
+    ]
+  }
+]

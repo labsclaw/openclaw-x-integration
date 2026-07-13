@@ -1,0 +1,63 @@
+[
+  {
+    "text": "# Cognee vs OpenClaw Memory Architecture\n\n## Cognee (topoteretes/cognee)\n- Plataforma open-source de AI memory para agentes\n- Knowledge graph auto-hospedado + vector embeddings + ontologia cognitiva\n- API: `remember` / `recall` / `forget` / `improve`\n- Paper: \"Optimizing the Interface Between Knowledge Graphs and LLMs for Complex Reasoning\" (Markovic et al., 2025)\n- Plugin OpenClaw: @cognee/cognee-openclaw\n- Clients: Python, TypeScript, Rust\n\n## Comparação\n\n| Feature | Cognee | OpenClaw Memory |\n|---|---|---|\n| Storage | Knowledge graph (self-hosted) | Markdown + JSON index |\n| Retrieval | Graph reasoning + vector search | SSC Router (keyword scoring) |\n| API | remember/recall/forget/improve | Read/write/heartbeat |\n| Multi-source ingestion | Any format (automático) | Manual (wiki raw/) |\n| Graph relationships | Automático | Flat segments |\n| Session memory | Sim (session_id) | Sessão atual (in-memory) |\n| Heartbeat maintenance | Não documentado | Automático (comprimir/mergear) |\n| Agent delegation | Não tem | Paperclip integration |\n| Interface | API/SDK | Telegram/WhatsApp direto |\n\n## O que Cognee tem que falta no nosso\n1. **Knowledge graph** — entidades conectadas por relações, inferência em cascata\n2. **Ontologia grounding** — estrutura cognitiva automática\n3. **Retrieval híbrido** — graph + vector (nós só temos keyword scoring)\n\n## O que temos que Cognee não mostra\n1. **Heartbeat automático** — manutenção contínua de memória\n2. **Delegação multi-agente** — Paperclip com CTO, CMO, etc. 3. **Interface conversacional** — Telegram/WhatsApp como input natural\n4.",
+    "contextualText": "[Cognee vs OpenClaw Memory Architecture] [cognee, knowledge-graph, memory-architecture, comparison, openclaw, ssc-router] # Cognee vs OpenClaw Memory Architecture ## Cognee (topoteretes/cognee) - Plataforma open-source de AI memory...",
+    "tokens": [
+      "cognee",
+      "vs",
+      "openclaw",
+      "memory",
+      "architecture",
+      "cognee",
+      "knowledge-graph",
+      "memory-architecture",
+      "comparison",
+      "openclaw",
+      "ssc-router",
+      "cognee",
+      "vs",
+      "openclaw",
+      "memory",
+      "architecture",
+      "cognee",
+      "topoteretes",
+      "cognee",
+      "plataforma",
+      "open-source",
+      "de",
+      "ai",
+      "memory"
+    ]
+  },
+  {
+    "text": "que Cognee não mostra 1. **Heartbeat automático** — manutenção contínua de memória 2. **Delegação multi-agente** — Paperclip com CTO, CMO, etc. 3. **Interface conversacional** — Telegram/WhatsApp como input natural 4. **Custo zero** — free-tier Nemotron para extração\n\n## Possibilidade de Upgrade\n- Plugin @cognee/cognee-openclaw pode substituir SSC Router\n- Graph reasoning real vs keyword scoring\n- Investigar: dependências, custo, latência, compatibilidade com nosso workflow\n\n## Referências\n- [[sources/bbc-memory-systems-hm]] — Paralelo biológico (H.M. → arquitetura de memória)\n- [[sources/hybrid-rag-architecture-2026]] — Hybrid RAG: KG + Vector DB\n- [[synthesis/hybrid-memory-architecture]] — Nossa arquitetura atual\n",
+    "contextualText": "[Cognee vs OpenClaw Memory Architecture] [cognee, knowledge-graph, memory-architecture, comparison, openclaw, ssc-router] que Cognee não mostra 1. **Heartbeat automático** — manutenção contínua de memória 2. **Delegação multi-agente**...",
+    "tokens": [
+      "cognee",
+      "vs",
+      "openclaw",
+      "memory",
+      "architecture",
+      "cognee",
+      "knowledge-graph",
+      "memory-architecture",
+      "comparison",
+      "openclaw",
+      "ssc-router",
+      "que",
+      "cognee",
+      "mostra",
+      "heartbeat",
+      "autom",
+      "tico",
+      "manuten",
+      "cont",
+      "nua",
+      "de",
+      "mem",
+      "ria",
+      "delega",
+      "multi-agente"
+    ]
+  }
+]

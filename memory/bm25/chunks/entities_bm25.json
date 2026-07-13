@@ -1,0 +1,22 @@
+[
+  {
+    "text": "# BM25\n\n## Key Points\n- Anthropic research showed that combining BM25 with contextual embeddings reduces retrieval failures by 49%\n- BM25 is a ranking function used in information retrieval\n\n## Source\nIngested from: text-input-1783970653169\n",
+    "contextualText": "[BM25] [entity] # BM25 ## Key Points - Anthropic research showed that combining BM25 with contextual embeddings...",
+    "tokens": [
+      "bm25",
+      "entity",
+      "bm25",
+      "key",
+      "points",
+      "anthropic",
+      "research",
+      "showed",
+      "that",
+      "combining",
+      "bm25",
+      "with",
+      "contextual",
+      "embeddings"
+    ]
+  }
+]

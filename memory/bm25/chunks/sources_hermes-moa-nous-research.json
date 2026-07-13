@@ -1,0 +1,62 @@
+[
+  {
+    "text": "# Hermes Mixture of Agents (MoA)\n\n## Resumo\nPost do Akshay explicando a feature Mixture of Agents do Hermes Agent (Nous Research). Múltiplos modelos consultam entre si dentro do agente — um \"preset\" define quais modelos consultar e qual escreve a resposta final. ## O Problema\n- Cada modelo tem blind spots\n- Rodar o mesmo prompt em múltiplos modelos manualmente funciona, mas sai do agente\n- Ao sair, tools, memory e session são perdidos\n\n## A Solução (Hermes)\n- **Preset**: \"Receita\" que nomeia modelos a consultar + modelo final\n- **Consulta**: Modelos analisam e passam perspectivas pro modelo final\n- **Resposta final**: Um modelo escreve, agora informado por múltiplas perspectivas\n- **Tudo dentro do agente**: Sem perda de contexto\n\n## Conexão com Nosso Trabalho\n| MoA (Hermes) | Nosso Sistema |\n|---|---|\n| Múltiplos modelos consultam | ultra-memory-core: graph + vector + keyword |\n| Um modelo final responde | SSC Router: consolida em top-K |\n| Preset reutilizável | Config do SSC Router (weights) |\n| Tudo dentro do agente | Tudo local, zero dependências |\n\n## Princípio Unificador\n**Nenhuma abordagem isolada tem toda a verdade:**\n- H.M. → cérebro precisa de memórias múltiplas\n- Cognee → knowledge graph + vector > keyword puro\n- Hermes MoA → múltiplos LLMs > LLM único\n- Nosso hybrid retrieval → graph + vector + keyword > qualquer um sozinho\n\n## Status\n- Dr.",
+    "contextualText": "[Hermes Mixture of Agents (MoA) — Nous Research] [mixture-of-agents, hermes, nous-research, multi-model, agent-architecture, reference] # Hermes Mixture of Agents (MoA) ## Resumo Post do Akshay explicando a feature Mixture...",
+    "tokens": [
+      "hermes",
+      "mixture",
+      "of",
+      "agents",
+      "moa",
+      "nous",
+      "research",
+      "mixture-of-agents",
+      "hermes",
+      "nous-research",
+      "multi-model",
+      "agent-architecture",
+      "reference",
+      "hermes",
+      "mixture",
+      "of",
+      "agents",
+      "moa",
+      "resumo",
+      "post",
+      "do",
+      "akshay",
+      "explicando",
+      "feature",
+      "mixture"
+    ]
+  },
+  {
+    "text": "> keyword puro - Hermes MoA → múltiplos LLMs > LLM único - Nosso hybrid retrieval → graph + vector + keyword > qualquer um sozinho ## Status - Dr. Roger tem um **plano complexo** de multi-agents + dynamic workflows\n- Está em fase de coleta de referências\n- Este post é uma das referências do plano\n- **AGUARDAR** até Dr. Roger ter as referências prontas\n\n## Referência\n- [[projects/ultra-memory-core]] — Nosso módulo de graph reasoning\n- [[comparisons/cognee-vs-openclaw-memory]] — Análise do Cognee\n- [[sources/bbc-memory-systems-hm]] — Paralelo biológico (H.M.)\n",
+    "contextualText": "[Hermes Mixture of Agents (MoA) — Nous Research] [mixture-of-agents, hermes, nous-research, multi-model, agent-architecture, reference] > keyword puro - Hermes MoA → múltiplos LLMs > LLM único - Nosso hybrid...",
+    "tokens": [
+      "hermes",
+      "mixture",
+      "of",
+      "agents",
+      "moa",
+      "nous",
+      "research",
+      "mixture-of-agents",
+      "hermes",
+      "nous-research",
+      "multi-model",
+      "agent-architecture",
+      "reference",
+      "keyword",
+      "puro",
+      "hermes",
+      "moa",
+      "ltiplos",
+      "llms",
+      "llm",
+      "nico",
+      "nosso",
+      "hybrid"
+    ]
+  }
+]

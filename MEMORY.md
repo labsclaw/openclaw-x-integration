@@ -1,13 +1,19 @@
 # MEMORY.md — Online Memory (auto-gerada)
 
 > **Arquitetura**: Memory Caching (inspirado em arXiv 2602.24281)
-> **Última atualização**: 2026-06-28 09:37
+> **Última atualização**: 2026-07-13 16:16
 > **Segmentos ativos**: 7 | **Checkpoints**: 5
+> **Novo**: Hot Cache + BM25 + Ingest + Contradiction + Log Fold (5 melhorias baseadas em claude-obsidian)
 
 ## Sobre Dr. Roger Oliveira
 - Doutor em Modelagem Computacional, expert em engenharia reversa e infraestrutura de AI
 - Telegram: @SmartNewbieBR | X: @SmartNewbieBR
 - Timezone: America/Sao_Paulo (GMT-3)
+
+## Padrão Obrigatório de Skills
+- **Local:** `openclaw-skills/`
+- **Pattern:** `ultra-<nome>-skill` (prefixo `ultra-`, sufixo `-skill`, kebab-case)
+- **NUNCA** criar skill sem esse padrão ou em pasta errada
 
 ## Segmentos Relevantes (carregar sob demanda)
 
@@ -41,6 +47,27 @@
 - Engenharia de Percepção: Nemotron "omni" (non-reasoning) para visão computacional
 - Memory Caching: carregar `memory/index.json` → matcher → carregar apenas K segmentos relevantes
 - Manutenção de memória: durante heartbeats, comprimir/fundir segmentos obsoletos
+
+## Melhorias 2026-07-13 (baseado em claude-obsidian)
+
+### Scripts Novos
+| Script | O que faz | Uso |
+|--------|-----------|-----|
+| `memory/hot.md` | Fast cache: contexto imediato da sessão (~500 palavras) | Ler primeiro em toda sessão |
+| `scripts/contradiction-check.cjs` | Detecta contradições entre páginas do wiki | `node scripts/contradiction-check.cjs` |
+| `scripts/log-fold.cjs` | Rollup de daily logs em segments temáticos | `node scripts/log-fold.cjs` |
+| `scripts/wiki-ingest.cjs` | Ingest automatizado de URLs/texto/file em wiki | `node scripts/wiki-ingest.cjs --url=<URL>` |
+| `scripts/bm25-retrieve.cjs` | BM25 retrieval puro Node.js (sem deps) | `node scripts/bm25-retrieve.cjs build` / `query "..."` |
+
+### Arquitetura Atualizada
+```
+Session Start → hot.md (fast cache) → MEMORY.md (slow cache) → SSC Router → Segments
+
+Ingest: URL/text/file → wiki-ingest → entities + concepts + index.json
+Retrieval: query → bm25-retrieve → top-K pages
+Lint: contradiction-check → flag contradições
+Fold: log-fold → daily → segments (a cada 7 dias)
+```
 
 ---
 

@@ -1,0 +1,49 @@
+[
+  {
+    "text": "# Hyper-Extract\n\nFramework de knowledge extraction LLM-powered que transforma texto não-estruturado em Knowledge Abstracts estruturados — Graphs, Hypergraphs, Spatio-Temporal Graphs — com export direto para Obsidian vault. ## Características\n\n- **80+ templates YAML** — zero código, 6 domínios (finance, legal, medical, general, etc.)\n- **10+ engines de extração** — GraphRAG, LightRAG, Hyper-RAG, KG-Gen, Cog-RAG\n- **8 tipos de estrutura** — Model, List, Set, Graph, Hypergraph, Temporal, Spatial, Spatio-Temporal\n- **Obsidian Export** — `he export obsidian` gera markdown com [[wikilinks]]\n- **MCP Server** — `he-mcp` para Claude Desktop e IDE agents\n- **Local deployment** — vLLM + bge-m3, dados nunca saem da máquina\n- **Incremental evolution** — novos docs expandem base existente\n\n## Arquitetura (3 camadas)\n\n1. **Auto-Types** — 8 estruturas de dados tipadas\n2. **Methods** — Algoritmos de extração (KG-Gen, GraphRAG, LightRAG, Hyper-RAG)\n3.",
+    "contextualText": "[Hyper-Extract] [tool, knowledge-extraction, hypergraph, obsidian, mcp] # Hyper-Extract Framework de knowledge extraction LLM-powered que transforma texto não-estruturado em Knowledge Abstracts estruturados...",
+    "tokens": [
+      "hyper-extract",
+      "tool",
+      "knowledge-extraction",
+      "hypergraph",
+      "obsidian",
+      "mcp",
+      "hyper-extract",
+      "framework",
+      "de",
+      "knowledge",
+      "extraction",
+      "llm-powered",
+      "que",
+      "transforma",
+      "texto",
+      "o-estruturado",
+      "em",
+      "knowledge",
+      "abstracts",
+      "estruturados"
+    ]
+  },
+  {
+    "text": "evolution** — novos docs expandem base existente ## Arquitetura (3 camadas) 1. **Auto-Types** — 8 estruturas de dados tipadas 2. **Methods** — Algoritmos de extração (KG-Gen, GraphRAG, LightRAG, Hyper-RAG) 3. **Templates** — 80+ presets em 6 domínios\n\n## Comandos Principais\n\n```bash\nhe parse doc.pdf -t general/academic_graph -o ./output/ -l en\nhe show ./output/\nhe export obsidian ./output/ -o ./vault/\nhe search ./output/ \"query\"\nhe config init -k YOUR_API_KEY\n```\n\n## Deploy Local\n\n```python\nfrom hyperextract import create_client\nllm, emb = create_client(\n    llm=\"vllm:Qwen3.5-9B@http://localhost:8000/v1\",\n    embedder=\"vllm:bge-m3@http://localhost:8001/v1\",\n    api_key=\"dummy\",\n)\n```\n\n## Comparação com Alternativas\n\n| Feature | GraphRAG | LightRAG | KG-Gen | ATOM | Hyper-Extract |\n|---|---|---|---|---|---|\n| Knowledge Graph | ✅ | ✅ | ✅ | ✅ | ✅ |\n| Temporal Graph | ✅ | ❌ | ❌ | ✅ | ✅ |\n| Spatial Graph | ❌ | ❌ | ❌ | ❌ | ✅ |\n| Hypergraph | ❌ | ❌ | ❌ | ❌ | ✅ |\n| Domain Templates | ❌ | ❌ | ❌ | ❌ | ✅ |\n| Obsidian Export | ❌ | ❌ | ❌ | ❌ | ✅ |\n\n## Links\n\n- GitHub: https://github.com/yifanfeng97/Hyper-Extract\n- Docs: https://yifanfeng97.github.io/Hyper-Extract/latest/\n- PyPI: https://pypi.org/project/hyperextract/\n\n## Relacionamentos\n\n- [[concepts/hybrid-memory-architecture]] — Camada de compilação na nossa arquitetura\n- [[concepts/llm-wiki-pattern]] — Complementa o padrão Karpathy com extração automática\n- [[projects/openclaw-llm-wiki]] — Projeto que usa Hyper-Extract\n",
+    "contextualText": "[Hyper-Extract] [tool, knowledge-extraction, hypergraph, obsidian, mcp] evolution** — novos docs expandem base existente ## Arquitetura (3 camadas) 1. **Auto-Types** — 8...",
+    "tokens": [
+      "hyper-extract",
+      "tool",
+      "knowledge-extraction",
+      "hypergraph",
+      "obsidian",
+      "mcp",
+      "evolution",
+      "novos",
+      "docs",
+      "expandem",
+      "base",
+      "existente",
+      "arquitetura",
+      "camadas",
+      "auto-types"
+    ]
+  }
+]

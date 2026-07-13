@@ -1,0 +1,34 @@
+[
+  {
+    "text": "# Hybrid RAG: Knowledge Graph + Vector Database\n\nEstado da arte em Hybrid RAG combinando knowledge graphs com vector databases (2025-2026). ## Componentes Principais\n\n- **Multi-modal Ingestion** — texto, bancos dados, imagens, áudio\n- **Advanced Chunking** — hierárquico, 12% melhoria sobre fixed-size\n- **Vector Database** — HNSW, hybrid search (dense + sparse), reranker hooks\n- **Knowledge Graph** — Neo4j, Memgraph, multi-hop reasoning\n- **GraphRAG** — build KG on ingestion, traverse at query\n- **Agentic RAG** — agente autônomo decide quando/que/buscar\n- **RAG Fusion** — reciprocal rank fusion de múltiplas estratégias\n\n## Conexões com Nosso Projeto\n- [[concepts/hybrid-memory-architecture]] — implementação destes padrões\n- [[raw/llm-memory-architectures-2026]] — contexto complementar\n",
+    "contextualText": "[Hybrid RAG: Knowledge Graph + Vector Database] [rag, knowledge-graph, vector-db, graphrag, agentic-rag, hybrid, reranking] # Hybrid RAG: Knowledge Graph + Vector Database Estado da arte em Hybrid RAG combinando...",
+    "tokens": [
+      "hybrid",
+      "rag",
+      "knowledge",
+      "graph",
+      "vector",
+      "database",
+      "rag",
+      "knowledge-graph",
+      "vector-db",
+      "graphrag",
+      "agentic-rag",
+      "hybrid",
+      "reranking",
+      "hybrid",
+      "rag",
+      "knowledge",
+      "graph",
+      "vector",
+      "database",
+      "estado",
+      "da",
+      "arte",
+      "em",
+      "hybrid",
+      "rag",
+      "combinando"
+    ]
+  }
+]

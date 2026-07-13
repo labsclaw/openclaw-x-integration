@@ -1,0 +1,29 @@
+[
+  {
+    "text": "# Ultra X Stealth Skill\n\nSkill de posting stealth no X.com com anti-detection e simulação de comportamento humano. ## O que é\n- Playwright + puppeteer-extra-plugin-stealth\n- Mouse Bézier curves com jitter\n- Typing variável com typos simulados\n- Delays aleatórios entre ações\n- Limites de segurança: máx 6 tweets/sessão, 20/dia\n\n## Localização\n- `~/.openclaw/skills/ultra-x-stealth-skill/`\n- GitHub: github.com/labsclaw/openclaw-skills\n\n## Arquitetura\n```\nThread Config (JSON)\n    ↓\nStealth Layer (playwright-extra + stealth-plugin)\n    ├── navigator.webdriver = false\n    ├── Real User-Agent\n    ├── Chrome plugin emulation\n    └── Canvas/WebGL fingerprint masking\n    ↓\nHuman Behavior Layer\n    ├── Bézier mouse curves with jitter\n    ├── Variable typing (50-150ms/char)\n    ├── Realistic scroll (accel/decel)\n    ├── Random delays (3-8s between actions)\n    └── Hover before click\n    ↓\nCadence Layer\n    ├── 3-5 min between tweets in thread\n    ├── Max 15-20 tweets/day\n    ├── Post only 8h-22h local time\n    └── Session max 6 tweets per session\n    ↓\nBrowser (headed, Chrome profile)\n    └── Persistent cookies/session\n```\n\n## Uso\n```bash\ncd ~/.openclaw/skills/ultra-x-stealth-skill\nnpm install\nnode scripts/stealth-post.js --config examples/thread-sample.json\n```\n\n## Limitações\n- 100% indetectável é \"provavelmente impossível\" em 2026\n- Sem residential proxy, datacenter IPs são flagged\n- TLS fingerprint não é 100% Chrome real\n- Contas novas (<90 dias) têm limites mais strict\n\n## Referências\n- [[comparisons/cognee-vs-openclaw-memory]] — Contexto do projeto\n- [[projects/ultra-memory-core]] — Módulo de memória relacionado\n",
+    "contextualText": "[Ultra X Stealth Skill] [x-posting, stealth, anti-detection, playwright, browser-automation, ultra] # Ultra X Stealth Skill Skill de posting stealth no X.com com anti-detection e simulação...",
+    "tokens": [
+      "ultra",
+      "stealth",
+      "skill",
+      "x-posting",
+      "stealth",
+      "anti-detection",
+      "playwright",
+      "browser-automation",
+      "ultra",
+      "ultra",
+      "stealth",
+      "skill",
+      "skill",
+      "de",
+      "posting",
+      "stealth",
+      "no",
+      "com",
+      "com",
+      "anti-detection",
+      "simula"
+    ]
+  }
+]
