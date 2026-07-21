@@ -514,33 +514,6 @@ ultra-memory-core/
 
 ---
 
-## 6. Conclusion
-
-We presented a hybrid memory architecture that combines the knowledge compounding of persistent markdown wikis (Karpathy LLM-Wiki pattern) with the retrieval scalability of vector databases, automated by Hyper-Extract's typed knowledge extraction templates. Our implementation in an OpenClaw agent workspace demonstrates that:
-
-1. **Knowledge compounding works.** Unlike RAG, which re-derives knowledge at every query, our wiki-based approach compiles knowledge once and maintains it incrementally — each new source enriches the existing knowledge base rather than existing alongside it.
-
-2. **Free-tier models are viable for knowledge extraction.** A free Nemotron Nano 30B model extracted 89% more entities than gpt-4o-mini, making zero-cost deployment practical for knowledge-intensive workloads.
-
-3. **Hybrid search outperforms any single method.** qmd's BM25+Vector+Reranking pipeline achieves high relevance across both keyword and semantic queries, while agentmemory adds knowledge graph traversal.
-
-4. **Local embeddings eliminate API dependency.** All embedding and reranking models run locally via GGUF quantized models, removing network latency and API cost as deployment barriers.
-
-5. **The OKF standard validates the approach.** Google's Open Knowledge Format formalizes the same markdown+frontmatter pattern, suggesting industry convergence toward this representation.
-
-6. **Biological memory parallels validate architectural separation.** The H.M. case demonstrates that memory systems must be architecturally separated with dedicated consolidation pathways — a principle reflected in our layered design.
-
-7. **Graph reasoning enables relational inference.** Cognee's architecture and our ultra-memory-core demonstrate that knowledge graphs enable cascading inference ("X studied Y" → "Y discovered Z" → "our system has this") that flat retrieval cannot achieve.
-
-8. **Zero-dependency graph reasoning is practical.** ultra-memory-core implements Cognee's conceptual API in pure Node.js with zero npm dependencies, achieving portability without sacrificing capability.
-
-9. **Semantic pyramids reduce token overhead.** SSC v2's hierarchical drill-down retrieval (inspired by TencentDB Agent Memory) achieves 60% token reduction by loading only the most specific memory layer that satisfies a query, without SQLite or external dependencies.
-
-10. **EXTRACTED/INFERRED tagging provides auditable provenance.** Graphify's edge tagging pattern, applied to memory atoms, replaces vague confidence scores with explicit origin tracking — every fact carries a tag indicating whether it was directly observed or inferred.
-
-11. **Knowledge graphs complement semantic pyramids.** The graph layer handles relationship queries that flat retrieval cannot, while the pyramid handles factual queries efficiently. Together they cover the full spectrum of memory retrieval needs.
-
-12. **Structured error tracking closes the self-improvement loop.** Without systematic error logging, agents repeat the same mistakes across sessions. Our structured error registry (category, root cause, lesson, preventive action) transforms transient failures into durable behavioral improvements, validated by the reduction in repeated errors after implementation.
 
 ### 5.11 Self-Improving Agent Integration
 
@@ -963,6 +936,38 @@ Query → SSC Router (keyword/tag scoring) → Candidate Segments
 *This paper documents the first implementation of a zero-cost hybrid LLM-Wiki + vector database architecture, with all source code, configurations, and wiki content available in the accompanying repository.*
 
 ---
+
+
+---
+
+## 6. Conclusion
+
+We presented a hybrid memory architecture that combines the knowledge compounding of persistent markdown wikis (Karpathy LLM-Wiki pattern) with the retrieval scalability of vector databases, automated by Hyper-Extract's typed knowledge extraction templates. Our implementation in an OpenClaw agent workspace demonstrates that:
+
+1. **Knowledge compounding works.** Unlike RAG, which re-derives knowledge at every query, our wiki-based approach compiles knowledge once and maintains it incrementally — each new source enriches the existing knowledge base rather than existing alongside it.
+
+2. **Free-tier models are viable for knowledge extraction.** A free Nemotron Nano 30B model extracted 89% more entities than gpt-4o-mini, making zero-cost deployment practical for knowledge-intensive workloads.
+
+3. **Hybrid search outperforms any single method.** qmd's BM25+Vector+Reranking pipeline achieves high relevance across both keyword and semantic queries, while agentmemory adds knowledge graph traversal.
+
+4. **Local embeddings eliminate API dependency.** All embedding and reranking models run locally via GGUF quantized models, removing network latency and API cost as deployment barriers.
+
+5. **The OKF standard validates the approach.** Google's Open Knowledge Format formalizes the same markdown+frontmatter pattern, suggesting industry convergence toward this representation.
+
+6. **Biological memory parallels validate architectural separation.** The H.M. case demonstrates that memory systems must be architecturally separated with dedicated consolidation pathways — a principle reflected in our layered design.
+
+7. **Graph reasoning enables relational inference.** Cognee's architecture and our ultra-memory-core demonstrate that knowledge graphs enable cascading inference ("X studied Y" → "Y discovered Z" → "our system has this") that flat retrieval cannot achieve.
+
+8. **Zero-dependency graph reasoning is practical.** ultra-memory-core implements Cognee's conceptual API in pure Node.js with zero npm dependencies, achieving portability without sacrificing capability.
+
+9. **Semantic pyramids reduce token overhead.** SSC v2's hierarchical drill-down retrieval (inspired by TencentDB Agent Memory) achieves 60% token reduction by loading only the most specific memory layer that satisfies a query, without SQLite or external dependencies.
+
+10. **EXTRACTED/INFERRED tagging provides auditable provenance.** Graphify's edge tagging pattern, applied to memory atoms, replaces vague confidence scores with explicit origin tracking — every fact carries a tag indicating whether it was directly observed or inferred.
+
+11. **Knowledge graphs complement semantic pyramids.** The graph layer handles relationship queries that flat retrieval cannot, while the pyramid handles factual queries efficiently. Together they cover the full spectrum of memory retrieval needs.
+
+12. **Structured error tracking closes the self-improvement loop.** Without systematic error logging, agents repeat the same mistakes across sessions. Our structured error registry (category, root cause, lesson, preventive action) transforms transient failures into durable behavioral improvements, validated by the reduction in repeated errors after implementation.
+
 
 ## References
 
