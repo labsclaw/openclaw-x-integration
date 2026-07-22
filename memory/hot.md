@@ -2,24 +2,20 @@
 # Reset a cada sessão. Máximo 500 palavras.
 
 ## Última sessão
-- **Data**: 2026-07-13
-- **Tema**: 5 melhorias baseadas em claude-obsidian analysis
-- **Status**: Todas implementadas e testadas ✅
+- **Data**: 2026-07-22 05:09 GMT-3
+- **Tema**: SSC Router v3.2 (Layered Indexing) & Upgrade Gemini 3.6 Flash
+- **Status**: Concluído e 100% operacional
 
-## Decisões recentes
-1. PR #5 merged (ultra-chrome-assistente-skill v0.2.0)
-2. Bug fix DOCUMENT_NODE no dom-engine (65 testes criados)
-3. claude-obsidian analysis: nosso retrieval é superior, ingest deles é melhor
-4. 5 scripts criados: hot cache, contradiction-check, log-fold, wiki-ingest, bm25-retrieve
+## Decisões & Mudanças
+1. **Modelo Primary**: Atualizado para `antigravity-proxy/gemini-3.6-flash-high` (1.0M context, thinking high).
+2. **Fallback Chain Enxuta**: Removido GPT-OSS (morto/HTTP 500) e enxugados modelos intermediários. Nova chain:
+   `gemini-3.6-flash-high` → `nemotron-3-ultra-550b` → `deepseek-v4-flash` → `deepseek-v4-flash-free` → `hy3:free` → `big-pickle` → `gemini-3.5-flash` → `kimi-k2.6`.
+3. **SSC Router v3.2 (Layered Indexing)**:
+   - Tier 1: 12 Segments curados (`memory/segments/`, peso ×2.0).
+   - Tier 2: 86 Daily Logs (`memory/daily/`, peso ×0.5).
+   - Script de Rebuild automatizado (`scripts/ssc-rebuild.cjs`).
+   - Zero-hit filtering no router (`memory/ssc-router.ps1`) para evitar falsos positivos.
 
 ## Próximos passos
-- Push dos scripts para o repo
-- Atualizar paper v0.3 com comparação claude-obsidian
-- Integrar BM25 no SSC Router
-- Automatizar log-fold via heartbeat cron
-
-## Estado do sistema
-- Scripts: 5 novos em scripts/
-- BM25 index: 22 docs, 402 terms, 878 tokens
-- Wiki: 22 páginas indexadas
-- Memory: 7 segments, 5 checkpoints, 55 daily logs
+- Monitorar performance do Gemini 3.6 Flash High durante tarefas complexas.
+- Push dos novos scripts (`ssc-rebuild.cjs`, `ssc-router.ps1`) para o repositório de instruções/workspace.
