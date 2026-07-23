@@ -1036,3 +1036,4 @@ We presented a hybrid memory architecture that combines the knowledge compoundin
 30. Osmani, A. (2026). agent-skills: AI coding assistant skills for spec-driven development. GitHub.
 31. Yan, S., et al. (2024). Corrective RAG: Self-healing retrieval with feedback loops. arXiv:2401.15884.
 32. Saboo, S. (2026). awesome-llm-apps: 100+ open-source AI agents, agent skills, and RAG apps. GitHub. Apache-2.0.
+33. Nubank/AWS. (2026). Migrating mission-critical payments at Nubank to Amazon Aurora PostgreSQL. AWS Database Blog. https://aws.amazon.com/pt/blogs/database/migrating-mission-critical-payments-at-nubank-to-amazon-aurora-postgresql/
