@@ -1,9 +1,9 @@
 ---
 id: s006
 created: 2026-06-27
-updated: 2026-07-22
+updated: 2026-07-25
 weight: 1.0
-accessCount: 0
+accessCount: 1
 ---
 
 # s006 — SSC Memory System: Da v2 ao v4.0
@@ -37,6 +37,13 @@ Evolução completa do Sparse Selective Cache (SSC) de v2 (semantic pyramid) a v
 - Captura: hot.md, resumo do diário, resumo do índice (version, counts)
 - Salva em memory/checkpoints/YYYY-MM-DD-pre-compact-TIMESTAMP.json
 - Previne perda de contexto em sessões longas com múltiplas compacções
+
+### Componente 5: Auto-Dream Consolidation (`auto-memory-dream` cron)
+- Criado 2026-07-21: cron job `auto-memory-dream` roda diário às 04:00 BRT
+- Processa logs dos últimos 7 dias, consolida em segments SSC
+- Atualiza MEMORY.md, index.json, marca logs com `<!-- consolidated -->`
+- Entrega relatório via Telegram (delivery announce)
+- Primeiro run (Dream #1): 62 logs consolidados, 11→12 segments, 1 novo (s012-social-media)
 
 ### Test Suite (`test-ssc-v4.cjs`)
 - 6 suítes, 33 asserções, 100% pass

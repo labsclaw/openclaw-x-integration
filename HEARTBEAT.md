@@ -1,14 +1,17 @@
 # HEARTBEAT.md
 
 ## Status
-- Last check: 2026-07-13 06:00 GMT-3
-- Cron jobs: 9 active (down from 11), all enabled, no current delivery errors
-- check-free-models-weekly: config FIXED (delivery.to=telegram:908406251); cached lastRunStatus still "error" but that is the pre-fix run. Next run Sat 2026-07-18 03:00 will deliver correctly.
-- Wiki: graphify-out minimal (no wiki/index.md)
-- Memory: 139 files across 17 directories
-- New raw sources in memory/raw/: 2 files (2026-07-12) — see report below
-- Backup: completed 20260711-060116 (next run pending)
-- Return `HEARTBEAT_OK` when no action is needed
+- Last check: 2026-07-25 06:00 GMT-3
+- Cron jobs: not checked this run (manual heartbeat)
+- check-free-models-weekly: confirmed fixed, lastRunStatus=ok (fixed 2026-07-18 03:00)
+- Raw sources: 2 files from 2026-07-12. No new files.
+- Contradiction check: `scripts/contradiction-check.cjs` exists and runs (0 contradictions found)
+- Wiki health: 89 files, 25.8% link coverage, 66 orphans, 1 broken link ([[research/artificial-intelligence]])
+- Gateway: Running (PID 12408)
+- PM2: 3 processes healthy (antigravity-proxy, openclaw-gateway, paperclip)
+- SSC v4.0: 33/33 tests passing
+- Segments: 14 files (s001-s012 + subagent-evolution + cross-agent-coordination)
+- Checkpoints: 6 total (last: ckpt-2026-07-24)
 
 ## Purpose
 Heartbeat exists to check continuity, detect drift, and report status with minimal cost.
@@ -16,10 +19,10 @@ Heartbeat exists to check continuity, detect drift, and report status with minim
 ## Checklist
 
 ### 1. Status check
-- Count wiki pages by area
-- Confirm `index.md` is current
-- Check agentmemory status
-- Check whether `raw/` has new files
+- Count wiki pages by area: 89 total (index + concepts + entities + knowledge-abstracts + projects + raw + synthesis + checkpoints + scripts)
+- Confirm `index.md` is current (last updated 2026-07-04)
+- Check agentmemory status: SSC v4.0 deployed, stable
+- Check whether `raw/` has new files: No new files since 2026-07-12
 
 ### 2. New sources
 - If new raw files exist, report them
@@ -31,17 +34,20 @@ Heartbeat exists to check continuity, detect drift, and report status with minim
 - Both already in digested/analysis form with "lessons for our setup" sections. NOT ingested (per heartbeat economy rule). Candidate move to `memory/segments/` or `memory/research/` on next dedicated pass.
 
 ### 3. Lightweight lint
-- Report orphan pages
-- Run contradiction check: `node scripts/contradiction-check.js --dry-run`
-- Report flagged contradictions
+- Report orphan pages: 66 orphan files (mostly knowledge-abstracts Obsidian export fragments)
+- Run contradiction check: `node scripts/contradiction-check.cjs --dry-run` → 0 contradictions found
+- Report flagged contradictions: None
 - Do not run heavy LLM-based lint during heartbeat
+- Wiki index has 1 broken link: [[research/artificial-intelligence]]
 
 ### 4. Memory sync
 - If the wiki materially changed, sync the relevant memory layer
 - Otherwise skip
+- Wiki has not materially changed since last checkpoint (2026-07-24)
 
 ### 5. Checkpoint
 - Every 7 days, write a checkpoint with counts and notable status changes
+- Last checkpoint: 2026-07-24 (1 day ago) — not due yet
 
 ## Economy rule
 Heartbeat should be cheap.

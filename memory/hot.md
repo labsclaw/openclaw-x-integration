@@ -1,21 +1,24 @@
 # HOT CACHE — Contexto Imediato da Sessão
-# Reset a cada sessão. Máximo 500 palavras.
 
 ## Última sessão
-- **Data**: 2026-07-22 05:09 GMT-3
-- **Tema**: SSC Router v3.2 (Layered Indexing) & Upgrade Gemini 3.6 Flash
-- **Status**: Concluído e 100% operacional
+- **Data**: 2026-07-24 06:00 GMT-3
+- **Tema**: Heartbeat poll + checkpoint
+- **Status**: Heartbeat concluído, checkpoint escrito
 
-## Decisões & Mudanças
-1. **Modelo Primary**: Atualizado para `antigravity-proxy/gemini-3.6-flash-high` (1.0M context, thinking high).
-2. **Fallback Chain Enxuta**: Removido GPT-OSS (morto/HTTP 500) e enxugados modelos intermediários. Nova chain:
-   `gemini-3.6-flash-high` → `nemotron-3-ultra-550b` → `deepseek-v4-flash` → `deepseek-v4-flash-free` → `hy3:free` → `big-pickle` → `gemini-3.5-flash` → `kimi-k2.6`.
-3. **SSC Router v3.2 (Layered Indexing)**:
-   - Tier 1: 12 Segments curados (`memory/segments/`, peso ×2.0).
-   - Tier 2: 86 Daily Logs (`memory/daily/`, peso ×0.5).
-   - Script de Rebuild automatizado (`scripts/ssc-rebuild.cjs`).
-   - Zero-hit filtering no router (`memory/ssc-router.ps1`) para evitar falsos positivos.
+## Estado atual
+- **Gateway:** Running (PID 12408)
+- **Segments:** 14 (s011 adicionado hoje — cross-agent coordination via GitHub)
+- **Checkpoints:** 6 (último: ckpt-2026-07-24, venceu regra de 7 dias)
+- **SSC v4.0:** Deployado, 33/33 testes passando, ambos repos em master
+- **Modelo primário:** Gemini 3.6 Flash High via antigravity-proxy
+- **GPT-OSS:** Removido (HTTP 500)
+- **Raw sources:** 2 arquivos de 2026-07-12, sem novos
 
-## Próximos passos
-- Monitorar performance do Gemini 3.6 Flash High durante tarefas complexas.
-- Push dos novos scripts (`ssc-rebuild.cjs`, `ssc-router.ps1`) para o repositório de instruções/workspace.
+## Pendências
+- `scripts/contradiction-check.js` continua faltando (notado 3x)
+- Sem atividade do Dr. Roger desde 2026-07-22
+- Nenhum novo raw source para ingerir
+
+## Decisões recentes
+1. MCP Server não implementado (SSC v4.0 usa scripts executáveis)
+2. Cross-agent handoff via GitHub privado (paperclip-openclaw-handoff)
