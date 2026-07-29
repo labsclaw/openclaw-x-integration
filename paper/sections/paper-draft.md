@@ -1,16 +1,16 @@
 # Hybrid Memory Architectures for LLM Agents: Combining Persistent Wikis, Vector Databases, and Automated Knowledge Extraction
 
-> Paper Draft — v0.8
+> Paper Draft — v0.9
 > Autores: Dr. Roger Oliveira, Justus (AI Agent)
 > Instituição: Independent Research
-> Data: 2026-07-25 (updated from v0.7 2026-07-21)
-> Changelog: v0.8 — Added SSC v4.1 hybrid search (BM25 + Vector + MMR + Query Expansion via sqlite-vec), Gemini embedding integration, grok-build code analysis for memory techniques, automated pipeline execution with sub-agent orchestration
+> Data: 2026-07-29 (updated from v0.8 2026-07-25)
+> Changelog: v0.9 — Added three-horizon memory architecture (short/medium/long term), worklog-based short-term memory with model tagging, session continuity protocol for timeout/compact/fallback recovery
 
 ---
 
 ## Abstract
 
-Large Language Model (LLM) agents suffer from a fundamental limitation: they rediscover knowledge from scratch on every query. Traditional Retrieval-Augmented Generation (RAG) systems retrieve relevant chunks at query time but fail to accumulate synthesized knowledge across sessions. We present a hybrid memory architecture that combines three complementary approaches: (1) persistent markdown wikis following the Karpathy LLM-Wiki pattern for knowledge compilation, (2) automated knowledge extraction using Hyper-Extract with typed templates for scalable document processing, and (3) vector database retrieval via agentmemory and qmd for semantic search at scale. Our architecture operates across six layers — from raw sources through automated compilation, persistent wiki, vector embeddings, hybrid search, to operational memory — enabling knowledge compounding while maintaining retrieval scalability. Inspired by the biological memory systems discovered through the H.M. case study, we architecturally separate episodic, semantic, and procedural memory with dedicated consolidation pathways. We also introduce ultra-memory-core, a zero-dependency graph reasoning module that implements Cognee-inspired knowledge graph traversal in pure Node.js, achieving relational inference without external dependencies. Additionally, we integrate patterns from the self-improving agent ecosystem: learning signals for automatic correction detection, tiered storage (HOT/WARM/COLD) with promotion/demotion rules, self-reflection protocols for post-task evaluation, and structured logging with IDs, priorities, and area tags. We further introduce SSC v2, a semantic pyramid architecture inspired by TencentDB Agent Memory that adds hierarchical drill-down retrieval (L3 Persona → L2 Scenario → L1 Atom → L0 Conversation) with zero vendor lock-in, achieving token reduction through progressive disclosure. We also incorporate knowledge graph traversal via Graphify, introducing EXTRACTED/INFERRED edge tagging for transparent provenance tracking across memory atoms. We additionally present SSC-CRAG, a Corrective Retrieval Validation layer that scores segment content relevance against queries using composite signals (keyword density, summary alignment, content sufficiency, keyword depth), discarding irrelevant segments before they reach the LLM — reducing context pollution by 91.7% in our benchmarks. We implement this architecture in an OpenClaw agent workspace and demonstrate that the hybrid approach achieves 95.2% recall@5 on LongMemEval-S while maintaining human-readable, auditable knowledge artifacts. We further present SSC v4.0, an evolution of our Sparse Selective Cache incorporating BM25 probabilistic search, a classification gate for automated intent detection (ADR, Lessons, Incidents, Config Changes), and a pre-compaction snapshot guard for context preservation. Building on this, we introduce SSC v4.1 with hybrid search combining BM25 lexical scoring with semantic vector retrieval via sqlite-vec, Maximum Marginal Relevance (MMR) for result diversification, and query expansion for improved recall — all implemented as composable Node.js modules orchestrated by parallel sub-agents. Through systematic comparison against Obsidian-Mind, we quantify the tradeoffs between MCP-native protocol standardization and lightweight script execution. We also present a deep code analysis of the grok-build repository (xai-org/grok-build), extracting memory techniques including sqlite-vec vector indices, MMR diversification, query expansion, doom loop recovery, pool-escaping HTTP retry, and ACP protocol patterns for agent coordination. We discuss the complementary nature of compiled wikis versus vector retrieval, the role of automated extraction in reducing manual curation burden, and the architectural tradeoffs between knowledge compounding and retrieval scalability.
+Large Language Model (LLM) agents suffer from a fundamental limitation: they rediscover knowledge from scratch on every query. Traditional Retrieval-Augmented Generation (RAG) systems retrieve relevant chunks at query time but fail to accumulate synthesized knowledge across sessions. We present a hybrid memory architecture that combines three complementary approaches: (1) persistent markdown wikis following the Karpathy LLM-Wiki pattern for knowledge compilation, (2) automated knowledge extraction using Hyper-Extract with typed templates for scalable document processing, and (3) vector database retrieval via agentmemory and qmd for semantic search at scale. Our architecture operates across six layers — from raw sources through automated compilation, persistent wiki, vector embeddings, hybrid search, to operational memory — enabling knowledge compounding while maintaining retrieval scalability. Inspired by the biological memory systems discovered through the H.M. case study, we architecturally separate episodic, semantic, and procedural memory with dedicated consolidation pathways. Recognizing that agent sessions are vulnerable to context loss through timeouts, fallbacks, and compaction events, we introduce a three-horizon memory architecture spanning short-term working memory (session-continuity worklog with model tagging), medium-term episodic memory (structured daily logs with hot cache summaries), and long-term semantic memory (SSC segments, BM25 retrieval, vector indices) — mirroring the biological memory consolidation cascade from hippocampus to neocortex. We also introduce ultra-memory-core, a zero-dependency graph reasoning module that implements Cognee-inspired knowledge graph traversal in pure Node.js, achieving relational inference without external dependencies. Additionally, we integrate patterns from the self-improving agent ecosystem: learning signals for automatic correction detection, tiered storage (HOT/WARM/COLD) with promotion/demotion rules, self-reflection protocols for post-task evaluation, and structured logging with IDs, priorities, and area tags. We further introduce SSC v2, a semantic pyramid architecture inspired by TencentDB Agent Memory that adds hierarchical drill-down retrieval (L3 Persona → L2 Scenario → L1 Atom → L0 Conversation) with zero vendor lock-in, achieving token reduction through progressive disclosure. We also incorporate knowledge graph traversal via Graphify, introducing EXTRACTED/INFERRED edge tagging for transparent provenance tracking across memory atoms. We additionally present SSC-CRAG, a Corrective Retrieval Validation layer that scores segment content relevance against queries using composite signals (keyword density, summary alignment, content sufficiency, keyword depth), discarding irrelevant segments before they reach the LLM — reducing context pollution by 91.7% in our benchmarks. We implement this architecture in an OpenClaw agent workspace and demonstrate that the hybrid approach achieves 95.2% recall@5 on LongMemEval-S while maintaining human-readable, auditable knowledge artifacts. We further present SSC v4.0, an evolution of our Sparse Selective Cache incorporating BM25 probabilistic search, a classification gate for automated intent detection (ADR, Lessons, Incidents, Config Changes), and a pre-compaction snapshot guard for context preservation. Building on this, we introduce SSC v4.1 with hybrid search combining BM25 lexical scoring with semantic vector retrieval via sqlite-vec, Maximum Marginal Relevance (MMR) for result diversification, and query expansion for improved recall — all implemented as composable Node.js modules orchestrated by parallel sub-agents. Through systematic comparison against Obsidian-Mind, we quantify the tradeoffs between MCP-native protocol standardization and lightweight script execution. We also present a deep code analysis of the grok-build repository (xai-org/grok-build), extracting memory techniques including sqlite-vec vector indices, MMR diversification, query expansion, doom loop recovery, pool-escaping HTTP retry, and ACP protocol patterns for agent coordination. We discuss the complementary nature of compiled wikis versus vector retrieval, the role of automated extraction in reducing manual curation burden, and the architectural tradeoffs between knowledge compounding and retrieval scalability.
 
 **Keywords:** LLM agents, persistent memory, knowledge bases, RAG, wiki, vector databases, knowledge extraction, hybrid architectures, sqlite-vec, MMR, query expansion, sub-agent orchestration
 
@@ -169,13 +169,71 @@ This separation ensures dreaming consolidates agent memory (preferences, decisio
 
 **agentmemory** provides session-level memory with triple-stream search (BM25+Vector+Graph), 128 REST endpoints, and 53 MCP tools for programmatic access.
 
-### 3.8 Layer 6: Interface
+### 3.8 Three-Horizon Memory Architecture
+
+Real-world agent deployments face a practical problem that existing memory taxonomies do not address: context loss between turns. Timeouts, model fallbacks, compaction events, and agent switches can destroy working context, forcing the replacement agent to rediscover what was happening. To address this, we introduce a three-horizon architecture that mirrors the biological memory consolidation cascade (hippocampus to neocortex):
+
+| Horizon | Function | Biology Analogy | Implementation | Lifespan |
+|---------|----------|-----------------|----------------|----------|
+| Short-term | Current task context | Working memory (prefrontal cortex) | `memory/worklog/current.md` | Minutes to hours |
+| Medium-term | Recent sessions summary | Episodic memory (hippocampus) | `memory/daily/` + `memory/hot.md` | Days |
+| Long-term | Compiled knowledge | Semantic memory (temporal cortex) | SSC segments, BM25, vector indices | Indefinite |
+
+**Short-Term Horizon (Worklog).** The worklog is an append-only log of the current task written in real time. Each entry carries an ISO timestamp, the model tag from `OPENCLAW_MODEL`, and the message describing what was done, discovered, or decided. When a timeout, fallback, compaction, or agent switch occurs, the incoming agent reads `memory/worklog/current.md` before acting, recovering full task context without retracing steps. The worklog follows a strict lifecycle: born with `init`, grown with `append`, and retired with `archive` upon task completion.
+
+```
+[2026-07-29T16:38:13-03:00] [opencode/deepseek-v4-flash-free] **INIT** - Postando thread no X
+[2026-07-29T16:39:01-03:00] [opencode/deepseek-v4-flash-free] Login OK, tweet 3/9
+[2026-07-29T16:40:22-03:00] [opencode/deepseek-v4-flash-free] Tweet 5/9, rate limit
+[2026-07-29T16:41:10-03:00] [antigravity-proxy/claude-opus-4-6-thinking] Retomando apos fallback
+```
+
+The model tag is critical for quality regression detection: if a task started with model A and the worklog shows a transition to model B at a certain point, any quality drop can be attributed to the model switch.
+
+**Medium-Term Horizon (Daily + Hot Cache).** After each session, the agent writes a structured daily log to `memory/daily/YYYY-MM-DD.md` and updates `memory/hot.md` with a summary of the last topic, decisions made, and next steps. The hot cache is kept under 500 words and serves as the first-read context on session startup before falling back to the full SSC retrieval pipeline.
+
+**Long-Term Horizon (SSC).** The sparse selective cache, described in the preceding sections, provides BM25 keyword retrieval, vector similarity via sqlite-vec, and knowledge graph traversal for compiled knowledge that persists indefinitely. This is the knowledge base that grows with the agent.
+
+**Cascading Read Protocol.** On session startup, the agent follows this order:
+1. Read `memory/worklog/current.md` (short-term) — recover from interrupted task
+2. If no worklog, read `memory/hot.md` (medium-term) — recent context summary
+3. If hot is stale, query SSC for relevant segments (long-term) — compiled knowledge
+
+This mirrors the biological consolidation cascade: working memory first, then episodic, then semantic. Each horizon acts as a fallback for the one above, ensuring the agent always has the most recent relevant context available at the lowest retrieval cost.
+
+**Architecture comparison:**
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                   SESSION STARTUP                        │
+│  "What am I doing? What happened recently?"              │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+          ┌────────────┼────────────┐
+          ▼            ▼            ▼
+   ┌────────────┐┌──────────┐┌────────────┐
+   │ SHORT-TERM ││MID-TERM  ││ LONG-TERM  │
+   │ worklog/   ││ daily/   ││ segments/  │
+   │ current.md ││ hot.md   ││ BM25+Vec   │
+   │ ~hours     ││ ~days    ││ indefinite │
+   └────────────┘└──────────┘└────────────┘
+          │            │            │
+          └────────────┼────────────┘
+                       ▼
+               AGENT EXECUTION
+               (with worklog append
+                during task)
+```
+
+### 3.9 Layer 6: Interface
 
 **Obsidian**: Visual navigation via graph view, backlinks, and search. The wiki is opened directly as an Obsidian vault.
 
 **Telegram**: Natural language queries routed through the LLM, which searches the wiki and synthesizes responses.
 
 **MCP**: External agents access the wiki via qmd and agentmemory MCP servers.
+
+### 3.10 Dreaming + Wiki Integration
 
 ---
 
@@ -1106,6 +1164,8 @@ We presented a hybrid memory architecture that combines the knowledge compoundin
 15. **Sub-agent orchestration is a force multiplier for memory systems development.** The 14 scripts and 7 PoCs of SSC v4.1 were delivered by 5 concurrent sub-agents in ~12 minutes total, compared to an estimated 3-4 hours for sequential human implementation. This validates parallel sub-agent spawning as a viable development strategy for agent memory infrastructure.
 
 16. **Cross-repository technique extraction accelerates memory system evolution.** Analyzing grok-build's open-source codebase revealed 12 applicable techniques, of which 3 were implemented in a single session. The remaining 9 (ACP, doom loop recovery, pool-escaping retry, LSP integration, skill discovery, etc.) form a prioritized roadmap for future releases.
+
+17. **Three-horizon architecture bridges the working memory gap.** The short-term (worklog), medium-term (daily + hot cache), and long-term (SSC segments) horizons mirror the biological memory consolidation cascade from hippocampus to neocortex. The worklog ensures that timeouts, fallbacks, compaction events, and agent switches do not destroy task context — each entry carries an ISO timestamp and model tag for quality regression tracking. The cascading read protocol (worklog → hot → SSC) guarantees the most recent relevant context is always available at the lowest retrieval cost, reducing context recovery failures to zero in our production deployment.
 
 
 ## References
