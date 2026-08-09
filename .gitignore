@@ -29,3 +29,9 @@ memory/worklog/
 
 # Cross-agent coordination (private)
 coordination/
+
+# SSC/memory-skill scripts (belong in openclaw-skills)
+scripts/ssc-*.cjs
+scripts/memory-classify.cjs
+scripts/pre-compact-guard.cjs
+scripts/test-ssc-v4.cjs
