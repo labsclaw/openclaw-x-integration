@@ -59,7 +59,7 @@ if ($segmentFiles -ne $index.segments.Count) {
 # Segment health
 $segmentHealth = @()
 foreach ($seg in $index.segments) {
-    $segPath = Join-Path $workspaceRoot $seg.file
+    $segPath = Join-Path $memoryDir $seg.file
     $exists = Test-Path $segPath
     $lastAccess = if ($seg.lastAccess) { $seg.lastAccess } else { "never" }
     $segmentHealth += [PSCustomObject]@{
@@ -82,7 +82,8 @@ $dailyCount = Count-Files $dailyDir "*.md"
 $metrics["daily_logs"] = $dailyCount
 $metrics["daily_size"] = Get-DirSize $dailyDir
 
-# Daily log age
+# Daily log age + gap detection
+$gapsFound = @()
 if ($dailyCount -gt 0) {
     $dailyFiles = Get-ChildItem -Path $dailyDir -Filter "*.md" -File | Sort-Object Name
     $metrics["daily_oldest"] = $dailyFiles[0].Name
@@ -95,7 +96,23 @@ if ($dailyCount -gt 0) {
             $issues += "Latest daily log is $daysSince days old ($latestDate)"
         }
     }
+    
+    # Gap detection: check last 7 days for missing daily logs
+    $today = Get-Date
+    for ($i = 1; $i -le 7; $i++) {
+        $checkDate = $today.AddDays(-$i).ToString("yyyy-MM-dd")
+        $expectedFile = Join-Path $dailyDir "$checkDate.md"
+        if (-not (Test-Path $expectedFile)) {
+            $gapsFound += $checkDate
+        }
+    }
+    if ($gapsFound.Count -gt 0) {
+        $issues += "Daily log gaps in last 7 days: $($gapsFound -join ', ')"
+    }
+} else {
+    $issues += "No daily log files found at all"
 }
+$metrics["daily_gaps"] = $gapsFound.Count
 
 # Checkpoints
 $checkpointDir = Join-Path $memoryDir "checkpoints"
