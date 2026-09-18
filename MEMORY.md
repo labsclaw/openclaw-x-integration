@@ -1,80 +1,71 @@
-# MEMORY.md - Online Memory (auto-gerada)
+# MEMORY.md — Hub Central
 
-> **Arquitetura**: Memory Caching (inspirado em arXiv 2602.24281)
-> **Ultima atualizacao**: 2026-07-22
-> **Segmentos ativos**: 12
+> Contexto carregado em toda sessão. Manter curto, atual e livre de regras operacionais duplicadas.
+> Fonte detalhada: `memory/segments/` + `memory/index.json`.
 
-## Segmentos Relevantes (carregar sob demanda)
+## Segmentos SSC
 
-| ID | Segmento | Status | Relevancia |
-|----|----------|--------|------------|
-| s001 | Infraestrutura & Env Vars | Ativo | Encoding, rate limit, Kilocode headers |
-| s002 | Paperclip & Issues | Ativo | CEO cleanup, RLA management, PRs |
-| s003 | Heartbeat & Alert Storm | Ativo | Stale run cascade, backup, cron |
-| s004 | Skills & Projetos | Ativo | Ultra-skills, Telegram, stealth, models |
-| s005 | Wiki & Hybrid Memory | Ativo | Semantic pyramid, Graphify, paper |
-| s006 | SSC & Memory Architecture | Ativo | SSC v4.0, BM25 hybrid, classification gate, pre-compact guard |
-| s007 | Ultra-Memory-Core | Ativo | Cognee, H.M., thread X, stealth skill |
-| s008 | Finanças & Investimentos | Ativo | MSTR/STRC analysis |
-| s009 | Error Tracking | Ativo | Erros registrados, lições |
-| s010 | Fallback Bug OpenClaw | Ativo | Timeout bug, Instagram, memory revert |
-| s011 | Cross-Agent Coordination | Ativo | Handoff Justus/Robin/Luna via GitHub privado |
-| s012 | Social Media | Ativo | Instagram, X/Twitter, LinkedIn |
+| ID | Segmento | Arquivo |
+|----|----------|---------|
+| s001 | Infraestrutura & Env | `memory/segments/s001-infra.md` |
+| s002 | Paperclip & Issues | `memory/segments/s002-paperclip.md` |
+| s003 | Heartbeat & Alert Storm | `memory/segments/s003-heartbeat.md` |
+| s004 | Skills & Projetos | `memory/segments/s004-skills.md` |
+| s005 | Wiki & Hybrid Memory | `memory/segments/s005-wiki-hybrid.md` |
+| s006 | SSC & Memory Architecture | `memory/segments/s006-ssc-skill-incident.md` |
+| s007 | Ultra-Memory-Core | `memory/segments/s007-2026-06-28.md` |
+| s008 | Finanças & Investimentos | `memory/segments/s008-finance.md` |
+| s009 | Error Tracking | `memory/segments/s009-error-tracking.md` |
+| s010 | Fallback Bug OpenClaw | `memory/segments/s010-fallback-bug-openclaw.md` |
+| s011 | Cross-Agent Coordination | `memory/segments/s011-cross-agent-coordination.md` |
+| s012 | Social Media | `memory/segments/s012-social-media.md` |
+| s013 | Eval Results | `memory/segments/s013-eval-results.md` |
+| s014 | PWSH Migration | `memory/segments/s014-pwsh-migration.md` |
+| s015 | Memory Protection | `memory/segments/s015-memory-protection.md` |
+| s017 | AI Engineering Coach | `memory/segments/s017-ai-engineering-coach.md` |
+| s017b | Grok Bot Analysis | `memory/segments/s017-grok-bot-analysis.md` |
+| s018 | AI Coworker Benchmark | `memory/segments/s018-ai-coworker-benchmark.md` |
+| s019 | Workspace Cleanup | `memory/segments/s019-workspace-cleanup.md` |
+| rla-639 | Prospecção Revendedores | `memory/segments/rla-639-prospecao-revendedores.md` |
+| squad-dev-plan | Squad Dev Plan | `memory/segments/squad-dev-plan.md` |
+| squad-dev-status | Squad Dev Status | `memory/segments/squad-dev-status.md` |
+| subagent-evolution | Subagent Evolution | `memory/segments/subagent-evolution.md` |
+| x-testing-profile | X-Testing, Perfil Institucional | `memory/segments/x-testing-company-profile.md` |
+| x-testing-org | X-Testing, Organograma | `memory/segments/x-testing-org-chart.md` |
+| x-testing-contract | X-Testing, Contrato SANASA | `memory/segments/x-testing-sanasa-contract.md` |
+| x-testing-sanasa | X-Testing, Operação SANASA | `memory/segments/x-testing-sanasa-operation.md` |
+| x-testing-baseline | X-Testing, Baseline de Referência | `memory/segments/x-testing-baseline.md` |
+| x-testing-standards-metrics | X-Testing, Padrões TestLink e Métricas | `memory/segments/x-testing-standards-metrics.md` |
+| x-testing-paperclip-architecture | X-Testing, Arquitetura Paperclip | `memory/segments/x-testing-paperclip-architecture.md` |
+| x-testing-execution-plan | X-Testing, Plano de Execução | `memory/segments/x-testing-execution-plan.md` |
+| decision-2026-09-05 | Fábrica de Testes X-Testing com Agentes | `memory/segments/decision-2026-09-05-implementa-o-da-f-brica-de-testes-x-testing-com-agentes.md` |
+| paper-submission-strategy | Estratégia de Submissão do Paper | `memory/segments/paper-submission-strategy.md` |
+| opencode-integration | OpenCode Integration & Zen 403 | `memory/segments/openclaw-opencode-integration.md` |
 
-## Ultimos Eventos
+**Inventário atual:** 34 segmentos indexados. Recuperação: `node scripts/ssc-router.cjs "<consulta>"`.
 
-- **2026-07-24**: Cross-agent coordination estruturada no repo privado `labsclaw/paperclip-openclaw-handoff` — inbox por agente, active.md, decisions.md
-- **2026-07-22**: SSC Memory System v4.0 implementado (BM25 hybrid search, classification gate, pre-compact guard, 33/33 tests pass). GPT-OSS removido (HTTP 500), Gemini 3.6 Flash High adicionado como primary. Caminho leve confirmado (sem MCP Server).
-- **2026-07-14**: ultra-models-skill v2 (142 modelos, capability map), Instagram @labsclaw2026 criado, fallback bug analisado, ultra-memory-skill revertida
-- **2026-07-12**: Chrome-stealth-navigator, ultra-dom-engine-skill, Perplexity Comet/Eclipse analysis
-- **2026-07-06**: SSC v2 Semantic Pyramid, Graphify knowledge graph, SQLite memory store, paper v0.4
-- **2026-07-03**: Whale monitor (Galaxy Digital $100M USDC), coworker analysis, pipeline skill v1.3, social media drafts
-- **2026-06-28**: ultra-memory-core (43/43 tests), Cognee analysis, thread X postada, paper v0.2
-- **2026-06-27**: SSC Router implementado, ultra-memory-skill publicada, Telegram outage resolvida, watchdog corrigido
-- **2026-06-18**: CEO cleanup 555+ issues, RLA management lessons
-- **2026-06-06**: Telegram skill, Ultra Create/Find skills
-- **2026-05-22**: Encoding fix (String→toString utf8), env vars, Perplexity Pro Bridge
-- **2026-05-20**: Rate limit discovery (request format, not API key)
+## Regras canônicas
 
-11. **Coordenação cross-agent via GitHub privado** — Telegram falhou (síncrono, sem estrutura). GitHub `paperclip-openclaw-handoff` é o canal oficial. Cada agente checa inbox no primeiro turno.
+- Regras operacionais: `AGENTS.md`.
+- Personalidade e comunicação: `SOUL.md` e `IDENTITY.md`.
+- Preferências do usuário: `USER.md`.
+- Rotina de continuidade: `HEARTBEAT.md`.
+- Não duplicar aqui limites de ferramentas, política de silêncio ou procedimentos sujeitos a mudança.
 
-## Decisões Importantes
+## Estado recente de alto valor
 
-1. **Zero vendor lock-in** — Copiar ideias, não código (Cognee → nosso graph reasoning)
-2. **PM2 é o único dono do gateway** — NUNCA criar Windows Scheduled Tasks
-3. **Nemotron omni para visão** — Nunca reasoning para computer vision
-4. **Ultra skills naming** — `ultra-<nome>-skill` em `openclaw-skills/`
-5. **Encoding UTF-8** — `chunk.toString("utf8")` em vez de `String(chunk)` no Windows
-6. **Pipeline monitoring** — Toda tarefa >60s DEVE ter pipeline ou watchdog
-7. **Credentials** — Sempre salvar em `memory/credentials.md` imediatamente
-8. **CEO não abandona issues** — Agir ou cancelar, nunca ignorar
-9. **Caminho leve sobre MCP** — SSC v4.0 usa scripts Node/PS executáveis via exec, não servidor MCP. Zero overhead de infra.
-10. **Paths em repo compartilhado** — NUNCA hardcoded paths. Usar auto-detection ou env var (OPENCLAW_WORKSPACE).
+- 2026-09-18: projeto labsclaw/openclaw-opencode-integration validado e sincronizado no GitHub (Fases 0 a 3). Rota A (Harness ACP) e Rota B (CLI Backend) operacionais, contornando o erro 403 Forbidden da API Zen e capturando reasoning/thinking em tempo real no modelo opencode/mimo-v2.5-free. Gateway atualizado: cabeçalhos estáticos legados limpos, bloco acp configurado (backend acpx e opencode permitido) e mimo-v2.5-free integrado à cadeia oficial de fallbacks. Restart do Gateway via PM2 pendente para quando o operador retornar ao desktop.
+- 2026-09-14: estratégia de submissão do paper revisada (segment paper-submission-strategy). Submissão RBGeo/ReGeo descartada. Foco: periódicos de Computação/IA (JoIS, Applied Intelligence, Expert Systems with Applications). Restrição: sem APC obrigatória. Fase 2 concluída, preparação experimental pendente.
+- 2026-09-07: modelo health probes concluídos (gpt-5/5.1-pro/5.2/5.3-pro indisponíveis WMOFF; grok-4.5 falhou). Plano Mestre X-Testing (16 KPIs, 6 WPs, 6 sprints) indexado. Decision segment: Fábrica de Testes X-Testing com agentes aprovado. Sprint 1 pendente (projeto Paperclip + kickoff conectores ALM).
+- 2026-09-04: secrets hygiene scan identificou 13 plaintext keys (auth profiles SQLite + models.json providers). Heartbeat QAI alterado para 2h. XTE-25 in_review, XTE-33/XTE-20 blocked. RLA-677 blocked (fotografia física inacessível).
+- 2026-09-03: API key AMD Radeon Cloud criada e testada (DeepSeek-V4-Flash). GPT-5.6 Sol confirmado como modelo primário. Tutorial AMD Cloud publicado.
+- 2026-09-02: operação X-Testing/SANASA em andamento. Registros devem usar português do Brasil e a terminologia "OS SANASA". RLA-671 concluída (automotive-vision skill, 75% acurácia). Pipeline visual Archify implementado. RF002/RF027/RF043/RF050/RF046/RF047/RF058/RF061 executados.
+- 2026-08-31: incidente crítico no Paperclip relacionado à exposição de chave privada ainda exige acompanhamento de segurança.
+- Persistem verificações de higiene de segredos, integridade SSC e atualização de versões por crons dedicados.
 
-## Lições Aprendidas
+## Registro desta revisão
 
-1. **Rate limit é por formato, não por key** — Proxy inspection descobriu que o formato JSON da requisição é o que o servidor valida
-2. **"DNS unreachable" pode ser misleading** — Era conflito de processo, não problema de rede
-3. **Inferir intenção, não descrever** — Quando Dr. manda URL de skill, quer transformação, não descrição
-4. **Não inventar usernames** — Perguntar em vez de inventar (@robin_nascimento vs @RobinBRIAbot)
-5. **Verificar antes de copiar** — Comparar source/dest antes de Copy-Item
-6. **Alert storms são desperdício** — 25+ wake events sem trabalho = compute jogado fora
+- `memory/reports/openclaw-config-audit-2026-09-02.md`
+- Atualização automática: 2026-09-18 (dream cron). Índice SSC reconstruído (34 segmentos, 144 diários).
 
-## PRs/Issues Pendentes
-
-- **PR #7440** (Paperclip): UTF-8 fix — GREPTILE PASS, aguardando maintainer approval
-- **PR #8084** (Paperclip): antigravity adapter — GREPTILE LGTM, aguardando review humano
-- **PR #104086** (OpenClaw): pingado para review
-- **PR #354** (antigravity-proxy): GPT-OSS support — reminder disparado 2026-06-28
-
-## Cron Jobs Ativos
-
-- `paperclip-log-cleanup` — diário 02:00
-- `backup-paperclip-openclaw` — diário 06:00
-- `ssc-health-check` — diário 03:00
-- `check-opencode-version` — semanal
-
----
-
-> Este arquivo e gerado automaticamente a partir dos segmentos em `memory/segments/`.
-> Nao edite diretamente - atualize os segmentos e rode manutencao.
+Detalhes históricos permanecem nos segmentos, relatórios e diários. Este hub não deve virar log cronológico.
