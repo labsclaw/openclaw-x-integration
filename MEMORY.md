@@ -41,8 +41,10 @@
 | decision-2026-09-05 | Fábrica de Testes X-Testing com Agentes | `memory/segments/decision-2026-09-05-implementa-o-da-f-brica-de-testes-x-testing-com-agentes.md` |
 | paper-submission-strategy | Estratégia de Submissão do Paper | `memory/segments/paper-submission-strategy.md` |
 | opencode-integration | OpenCode Integration & Zen 403 | `memory/segments/openclaw-opencode-integration.md` |
+| x-testing-tree-rag-architecture | X-Testing, Arquitetura Tree-RAG | `memory/segments/x-testing-tree-rag-architecture.md` |
+| s020-ssc-tree-reasoning-evolution | SSC Tree Reasoning Evolution | `memory/segments/s020-ssc-tree-reasoning-evolution.md` |
 
-**Inventário atual:** 34 segmentos indexados. Recuperação: `node scripts/ssc-router.cjs "<consulta>"`.
+**Inventário atual:** 36 segmentos indexados. Recuperação: `node scripts/ssc-router.cjs "<consulta>"`.
 
 ## Regras canônicas
 
@@ -54,6 +56,7 @@
 
 ## Estado recente de alto valor
 
+- 2026-09-18: spike de bancada PageIndex (Tree-RAG) executado com sucesso (1.00 ms, 24 nós, profundidade 2, zero-chunking). Atualização sistêmica implementada nos 3 eixos: (A) Esteira X-Testing/SANASA com indexador estrutural de requisitos e regras de negócio sem chunking (scripts/sanasa-tree-indexer.py e artifacts/x-testing/sanasa-requirements-tree.json); (B) Paper de memória híbrida atualizado com baseline metodológico SOTA de Tree-RAG vs. RAG vetorial denso (paper/sections/tree-rag-baseline-methodology.md); (C) Memória SSC expandida para navegação hierárquica por árvore de raciocínio (segmento s020).
 - 2026-09-18: projeto labsclaw/openclaw-opencode-integration validado e sincronizado no GitHub (Fases 0 a 3). Rota A (Harness ACP) e Rota B (CLI Backend) operacionais, contornando o erro 403 Forbidden da API Zen e capturando reasoning/thinking em tempo real no modelo opencode/mimo-v2.5-free. Gateway atualizado: cabeçalhos estáticos legados limpos, bloco acp configurado (backend acpx e opencode permitido) e mimo-v2.5-free integrado à cadeia oficial de fallbacks. Restart do Gateway via PM2 pendente para quando o operador retornar ao desktop.
 - 2026-09-14: estratégia de submissão do paper revisada (segment paper-submission-strategy). Submissão RBGeo/ReGeo descartada. Foco: periódicos de Computação/IA (JoIS, Applied Intelligence, Expert Systems with Applications). Restrição: sem APC obrigatória. Fase 2 concluída, preparação experimental pendente.
 - 2026-09-07: modelo health probes concluídos (gpt-5/5.1-pro/5.2/5.3-pro indisponíveis WMOFF; grok-4.5 falhou). Plano Mestre X-Testing (16 KPIs, 6 WPs, 6 sprints) indexado. Decision segment: Fábrica de Testes X-Testing com agentes aprovado. Sprint 1 pendente (projeto Paperclip + kickoff conectores ALM).

@@ -1,0 +1,400 @@
+{
+  "project": "X-Testing SANASA ALM Test Factory",
+  "indexer": "PageIndex Tree-RAG",
+  "timestamp": "2026-09-18",
+  "domains": [
+    {
+      "source_file": "memory/segments/x-testing-sanasa-operation.md",
+      "tree": [
+        {
+          "node_id": "0000",
+          "title": "X-Testing, Operação SANASA com Agentes de IA",
+          "line_num": 1,
+          "char_count": 206,
+          "associated_rfs": [],
+          "summary_preview": "# X-Testing, Operação SANASA com Agentes de IA",
+          "children": [
+            {
+              "node_id": "0001",
+              "title": "Visão rápida",
+              "line_num": 8,
+              "char_count": 874,
+              "associated_rfs": [],
+              "summary_preview": "## Visão rápida"
+            },
+            {
+              "node_id": "0002",
+              "title": "Missão",
+              "line_num": 24,
+              "char_count": 441,
+              "associated_rfs": [],
+              "summary_preview": "## Missão"
+            },
+            {
+              "node_id": "0003",
+              "title": "Estrutura organizacional recebida",
+              "line_num": 30,
+              "char_count": 538,
+              "associated_rfs": [],
+              "summary_preview": "## Estrutura organizacional recebida"
+            },
+            {
+              "node_id": "0004",
+              "title": "Decisão organizacional confirmada",
+              "line_num": 50,
+              "char_count": 36,
+              "associated_rfs": [],
+              "summary_preview": "## Decisão organizacional confirmada",
+              "children": [
+                {
+                  "node_id": "0005",
+                  "title": "CEO",
+                  "line_num": 52,
+                  "char_count": 250,
+                  "associated_rfs": [],
+                  "summary_preview": "### CEO"
+                },
+                {
+                  "node_id": "0006",
+                  "title": "Hipótese para o núcleo WEB, ainda sujeita à validação",
+                  "line_num": 58,
+                  "char_count": 139,
+                  "associated_rfs": [],
+                  "summary_preview": "### Hipótese para o núcleo WEB, ainda sujeita à validação"
+                },
+                {
+                  "node_id": "0007",
+                  "title": "Capacidades possivelmente acionadas sob demanda",
+                  "line_num": 65,
+                  "char_count": 135,
+                  "associated_rfs": [],
+                  "summary_preview": "### Capacidades possivelmente acionadas sob demanda"
+                },
+                {
+                  "node_id": "0008",
+                  "title": "Fora do núcleo inicial, salvo nova decisão",
+                  "line_num": 72,
+                  "char_count": 160,
+                  "associated_rfs": [],
+                  "summary_preview": "### Fora do núcleo inicial, salvo nova decisão"
+                }
+              ]
+            },
+            {
+              "node_id": "0009",
+              "title": "Papel das tecnologias",
+              "line_num": 80,
+              "char_count": 695,
+              "associated_rfs": [],
+              "summary_preview": "## Papel das tecnologias"
+            },
+            {
+              "node_id": "0010",
+              "title": "Contexto contratual SANASA",
+              "line_num": 92,
+              "char_count": 29,
+              "associated_rfs": [],
+              "summary_preview": "## Contexto contratual SANASA",
+              "children": [
+                {
+                  "node_id": "0011",
+                  "title": "Objeto do Lote 2",
+                  "line_num": 94,
+                  "char_count": 232,
+                  "associated_rfs": [],
+                  "summary_preview": "### Objeto do Lote 2"
+                },
+                {
+                  "node_id": "0012",
+                  "title": "Requisitos não funcionais relevantes",
+                  "line_num": 101,
+                  "char_count": 915,
+                  "associated_rfs": [],
+                  "summary_preview": "### Requisitos não funcionais relevantes"
+                }
+              ]
+            },
+            {
+              "node_id": "0013",
+              "title": "Fronteiras operacionais confirmadas",
+              "line_num": 115,
+              "char_count": 38,
+              "associated_rfs": [],
+              "summary_preview": "## Fronteiras operacionais confirmadas",
+              "children": [
+                {
+                  "node_id": "0014",
+                  "title": "OS SANASA",
+                  "line_num": 117,
+                  "char_count": 384,
+                  "associated_rfs": [],
+                  "summary_preview": "### OS SANASA"
+                },
+                {
+                  "node_id": "0015",
+                  "title": "UST",
+                  "line_num": 124,
+                  "char_count": 301,
+                  "associated_rfs": [],
+                  "summary_preview": "### UST"
+                },
+                {
+                  "node_id": "0016",
+                  "title": "Conversões para comprovação técnica",
+                  "line_num": 131,
+                  "char_count": 486,
+                  "associated_rfs": [],
+                  "summary_preview": "### Conversões para comprovação técnica"
+                },
+                {
+                  "node_id": "0017",
+                  "title": "Prazo e planejamento",
+                  "line_num": 140,
+                  "char_count": 259,
+                  "associated_rfs": [],
+                  "summary_preview": "### Prazo e planejamento"
+                },
+                {
+                  "node_id": "0018",
+                  "title": "Infraestrutura e conhecimento",
+                  "line_num": 146,
+                  "char_count": 363,
+                  "associated_rfs": [],
+                  "summary_preview": "### Infraestrutura e conhecimento"
+                }
+              ]
+            },
+            {
+              "node_id": "0019",
+              "title": "Fluxo operacional inicial",
+              "line_num": 153,
+              "char_count": 639,
+              "associated_rfs": [],
+              "summary_preview": "## Fluxo operacional inicial"
+            },
+            {
+              "node_id": "0020",
+              "title": "Princípios de desenho",
+              "line_num": 165,
+              "char_count": 491,
+              "associated_rfs": [],
+              "summary_preview": "## Princípios de desenho"
+            },
+            {
+              "node_id": "0021",
+              "title": "Pendências para decisão",
+              "line_num": 174,
+              "char_count": 817,
+              "associated_rfs": [],
+              "summary_preview": "## Pendências para decisão"
+            },
+            {
+              "node_id": "0022",
+              "title": "Registro de decisões",
+              "line_num": 187,
+              "char_count": 520,
+              "associated_rfs": [],
+              "summary_preview": "## Registro de decisões"
+            },
+            {
+              "node_id": "0023",
+              "title": "Fontes detalhadas do projeto no Memory Viewer",
+              "line_num": 198,
+              "char_count": 795,
+              "associated_rfs": [],
+              "summary_preview": "## Fontes detalhadas do projeto no Memory Viewer"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source_file": "memory/segments/x-testing-sanasa-contract.md",
+      "tree": [
+        {
+          "node_id": "0000",
+          "title": "X-Testing, Contexto Contratual SANASA",
+          "line_num": 1,
+          "char_count": 175,
+          "associated_rfs": [],
+          "summary_preview": "# X-Testing, Contexto Contratual SANASA",
+          "children": [
+            {
+              "node_id": "0001",
+              "title": "Objeto relacionado à X-Testing",
+              "line_num": 7,
+              "char_count": 253,
+              "associated_rfs": [],
+              "summary_preview": "## Objeto relacionado à X-Testing"
+            },
+            {
+              "node_id": "0002",
+              "title": "Requisitos não funcionais",
+              "line_num": 14,
+              "char_count": 725,
+              "associated_rfs": [],
+              "summary_preview": "## Requisitos não funcionais"
+            },
+            {
+              "node_id": "0003",
+              "title": "Fronteiras operacionais",
+              "line_num": 26,
+              "char_count": 26,
+              "associated_rfs": [],
+              "summary_preview": "## Fronteiras operacionais",
+              "children": [
+                {
+                  "node_id": "0004",
+                  "title": "OS SANASA",
+                  "line_num": 28,
+                  "char_count": 254,
+                  "associated_rfs": [],
+                  "summary_preview": "### OS SANASA"
+                },
+                {
+                  "node_id": "0005",
+                  "title": "UST",
+                  "line_num": 35,
+                  "char_count": 211,
+                  "associated_rfs": [],
+                  "summary_preview": "### UST"
+                }
+              ]
+            },
+            {
+              "node_id": "0006",
+              "title": "Comprovação de capacidade técnica",
+              "line_num": 41,
+              "char_count": 410,
+              "associated_rfs": [],
+              "summary_preview": "## Comprovação de capacidade técnica"
+            },
+            {
+              "node_id": "0007",
+              "title": "Prazo e planejamento",
+              "line_num": 48,
+              "char_count": 265,
+              "associated_rfs": [],
+              "summary_preview": "## Prazo e planejamento"
+            },
+            {
+              "node_id": "0008",
+              "title": "Infraestrutura e execução",
+              "line_num": 54,
+              "char_count": 325,
+              "associated_rfs": [],
+              "summary_preview": "## Infraestrutura e execução"
+            },
+            {
+              "node_id": "0009",
+              "title": "Impactos no time de agentes",
+              "line_num": 61,
+              "char_count": 395,
+              "associated_rfs": [],
+              "summary_preview": "## Impactos no time de agentes"
+            },
+            {
+              "node_id": "0010",
+              "title": "Pendências contratuais",
+              "line_num": 68,
+              "char_count": 471,
+              "associated_rfs": [],
+              "summary_preview": "## Pendências contratuais"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source_file": "memory/segments/x-testing-standards-metrics.md",
+      "tree": [
+        {
+          "node_id": "0000",
+          "title": "X-Testing, Padrões TestLink, Matriz de Prioridade e Relatório de Métricas",
+          "line_num": 1,
+          "char_count": 372,
+          "associated_rfs": [],
+          "summary_preview": "# X-Testing, Padrões TestLink, Matriz de Prioridade e Relatório de Métricas",
+          "children": [
+            {
+              "node_id": "0001",
+              "title": "1. Nomenclatura e Classificação Obrigatória de Casos de Teste (TestLink)",
+              "line_num": 10,
+              "char_count": 233,
+              "associated_rfs": [],
+              "summary_preview": "## 1. Nomenclatura e Classificação Obrigatória de Casos de Teste (TestLink)",
+              "children": [
+                {
+                  "node_id": "0002",
+                  "title": "Estrutura de Identificação:",
+                  "line_num": 14,
+                  "char_count": 104,
+                  "associated_rfs": [],
+                  "summary_preview": "### Estrutura de Identificação:"
+                },
+                {
+                  "node_id": "0003",
+                  "title": "Tags Padronizadas por Categoria:",
+                  "line_num": 17,
+                  "char_count": 682,
+                  "associated_rfs": [],
+                  "summary_preview": "### Tags Padronizadas por Categoria:"
+                }
+              ]
+            },
+            {
+              "node_id": "0004",
+              "title": "2. Planilha de Avaliação de Prioridade / Complexidade (X-Testing vs. SANASA)",
+              "line_num": 29,
+              "char_count": 1117,
+              "associated_rfs": [],
+              "summary_preview": "## 2. Planilha de Avaliação de Prioridade / Complexidade (X-Testing vs. SANASA)"
+            },
+            {
+              "node_id": "0005",
+              "title": "3. Padrão Oficial do Relatório de Métricas e Execução (TestLink)",
+              "line_num": 44,
+              "char_count": 169,
+              "associated_rfs": [],
+              "summary_preview": "## 3. Padrão Oficial do Relatório de Métricas e Execução (TestLink)",
+              "children": [
+                {
+                  "node_id": "0006",
+                  "title": "3.1. Resultado das Métricas por Build",
+                  "line_num": 48,
+                  "char_count": 392,
+                  "associated_rfs": [],
+                  "summary_preview": "### 3.1. Resultado das Métricas por Build"
+                },
+                {
+                  "node_id": "0007",
+                  "title": "3.2. Resultado pela Suite de Testes de Nível Topo",
+                  "line_num": 53,
+                  "char_count": 239,
+                  "associated_rfs": [],
+                  "summary_preview": "### 3.2. Resultado pela Suite de Testes de Nível Topo"
+                },
+                {
+                  "node_id": "0008",
+                  "title": "3.3. Resultados por Plataforma",
+                  "line_num": 56,
+                  "char_count": 303,
+                  "associated_rfs": [],
+                  "summary_preview": "### 3.3. Resultados por Plataforma"
+                }
+              ]
+            },
+            {
+              "node_id": "0009",
+              "title": "4. Aplicação no Time de Agentes Paperclip",
+              "line_num": 64,
+              "char_count": 499,
+              "associated_rfs": [],
+              "summary_preview": "## 4. Aplicação no Time de Agentes Paperclip"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

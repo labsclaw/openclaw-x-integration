@@ -1,0 +1,223 @@
+{
+  "benchmark": "PageIndex Tree-RAG Spike",
+  "document": "memory/segments/x-testing-sanasa-operation.md",
+  "document_bytes": 10053,
+  "generation_time_ms": 0.99945068359375,
+  "total_nodes": 24,
+  "max_depth": 2,
+  "structure": [
+    {
+      "depth": 0,
+      "node_id": "0000",
+      "title": "X-Testing, Operação SANASA com Agentes de IA",
+      "char_length": 206,
+      "line_num": 1
+    },
+    {
+      "depth": 1,
+      "node_id": "0001",
+      "title": "Visão rápida",
+      "char_length": 874,
+      "line_num": 8
+    },
+    {
+      "depth": 1,
+      "node_id": "0002",
+      "title": "Missão",
+      "char_length": 441,
+      "line_num": 24
+    },
+    {
+      "depth": 1,
+      "node_id": "0003",
+      "title": "Estrutura organizacional recebida",
+      "char_length": 538,
+      "line_num": 30
+    },
+    {
+      "depth": 1,
+      "node_id": "0004",
+      "title": "Decisão organizacional confirmada",
+      "char_length": 36,
+      "line_num": 50
+    },
+    {
+      "depth": 2,
+      "node_id": "0005",
+      "title": "CEO",
+      "char_length": 250,
+      "line_num": 52
+    },
+    {
+      "depth": 2,
+      "node_id": "0006",
+      "title": "Hipótese para o núcleo WEB, ainda sujeita à validação",
+      "char_length": 139,
+      "line_num": 58
+    },
+    {
+      "depth": 2,
+      "node_id": "0007",
+      "title": "Capacidades possivelmente acionadas sob demanda",
+      "char_length": 135,
+      "line_num": 65
+    },
+    {
+      "depth": 2,
+      "node_id": "0008",
+      "title": "Fora do núcleo inicial, salvo nova decisão",
+      "char_length": 160,
+      "line_num": 72
+    },
+    {
+      "depth": 1,
+      "node_id": "0009",
+      "title": "Papel das tecnologias",
+      "char_length": 695,
+      "line_num": 80
+    },
+    {
+      "depth": 1,
+      "node_id": "0010",
+      "title": "Contexto contratual SANASA",
+      "char_length": 29,
+      "line_num": 92
+    },
+    {
+      "depth": 2,
+      "node_id": "0011",
+      "title": "Objeto do Lote 2",
+      "char_length": 232,
+      "line_num": 94
+    },
+    {
+      "depth": 2,
+      "node_id": "0012",
+      "title": "Requisitos não funcionais relevantes",
+      "char_length": 915,
+      "line_num": 101
+    },
+    {
+      "depth": 1,
+      "node_id": "0013",
+      "title": "Fronteiras operacionais confirmadas",
+      "char_length": 38,
+      "line_num": 115
+    },
+    {
+      "depth": 2,
+      "node_id": "0014",
+      "title": "OS SANASA",
+      "char_length": 384,
+      "line_num": 117
+    },
+    {
+      "depth": 2,
+      "node_id": "0015",
+      "title": "UST",
+      "char_length": 301,
+      "line_num": 124
+    },
+    {
+      "depth": 2,
+      "node_id": "0016",
+      "title": "Conversões para comprovação técnica",
+      "char_length": 486,
+      "line_num": 131
+    },
+    {
+      "depth": 2,
+      "node_id": "0017",
+      "title": "Prazo e planejamento",
+      "char_length": 259,
+      "line_num": 140
+    },
+    {
+      "depth": 2,
+      "node_id": "0018",
+      "title": "Infraestrutura e conhecimento",
+      "char_length": 363,
+      "line_num": 146
+    },
+    {
+      "depth": 1,
+      "node_id": "0019",
+      "title": "Fluxo operacional inicial",
+      "char_length": 639,
+      "line_num": 153
+    },
+    {
+      "depth": 1,
+      "node_id": "0020",
+      "title": "Princípios de desenho",
+      "char_length": 491,
+      "line_num": 165
+    },
+    {
+      "depth": 1,
+      "node_id": "0021",
+      "title": "Pendências para decisão",
+      "char_length": 817,
+      "line_num": 174
+    },
+    {
+      "depth": 1,
+      "node_id": "0022",
+      "title": "Registro de decisões",
+      "char_length": 520,
+      "line_num": 187
+    },
+    {
+      "depth": 1,
+      "node_id": "0023",
+      "title": "Fontes detalhadas do projeto no Memory Viewer",
+      "char_length": 795,
+      "line_num": 198
+    }
+  ],
+  "queries_simulated": [
+    {
+      "query": "Quais são as ordens de serviço e regras de negócio da SANASA?",
+      "top_nodes": [
+        {
+          "depth": 0,
+          "node_id": "0000",
+          "title": "X-Testing, Operação SANASA com Agentes de IA",
+          "char_length": 206,
+          "line_num": 1
+        },
+        {
+          "depth": 1,
+          "node_id": "0010",
+          "title": "Contexto contratual SANASA",
+          "char_length": 29,
+          "line_num": 92
+        },
+        {
+          "depth": 2,
+          "node_id": "0014",
+          "title": "OS SANASA",
+          "char_length": 384,
+          "line_num": 117
+        }
+      ]
+    },
+    {
+      "query": "Qual é o organograma e os papéis dos agentes da X-Testing?",
+      "top_nodes": [
+        {
+          "depth": 0,
+          "node_id": "0000",
+          "title": "X-Testing, Operação SANASA com Agentes de IA",
+          "char_length": 206,
+          "line_num": 1
+        }
+      ]
+    },
+    {
+      "query": "Métricas de performance e TestLink",
+      "top_nodes": []
+    }
+  ],
+  "status": "SUCCESS"
+}
