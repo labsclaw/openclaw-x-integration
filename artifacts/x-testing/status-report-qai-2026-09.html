@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Status Report • Projeto QAI X-Testing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --surface: #131b2e;
+      --surface-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-glow: rgba(59, 130, 246, 0.2);
+      --orange: #f97316;
+      --purple: #a855f7;
+      --green: #22c55e;
+      --amber: #eab308;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 30px 20px;
+    }
+
+    .deck-container {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .slide {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 20px;
+      padding: 40px 48px;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--primary), var(--purple), var(--green));
+    }
+
+    .slide-header {
+      margin-bottom: 28px;
+    }
+    .slide-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+    .slide-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .slide-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* SLIDE 1 CARDS */
+    .objectives-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .obj-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .obj-card.orange { border-top: 3px solid var(--orange); }
+    .obj-card.blue { border-top: 3px solid var(--primary); }
+    .obj-card.purple { border-top: 3px solid var(--purple); }
+
+    .obj-num {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .obj-card.orange .obj-num { color: var(--orange); }
+    .obj-card.blue .obj-num { color: var(--primary); }
+    .obj-card.purple .obj-num { color: var(--purple); }
+
+    .obj-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .obj-badge {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+      align-self: flex-start;
+    }
+    .badge-orange { background: rgba(249, 115, 22, 0.15); color: var(--orange); }
+    .badge-blue { background: rgba(59, 130, 246, 0.15); color: var(--primary); }
+    .badge-purple { background: rgba(168, 85, 247, 0.15); color: var(--purple); }
+
+    .obj-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .obj-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .obj-list li {
+      font-size: 12px;
+      color: #e2e8f0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+    .obj-list li::before {
+      content: "•";
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* SLIDE 2 CHEVRON ROADMAP */
+    .roadmap-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 10px;
+    }
+    .chevron-th {
+      padding: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      border-radius: 8px;
+      color: #fff;
+    }
+    .th-approach { background: #1e293b; color: #94a3b8; width: 15%; }
+    .th-stage1 { background: #ea580c; width: 21.25%; }
+    .th-stage2 { background: #2563eb; width: 21.25%; }
+    .th-stage3 { background: #9333ea; width: 21.25%; }
+    .th-stage4 { background: #16a34a; width: 21.25%; }
+
+    .row-label {
+      background: #1e293b;
+      color: #f1f5f9;
+      font-weight: 700;
+      font-size: 12px;
+      text-align: center;
+      vertical-align: middle;
+      padding: 14px 10px;
+      border-radius: 8px;
+    }
+    .stage-cell {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 14px;
+      vertical-align: top;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+    .stage-cell.current-month {
+      background: rgba(234, 88, 12, 0.08);
+      border: 1px solid rgba(234, 88, 12, 0.4);
+    }
+    .stage-cell ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .stage-cell ul li::before {
+      content: "• ";
+      color: var(--primary);
+      font-weight: bold;
+    }
+    .stage-cell.current-month ul li::before {
+      color: var(--orange);
+    }
+
+    /* SLIDE 3 SCHEDULE MATRIX */
+    .schedule-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 8px;
+    }
+    .sched-th {
+      padding: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+      border-radius: 6px;
+      color: #fff;
+    }
+    .sched-wp {
+      background: #1e293b;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #f8fafc;
+      width: 28%;
+    }
+    .sched-cell {
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 10px;
+      line-height: 1.4;
+      vertical-align: middle;
+    }
+    .cell-done {
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: #4ade80;
+    }
+    .cell-active {
+      background: rgba(249, 115, 22, 0.15);
+      border: 1px solid rgba(249, 115, 22, 0.4);
+      color: #fb923c;
+      font-weight: 600;
+    }
+    .cell-target {
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #60a5fa;
+    }
+    .cell-plan {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid #1e293b;
+      color: #94a3b8;
+    }
+    .cell-blocked {
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px dashed #334155;
+      color: #64748b;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="deck-container">
+
+  <!-- SLIDE 1 -->
+  <section class="slide">
+    <div class="slide-header">
+      <div class="slide-tag">PROJETO QAI • X-TESTING & SANASA</div>
+      <h1 class="slide-title"># Key Objectives</h1>
+      <p class="slide-subtitle">Transformação agêntica da operação de testes: da linha de base manual à automação autônoma de ponta a ponta.</p>
+    </div>
+
+    <div class="objectives-grid">
+      <!-- FASE 1 -->
+      <div class="obj-card orange">
+        <div class="obj-num">FASE 01</div>
+        <h3 class="obj-title">WEB: Testes Manuais</h3>
+        <span class="obj-badge badge-orange">EM ANDAMENTO • BASELINE</span>
+        <p class="obj-desc">Reprodução e aceleração do atendimento humano via agentes com suporte a geração e triagem de artefatos.</p>
+        <ul class="obj-list">
+          <li>Extração estruturada de requisitos (Tree-RAG / PageIndex sem chunking).</li>
+          <li>Modelagem e validação de regras de negócio em diagramas BPMN.</li>
+          <li>Elaboração automatizada de Casos de Teste no padrão TestLink.</li>
+          <li>Triagem, catalogação e apoio no reporte de bugs (Mantis).</li>
+        </ul>
+      </div>
+
+      <!-- FASE 2 -->
+      <div class="obj-card blue">
+        <div class="obj-num">FASE 02</div>
+        <h3 class="obj-title">WEB: Integração & Aceitação</h3>
+        <span class="obj-badge badge-blue">PLANEJADA • SEQUENCIAL</span>
+        <p class="obj-desc">Execução autônoma em navegadores com validação cruzada de APIs, regras e evidências estruturadas.</p>
+        <ul class="obj-list">
+          <li>Automação de execução no navegador (Playwright / Camoufox).</li>
+          <li>Validação integrada de regras de negócio e fluxos sistêmicos.</li>
+          <li>Geração de evidências rastreáveis (logs, prints por step e vídeo).</li>
+          <li>Esteira de regressão contínua integrada ao pipeline CI/CD.</li>
+        </ul>
+      </div>
+
+      <!-- FASE 3 -->
+      <div class="obj-card purple">
+        <div class="obj-num">FASE 03</div>
+        <h3 class="obj-title">MOBILE: Todos os Anteriores</h3>
+        <span class="obj-badge badge-purple">CONDICIONAL • PÓS-WEB</span>
+        <p class="obj-desc">Extensão da esteira agêntica completa para aplicativos móveis nativos (Android e iOS).</p>
+        <ul class="obj-list">
+          <li><strong>Início condicionado:</strong> dispara somente após término das Fases 01 e 02.</li>
+          <li>Execução de testes manuais acelerados por IA em telas mobile.</li>
+          <li>Testes de integração e aceitação em emuladores e aparelhos reais.</li>
+          <li>Automação agêntica de fluxos nativos com cobertura de usabilidade.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2 -->
+  <section class="slide">
+    <div class="slide-header">
+      <div class="slide-tag">PROJETO QAI • X-TESTING</div>
+      <h1 class="slide-title">Product Stages Roadmap (Setembro a Dezembro 2026)</h1>
+      <p class="slide-subtitle">Avanço progressivo e acumulativo das capacidades agênticas por estágio de maturidade.</p>
+    </div>
+
+    <table class="roadmap-table">
+      <thead>
+        <tr>
+          <th class="chevron-th th-approach">Our Approach</th>
+          <th class="chevron-th th-stage1">1 • Setembro 2026 (Atual)</th>
+          <th class="chevron-th th-stage2">2 • Outubro 2026</th>
+          <th class="chevron-th th-stage3">3 • Novembro 2026</th>
+          <th class="chevron-th th-stage4">4 • Dezembro 2026</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-label">Strategic Objectives</td>
+          <td class="stage-cell current-month">
+            <ul>
+              <li><strong>Setup Paperclip:</strong> empresa XTE & QAI ativo</li>
+              <li><strong>Tree-RAG:</strong> indexação estrutural sem chunking</li>
+              <li><strong>Classificação:</strong> matriz de prioridades</li>
+            </ul>
+          </td>
+          <td class="stage-cell">
+            <ul>
+              <li>Operação plena de <strong>WEB Testes Manuais</strong></li>
+              <li>Geração assistida de Casos de Teste (TestLink)</li>
+              <li>Estruturação de conectores ALM</li>
+            </ul>
+          </td>
+          <td class="stage-cell">
+            <ul>
+              <li>Automação de <strong>WEB Integração & E2E</strong></li>
+              <li>Execução autônoma com Playwright</li>
+              <li>Validação contínua de regras</li>
+            </ul>
+          </td>
+          <td class="stage-cell">
+            <ul>
+              <li>Kickoff da <strong>Esteira MOBILE</strong></li>
+              <li>Transposição de skills para apps nativos</li>
+              <li>Homologação consolidada</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="row-label">Key Milestones</td>
+          <td class="stage-cell current-month">
+            <ul>
+              <li><strong>Ambiente Agêntico:</strong> 100% configurado</li>
+              <li><strong>Skill BPMN:</strong> validada em produção</li>
+              <li><strong>Mapeamento:</strong> riscos corporativos SANASA</li>
+            </ul>
+          </td>
+          <td class="stage-cell">
+            <ul>
+              <li>1º Ciclo de Casos de Teste gerados por IA</li>
+              <li>Publicação da suíte inicial no TestLink</li>
+              <li>Revisão de aderência com a SANASA</li>
+            </ul>
+          </td>
+          <td class="stage-cell">
+            <ul>
+              <li>Baterias de teste E2E executadas por agentes</li>
+              <li>Evidências rastreáveis e cobertura crítica</li>
+              <li>Abertura automática de bugs (Mantis)</li>
+            </ul>
+          </td>
+          <td class="stage-cell">
+            <ul>
+              <li>Suíte de testes Mobile estruturada</li>
+              <li>Execução emuladores / reais</li>
+              <li>Handover operacional para 2027</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="row-label">Deliverables</td>
+          <td class="stage-cell current-month">
+            <ul>
+              <li><strong>Planilha:</strong> Classificação e prioridades</li>
+              <li><strong>sanasa-requirements-tree.json</strong></li>
+              <li><strong>Segmentos SSC:</strong> indexados no Memory Viewer</li>
+            </ul>
+          </td>
+          <td class="stage-cell">
+            <ul>
+              <li>Suíte TestLink gerada por IA</li>
+              <li>Relatório de aderência manual</li>
+              <li>Dashboards operacionais no Paperclip</li>
+            </ul>
+          </td>
+          <td class="stage-cell">
+            <ul>
+              <li>Scripts Playwright automatizados</li>
+              <li>Pipeline de testes de integração ativa</li>
+              <li>Relatórios de defeitos no Mantis</li>
+            </ul>
+          </td>
+          <td class="stage-cell">
+            <ul>
+              <li>Suíte Mobile completa (Fase 3)</li>
+              <li>Relatório consolidado de métricas e KPIs</li>
+              <li>Manual de governança da fábrica agêntica</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SLIDE 3 -->
+  <section class="slide">
+    <div class="slide-header">
+      <div class="slide-tag">PROJETO QAI • X-TESTING</div>
+      <h1 class="slide-title">Monthly Schedule & Tracking (Setembro - Dezembro 2026)</h1>
+      <p class="slide-subtitle">Acompanhamento contínuo dos Work Packages e marcos de transição entre fases.</p>
+    </div>
+
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th class="sched-th" style="background:#0f172a; width: 28%;">Work Package / Trilha de Execução</th>
+          <th class="sched-th" style="background:#ea580c; width: 18%;">SET/2026 (Atual)</th>
+          <th class="sched-th" style="background:#2563eb; width: 18%;">OUT/2026</th>
+          <th class="sched-th" style="background:#9333ea; width: 18%;">NOV/2026</th>
+          <th class="sched-th" style="background:#16a34a; width: 18%;">DEZ/2026</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="sched-wp">WP1 • Setup Agêntico & Paperclip<br><span style="font-size:9px; color:#94a3b8;">Ambiente, organograma e governança QAI</span></td>
+          <td class="sched-cell cell-done"><strong>100% CONCLUÍDO</strong><br>• Paperclip ativo<br>• Empresa XTE configurada</td>
+          <td class="sched-cell cell-plan">Operação Contínua<br>• Monitoramento</td>
+          <td class="sched-cell cell-plan">Operação Contínua<br>• Manutenção</td>
+          <td class="sched-cell cell-plan">Operação Contínua<br>• Governança</td>
+        </tr>
+        <tr>
+          <td class="sched-wp">WP2 • Extração de Requisitos & BPMN<br><span style="font-size:9px; color:#94a3b8;">Tree-RAG sem chunking e fluxos de negócio</span></td>
+          <td class="sched-cell cell-done"><strong>100% CONCLUÍDO</strong><br>• Árvore de requisitos<br>• Skill BPMN validada</td>
+          <td class="sched-cell cell-plan">Refinamento<br>• Novos fluxos</td>
+          <td class="sched-cell cell-plan">Suporte a E2E<br>• Validação cruzada</td>
+          <td class="sched-cell cell-plan">Migração p/ Mobile<br>• Mapeamento</td>
+        </tr>
+        <tr>
+          <td class="sched-wp">WP3 • FASE 1: WEB Testes Manuais<br><span style="font-size:9px; color:#94a3b8;">Suporte IA para TestLink e Mantis</span></td>
+          <td class="sched-cell cell-active"><strong>EM ANDAMENTO</strong><br>• Matriz de prioridades<br>• Riscos SANASA</td>
+          <td class="sched-cell cell-target"><strong>EXECUÇÃO PLENA</strong><br>• Suíte TestLink<br>• Triagem Mantis</td>
+          <td class="sched-cell cell-plan">Estabilização<br>• Homologação</td>
+          <td class="sched-cell cell-plan">Fase Concluída<br>• Transição</td>
+        </tr>
+        <tr>
+          <td class="sched-wp">WP4 • FASE 2: WEB Integração & E2E<br><span style="font-size:9px; color:#94a3b8;">Automação autônoma Playwright / Camoufox</span></td>
+          <td class="sched-cell cell-plan">Planejamento<br>• Spike de arquitetura</td>
+          <td class="sched-cell cell-plan">Desenvolvimento<br>• Conectores E2E</td>
+          <td class="sched-cell cell-target"><strong>EXECUÇÃO PLENA</strong><br>• Automação E2E<br>• Evidências visuais</td>
+          <td class="sched-cell cell-plan">Fase Concluída<br>• Regressão ativa</td>
+        </tr>
+        <tr>
+          <td class="sched-wp">WP5 • FASE 3: MOBILE (Todos)<br><span style="font-size:9px; color:#94a3b8;">Testes manuais e automação em apps nativos</span></td>
+          <td class="sched-cell cell-blocked">Bloqueado<br><em>(Aguardando término WEB)</em></td>
+          <td class="sched-cell cell-blocked">Bloqueado<br><em>(Aguardando término WEB)</em></td>
+          <td class="sched-cell cell-plan">Preparação<br>• Setup device farm</td>
+          <td class="sched-cell cell-target"><strong>EXECUÇÃO PLENA</strong><br>• Testes Manuais & E2E Mobile</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- SLIDE 4: TAREFAS REALIZADAS -->
+  <section class="slide">
+    <div class="slide-header">
+      <div class="slide-tag">PROJETO QAI • FÁBRICA DE TESTES X-TESTING</div>
+      <h1 class="slide-title">Tarefas Realizadas</h1>
+      <p class="slide-subtitle">Estruturação dos Agentes Operacionais, Demandas Paperclip, Entregáveis RF046/RF047 e Decisões de Continuidade</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <!-- Card 1: Agentes -->
+      <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid #1e293b; border-top: 3px solid var(--primary); border-radius: 14px; padding: 18px 20px;">
+        <div style="font-size: 10px; font-weight: 800; letter-spacing: 1px; color: var(--primary); margin-bottom: 2px;">ESTRUTURA OPERACIONAL • 5 AGENTES</div>
+        <h2 style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #fff;">Criação e Configuração de Agentes</h2>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: #e2e8f0;">
+          <li><strong style="color: #60a5fa;">• QAI (CEO):</strong> Liderança executiva, governança e validação final da esteira.</li>
+          <li><strong style="color: #60a5fa;">• Gerência de Projetos:</strong> Planejamento de sprints, gestão de backlog e prazos.</li>
+          <li><strong style="color: #60a5fa;">• Análise de Processos:</strong> Modelagem BPMN 2.0 dos fluxos e regras de negócio.</li>
+          <li><strong style="color: #60a5fa;">• Análise de Testes:</strong> Especificação de cenários e suítes completas TestLink.</li>
+          <li><strong style="color: #60a5fa;">• Testador:</strong> Execução WEB/Playwright, evidências e reporte de defeitos.</li>
+        </ul>
+      </div>
+
+      <!-- Card 2: Entregáveis RF046/RF047 -->
+      <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid #1e293b; border-top: 3px solid #0d9488; border-radius: 14px; padding: 18px 20px;">
+        <div style="font-size: 10px; font-weight: 800; letter-spacing: 1px; color: #2dd4bf; margin-bottom: 2px;">DEMANDA SANASA • OS 2026/2652</div>
+        <h2 style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #fff;">Entregáveis da Demanda RF046/RF047</h2>
+        <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: #e2e8f0;">
+          <li><strong>📄 RF046-RF047-Julgamento-Desclassificacao.bpmn:</strong> Modelagem BPMN 2.0 formal de regras.</li>
+          <li><strong>📄 RF046-RF047-Documentacao-BPMN.md:</strong> Documentação técnica e conformidade com Lei 14.133.</li>
+          <li><strong>📄 RF046-RF047-Suite-Testes-TestLink.xml:</strong> Suíte padronizada com 15 casos (SANASAPV2-71..85).</li>
+          <li><strong>📄 RF046-RF047-Planilha-Divergencia-SANASA.csv:</strong> Matriz de conferência com 27 requisitos avaliados.</li>
+        </ul>
+        <div style="margin-top: 6px;"><a href="https://github.com/labsclaw/openclaw-x-integration" target="_blank" style="color: #38bdf8; text-decoration: none; font-size: 11px;">🔗 Repositório GitHub (openclaw-x-integration) &rarr;</a></div>
+      </div>
+
+      <!-- Card 3: 33 Tarefas Paperclip -->
+      <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid #1e293b; border-top: 3px solid var(--green); border-radius: 14px; padding: 18px 20px;">
+        <div style="font-size: 10px; font-weight: 800; letter-spacing: 1px; color: var(--green); margin-bottom: 2px;">PAINEL DE DEMANDAS NO PAPERCLIP</div>
+        <h2 style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #fff;">33 Tarefas Registradas</h2>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px;">
+          <div><strong style="color: #4ade80;">✔ 15 Concluídas (45.5%):</strong> Especificações TestLink, BPMNs e planilhas de divergência de 5 OSs (RF002, RF027, RF043, RF050 e RF058/RF061).</div>
+          <div><strong style="color: #fb923c;">⛔ 6 Bloqueadas (18.2%):</strong> Impedimento por falta de credenciais externas/homologação SANASA (ex.: XTE-18 execução CS-01..10, XTE-16, XTE-23).</div>
+          <div><strong style="color: #60a5fa;">⏳ 12 Em Revisão / Backlog (36.3%):</strong> Validações técnicas, conectores e preparação da Fase 1.</div>
+        </div>
+      </div>
+
+      <!-- Card 4: Decisões Operacionais -->
+      <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid #1e293b; border-top: 3px solid var(--orange); border-radius: 14px; padding: 18px 20px;">
+        <div style="font-size: 10px; font-weight: 800; letter-spacing: 1px; color: var(--orange); margin-bottom: 2px;">PROATIVIDADE & BYPASS TÉCNICO</div>
+        <h2 style="font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #fff;">Decisões para Seguir Implementando</h2>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; color: #cbd5e1; line-height: 1.4;">
+          <div><strong style="color: #fff;">1. Validação WEB via Mocks Locais (Playwright):</strong> Execução das suítes de teste diretamente contra os fluxos modelados com emulação/mocks via Playwright, eliminando a espera passiva por infraestrutura externa.</div>
+          <div><strong style="color: #fff;">2. Pacotes de Exportação Estruturada (Mantis):</strong> Defeitos (MANTIS-SANASA-1045..1048) gerados em pacotes (XML/JSON/CSV) pré-formatados para carga em lote imediata assim que as credenciais forem liberadas.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: PRÓXIMAS TAREFAS -->
+  <section class="slide">
+    <div class="slide-header">
+      <div class="slide-tag">PROJETO QAI • PLANEJAMENTO & GOVERNANÇA AGÊNTICA</div>
+      <h1 class="slide-title">Próximas Tarefas</h1>
+      <p class="slide-subtitle">Mapeamento Operacional, Skills de Compliance Regulatório e Prontidão para Auditoria de IA</p>
+    </div>
+
+    <div class="objectives-grid">
+      <!-- Card 1: Reunião X-Testing -->
+      <div class="obj-card orange">
+        <div class="obj-num">ALINHAMENTO OPERACIONAL</div>
+        <div class="obj-title" style="font-size: 16px;">Detalhamento do Fluxo X-Testing</div>
+        <div class="obj-badge" style="color: var(--orange); font-size: 9px; margin-bottom: 12px;">IMERSÃO & DIAGNÓSTICO DA ESTEIRA</div>
+        <p class="obj-desc" style="font-size: 11.5px; margin-bottom: 12px;">Alinhamento aprofundado dos ritos operacionais e critérios de transição entre analistas e agentes.</p>
+        <ul class="obj-list" style="font-size: 11.5px; gap: 8px;">
+          <li>• Reunião técnica com time de liderança e especialistas da X-Testing.</li>
+          <li>• Mapeamento detalhado da esteira atual de testes manuais e rituais operacionais.</li>
+          <li>• Levantamento de critérios de aceite, triagem de defeitos e transição para esteira autônoma.</li>
+          <li>• Mapeamento de critérios de passagem, geração de massa de teste e homologação.</li>
+          <li>• Identificação de gargalos operacionais e pontos de atrito para automação imediata.</li>
+          <li>• Definição de interfaces de colaboração entre analistas humanos e agentes de IA.</li>
+        </ul>
+      </div>
+
+      <!-- Card 2: Skills de Compliance -->
+      <div class="obj-card blue">
+        <div class="obj-num">PRIVACIDADE & SEGURANÇA</div>
+        <div class="obj-title" style="font-size: 16px;">Skills de Compliance dos Agentes</div>
+        <div class="obj-badge" style="color: var(--primary); font-size: 9px; margin-bottom: 12px;">LGPD • GDPR • HIPAA • CCPA • SOC 2 • ISO 27001 • PCI-DSS</div>
+        <p class="obj-desc" style="font-size: 11.5px; margin-bottom: 12px;">Pesquisa e planejamento de guardrails procedural para comportamento seguro dos agentes.</p>
+        <ul class="obj-list" style="font-size: 11.5px; gap: 8px;">
+          <li>• <strong>Anonimização & Pseudonimização (K2View, Protecto.ai):</strong> Mascaramento dinâmico, tokenização e hashing irreversível com sal.</li>
+          <li>• <strong>Diretrizes ANPD & UFCA:</strong> Aplicação dos padrões regulatórios brasileiros para desidentificação de bases de homologação.</li>
+          <li>• <strong>Tarjamento de Evidências (MavenDoc):</strong> Censura automatizada de PII (CPFs, nomes, valores) em screenshots e PDFs de teste.</li>
+          <li>• <strong>Coleta Segura & OSINT Ético (OSINT Brasil):</strong> Higiene de dados para evitar vazamento de credenciais e dados em prompts.</li>
+        </ul>
+      </div>
+
+      <!-- Card 3: Prontidão para Auditoria de IA -->
+      <div class="obj-card purple">
+        <div class="obj-num">GOVERNANÇA REGULATÓRIA</div>
+        <div class="obj-title" style="font-size: 16px;">Prontidão para Auditoria de IA</div>
+        <div class="obj-badge" style="color: var(--purple); font-size: 9px; margin-bottom: 12px;">SOC 2 AI • IA GDPR • ISO 27001 IA</div>
+        <p class="obj-desc" style="font-size: 11.5px; margin-bottom: 12px;">Controles formais de segurança, auditoria contínua e certificação de pipelines agênticos.</p>
+        <ul class="obj-list" style="font-size: 11.5px; gap: 8px;">
+          <li>• <strong>SOC 2 AI:</strong> Controles de integridade, confidencialidade, auditabilidade de inferências e trilhas de log imutáveis.</li>
+          <li>• <strong>IA GDPR / LGPD:</strong> Minimização estrita de dados em prompts, política de zero-data retention com LLMs e explicabilidade técnica.</li>
+          <li>• <strong>ISO 27001 IA (ref: Mukul975 / GetClaudeSkills):</strong> Políticas de segurança da informação aplicadas a agentes e gestão de riscos de modelos.</li>
+          <li>• <strong>Procedural Gates:</strong> Barreira de checagem automática que bloqueia qualquer ação externa não-conforme antes da persistência ou envio.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="footer-note">
+  Status Report QAI • X-Testing & SANASA • Atualizado em Setembro/2026 • Apresentação de Acompanhamento Mensal
+</div>
+
+</body>
+</html>
